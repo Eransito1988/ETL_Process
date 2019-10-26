@@ -1,0 +1,1998 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="10/17/2019 1:03:22 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="LENOVO-FLEX2-15"
+  DTS:CreatorName="LENOVO-FLEX2-15\User"
+  DTS:DTSID="{35E01E2D-9510-4043-AFBD-65CE3AF4C04F}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="15.0.1301.433"
+  DTS:LocaleID="1037"
+  DTS:ObjectName="Mrr to Srg"
+  DTS:PackageType="5"
+  DTS:VersionBuild="41"
+  DTS:VersionGUID="{BB83187E-1CD1-409B-8343-D2D5C11D8210}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Sequence Container Call Type"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:DTSID="{E575B526-93B1-4647-9A1E-243DAD945E2E}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Sequence Container Call Type">
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\Sequence Container Call Type\Data Flow Task Call Type"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:Description="Data Flow Task"
+          DTS:DTSID="{F69E67B9-6B76-47AA-B29C-275E54336096}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Data Flow Task Call Type"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\Sequence Container Call Type\Data Flow Task Call Type\Derived Column Call Type"
+                  componentClassID="Microsoft.DerivedColumn"
+                  contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+                  description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+                  name="Derived Column Call Type"
+                  usesDispositions="true">
+                  <inputs>
+                    <input
+                      refId="Package\Sequence Container Call Type\Data Flow Task Call Type\Derived Column Call Type.Inputs[Derived Column Input]"
+                      description="Input to the Derived Column Transformation"
+                      name="Derived Column Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Sequence Container Call Type\Data Flow Task Call Type\Derived Column Call Type.Inputs[Derived Column Input].Columns[Call Type]"
+                          cachedDataType="wstr"
+                          cachedLength="100"
+                          cachedName="Call Type"
+                          errorOrTruncationOperation="Computation"
+                          errorRowDisposition="FailComponent"
+                          lineageId="Package\Sequence Container Call Type\Data Flow Task Call Type\OLE DB Source Call Type.Outputs[OLE DB Source Output].Columns[Call Type]"
+                          truncationRowDisposition="FailComponent"
+                          usageType="readWrite">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Expression"
+                              name="Expression">[ISNULL](#{Package\Sequence Container Call Type\Data Flow Task Call Type\OLE DB Source Call Type.Outputs[OLE DB Source Output].Columns[Call Type]}) ? "Unknoun" : #{Package\Sequence Container Call Type\Data Flow Task Call Type\OLE DB Source Call Type.Outputs[OLE DB Source Output].Columns[Call Type]}</property>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Friendly Expression"
+                              expressionType="Notify"
+                              name="FriendlyExpression">ISNULL([Call Type]) ? "Unknoun" : [Call Type]</property>
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\Sequence Container Call Type\Data Flow Task Call Type\Derived Column Call Type.Inputs[Derived Column Input].Columns[PricePerMinuter]"
+                          cachedDataType="cy"
+                          cachedName="PricePerMinuter"
+                          errorOrTruncationOperation="Computation"
+                          errorRowDisposition="FailComponent"
+                          lineageId="Package\Sequence Container Call Type\Data Flow Task Call Type\OLE DB Source Call Type.Outputs[OLE DB Source Output].Columns[PricePerMinuter]"
+                          truncationRowDisposition="FailComponent"
+                          usageType="readWrite">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Expression"
+                              name="Expression">[ISNULL](#{Package\Sequence Container Call Type\Data Flow Task Call Type\OLE DB Source Call Type.Outputs[OLE DB Source Output].Columns[PricePerMinuter]}) ? -1 : #{Package\Sequence Container Call Type\Data Flow Task Call Type\OLE DB Source Call Type.Outputs[OLE DB Source Output].Columns[PricePerMinuter]}</property>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Friendly Expression"
+                              expressionType="Notify"
+                              name="FriendlyExpression">ISNULL(PricePerMinuter) ? -1 : PricePerMinuter</property>
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\Sequence Container Call Type\Data Flow Task Call Type\Derived Column Call Type.Inputs[Derived Column Input].Columns[Call Type Desc]"
+                          cachedDataType="wstr"
+                          cachedLength="100"
+                          cachedName="Call Type Desc"
+                          errorOrTruncationOperation="Computation"
+                          errorRowDisposition="FailComponent"
+                          lineageId="Package\Sequence Container Call Type\Data Flow Task Call Type\OLE DB Source Call Type.Outputs[OLE DB Source Output].Columns[Call Type Desc]"
+                          truncationRowDisposition="FailComponent"
+                          usageType="readWrite">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Expression"
+                              name="Expression">[ISNULL](#{Package\Sequence Container Call Type\Data Flow Task Call Type\OLE DB Source Call Type.Outputs[OLE DB Source Output].Columns[Call Type Desc]}) ? "Unknoun" : #{Package\Sequence Container Call Type\Data Flow Task Call Type\OLE DB Source Call Type.Outputs[OLE DB Source Output].Columns[Call Type Desc]}</property>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Friendly Expression"
+                              expressionType="Notify"
+                              name="FriendlyExpression">ISNULL([Call Type Desc]) ? "Unknoun" : [Call Type Desc]</property>
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\Sequence Container Call Type\Data Flow Task Call Type\Derived Column Call Type.Inputs[Derived Column Input].Columns[Call Type Code]"
+                          cachedDataType="wstr"
+                          cachedLength="100"
+                          cachedName="Call Type Code"
+                          errorOrTruncationOperation="Computation"
+                          errorRowDisposition="FailComponent"
+                          lineageId="Package\Sequence Container Call Type\Data Flow Task Call Type\OLE DB Source Call Type.Outputs[OLE DB Source Output].Columns[Call Type Code]"
+                          truncationRowDisposition="FailComponent"
+                          usageType="readWrite">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Expression"
+                              name="Expression">[ISNULL](#{Package\Sequence Container Call Type\Data Flow Task Call Type\OLE DB Source Call Type.Outputs[OLE DB Source Output].Columns[Call Type Code]}) ? "Unknoun" : #{Package\Sequence Container Call Type\Data Flow Task Call Type\OLE DB Source Call Type.Outputs[OLE DB Source Output].Columns[Call Type Code]}</property>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Friendly Expression"
+                              expressionType="Notify"
+                              name="FriendlyExpression">ISNULL([Call Type Code]) ? "Unknoun" : [Call Type Code]</property>
+                          </properties>
+                        </inputColumn>
+                      </inputColumns>
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Sequence Container Call Type\Data Flow Task Call Type\Derived Column Call Type.Outputs[Derived Column Output]"
+                      description="Default Output of the Derived Column Transformation"
+                      exclusionGroup="1"
+                      name="Derived Column Output"
+                      synchronousInputId="Package\Sequence Container Call Type\Data Flow Task Call Type\Derived Column Call Type.Inputs[Derived Column Input]">
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\Sequence Container Call Type\Data Flow Task Call Type\Derived Column Call Type.Outputs[Derived Column Error Output]"
+                      description="Error Output of the Derived Column Transformation"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="Derived Column Error Output"
+                      synchronousInputId="Package\Sequence Container Call Type\Data Flow Task Call Type\Derived Column Call Type.Inputs[Derived Column Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Sequence Container Call Type\Data Flow Task Call Type\Derived Column Call Type.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Sequence Container Call Type\Data Flow Task Call Type\Derived Column Call Type.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Sequence Container Call Type\Data Flow Task Call Type\Derived Column Call Type.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Sequence Container Call Type\Data Flow Task Call Type\Derived Column Call Type.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Sequence Container Call Type\Data Flow Task Call Type\OLE DB Destination Call Type"
+                  componentClassID="Microsoft.OLEDBDestination"
+                  contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+                  description="OLE DB Destination"
+                  name="OLE DB Destination Call Type"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[dbo].[Stg_Call Type]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1255</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">3</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepIdentity">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                      name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Sequence Container Call Type\Data Flow Task Call Type\OLE DB Destination Call Type.Connections[OleDbConnection]"
+                      connectionManagerID="{A41E3DDE-4E0C-443B-B00B-B1E1639A4A6E}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[LENOVO-FLEX2-15_SQLDEV.Stg_TheVoice]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\Sequence Container Call Type\Data Flow Task Call Type\OLE DB Destination Call Type.Inputs[OLE DB Destination Input]"
+                      errorOrTruncationOperation="Insert"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="OLE DB Destination Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Sequence Container Call Type\Data Flow Task Call Type\OLE DB Destination Call Type.Inputs[OLE DB Destination Input].Columns[Call Type]"
+                          cachedDataType="wstr"
+                          cachedLength="100"
+                          cachedName="Call Type"
+                          externalMetadataColumnId="Package\Sequence Container Call Type\Data Flow Task Call Type\OLE DB Destination Call Type.Inputs[OLE DB Destination Input].ExternalColumns[Call Type]"
+                          lineageId="Package\Sequence Container Call Type\Data Flow Task Call Type\OLE DB Source Call Type.Outputs[OLE DB Source Output].Columns[Call Type]" />
+                        <inputColumn
+                          refId="Package\Sequence Container Call Type\Data Flow Task Call Type\OLE DB Destination Call Type.Inputs[OLE DB Destination Input].Columns[PricePerMinuter]"
+                          cachedDataType="cy"
+                          cachedName="PricePerMinuter"
+                          externalMetadataColumnId="Package\Sequence Container Call Type\Data Flow Task Call Type\OLE DB Destination Call Type.Inputs[OLE DB Destination Input].ExternalColumns[PricePerMinuter]"
+                          lineageId="Package\Sequence Container Call Type\Data Flow Task Call Type\OLE DB Source Call Type.Outputs[OLE DB Source Output].Columns[PricePerMinuter]" />
+                        <inputColumn
+                          refId="Package\Sequence Container Call Type\Data Flow Task Call Type\OLE DB Destination Call Type.Inputs[OLE DB Destination Input].Columns[Call Type Desc]"
+                          cachedDataType="wstr"
+                          cachedLength="100"
+                          cachedName="Call Type Desc"
+                          externalMetadataColumnId="Package\Sequence Container Call Type\Data Flow Task Call Type\OLE DB Destination Call Type.Inputs[OLE DB Destination Input].ExternalColumns[Call Type Desc]"
+                          lineageId="Package\Sequence Container Call Type\Data Flow Task Call Type\OLE DB Source Call Type.Outputs[OLE DB Source Output].Columns[Call Type Desc]" />
+                        <inputColumn
+                          refId="Package\Sequence Container Call Type\Data Flow Task Call Type\OLE DB Destination Call Type.Inputs[OLE DB Destination Input].Columns[Call Type Code]"
+                          cachedDataType="wstr"
+                          cachedLength="100"
+                          cachedName="Call Type Code"
+                          externalMetadataColumnId="Package\Sequence Container Call Type\Data Flow Task Call Type\OLE DB Destination Call Type.Inputs[OLE DB Destination Input].ExternalColumns[Call Type Code]"
+                          lineageId="Package\Sequence Container Call Type\Data Flow Task Call Type\OLE DB Source Call Type.Outputs[OLE DB Source Output].Columns[Call Type Code]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container Call Type\Data Flow Task Call Type\OLE DB Destination Call Type.Inputs[OLE DB Destination Input].ExternalColumns[Call Type]"
+                          dataType="wstr"
+                          length="50"
+                          name="Call Type" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container Call Type\Data Flow Task Call Type\OLE DB Destination Call Type.Inputs[OLE DB Destination Input].ExternalColumns[PricePerMinuter]"
+                          dataType="cy"
+                          name="PricePerMinuter" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container Call Type\Data Flow Task Call Type\OLE DB Destination Call Type.Inputs[OLE DB Destination Input].ExternalColumns[Call Type Desc]"
+                          dataType="wstr"
+                          length="50"
+                          name="Call Type Desc" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container Call Type\Data Flow Task Call Type\OLE DB Destination Call Type.Inputs[OLE DB Destination Input].ExternalColumns[Call Type Code]"
+                          dataType="wstr"
+                          length="50"
+                          name="Call Type Code" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Sequence Container Call Type\Data Flow Task Call Type\OLE DB Destination Call Type.Outputs[OLE DB Destination Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Destination Error Output"
+                      synchronousInputId="Package\Sequence Container Call Type\Data Flow Task Call Type\OLE DB Destination Call Type.Inputs[OLE DB Destination Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Sequence Container Call Type\Data Flow Task Call Type\OLE DB Destination Call Type.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Sequence Container Call Type\Data Flow Task Call Type\OLE DB Destination Call Type.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Sequence Container Call Type\Data Flow Task Call Type\OLE DB Destination Call Type.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Sequence Container Call Type\Data Flow Task Call Type\OLE DB Destination Call Type.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Sequence Container Call Type\Data Flow Task Call Type\OLE DB Source Call Type"
+                  componentClassID="Microsoft.OLEDBSource"
+                  contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+                  description="OLE DB Source"
+                  name="OLE DB Source Call Type"
+                  usesDispositions="true"
+                  version="7">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset"></property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select Distinct*
+from [dbo].[Mrr_Call_Type]</property>
+                    <property
+                      dataType="System.String"
+                      description="The variable that contains the SQL command to be executed."
+                      name="SqlCommandVariable"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1255</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">2</property>
+                    <property
+                      dataType="System.String"
+                      description="The mappings between the parameters in the SQL command and variables."
+                      name="ParameterMapping"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Sequence Container Call Type\Data Flow Task Call Type\OLE DB Source Call Type.Connections[OleDbConnection]"
+                      connectionManagerID="{7EE7D0E9-62E4-4BEB-823D-BA0917F15F78}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[LENOVO-FLEX2-15_SQLDEV.Mrr_TheVoice]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\Sequence Container Call Type\Data Flow Task Call Type\OLE DB Source Call Type.Outputs[OLE DB Source Output]"
+                      name="OLE DB Source Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Sequence Container Call Type\Data Flow Task Call Type\OLE DB Source Call Type.Outputs[OLE DB Source Output].Columns[Call Type]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container Call Type\Data Flow Task Call Type\OLE DB Source Call Type.Outputs[OLE DB Source Output].ExternalColumns[Call Type]"
+                          length="100"
+                          lineageId="Package\Sequence Container Call Type\Data Flow Task Call Type\OLE DB Source Call Type.Outputs[OLE DB Source Output].Columns[Call Type]"
+                          name="Call Type"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container Call Type\Data Flow Task Call Type\OLE DB Source Call Type.Outputs[OLE DB Source Output].Columns[PricePerMinuter]"
+                          dataType="cy"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container Call Type\Data Flow Task Call Type\OLE DB Source Call Type.Outputs[OLE DB Source Output].ExternalColumns[PricePerMinuter]"
+                          lineageId="Package\Sequence Container Call Type\Data Flow Task Call Type\OLE DB Source Call Type.Outputs[OLE DB Source Output].Columns[PricePerMinuter]"
+                          name="PricePerMinuter"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container Call Type\Data Flow Task Call Type\OLE DB Source Call Type.Outputs[OLE DB Source Output].Columns[Call Type Desc]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container Call Type\Data Flow Task Call Type\OLE DB Source Call Type.Outputs[OLE DB Source Output].ExternalColumns[Call Type Desc]"
+                          length="100"
+                          lineageId="Package\Sequence Container Call Type\Data Flow Task Call Type\OLE DB Source Call Type.Outputs[OLE DB Source Output].Columns[Call Type Desc]"
+                          name="Call Type Desc"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container Call Type\Data Flow Task Call Type\OLE DB Source Call Type.Outputs[OLE DB Source Output].Columns[Call Type Code]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container Call Type\Data Flow Task Call Type\OLE DB Source Call Type.Outputs[OLE DB Source Output].ExternalColumns[Call Type Code]"
+                          length="100"
+                          lineageId="Package\Sequence Container Call Type\Data Flow Task Call Type\OLE DB Source Call Type.Outputs[OLE DB Source Output].Columns[Call Type Code]"
+                          name="Call Type Code"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container Call Type\Data Flow Task Call Type\OLE DB Source Call Type.Outputs[OLE DB Source Output].ExternalColumns[Call Type]"
+                          dataType="wstr"
+                          length="100"
+                          name="Call Type" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container Call Type\Data Flow Task Call Type\OLE DB Source Call Type.Outputs[OLE DB Source Output].ExternalColumns[PricePerMinuter]"
+                          dataType="cy"
+                          name="PricePerMinuter" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container Call Type\Data Flow Task Call Type\OLE DB Source Call Type.Outputs[OLE DB Source Output].ExternalColumns[Call Type Desc]"
+                          dataType="wstr"
+                          length="100"
+                          name="Call Type Desc" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container Call Type\Data Flow Task Call Type\OLE DB Source Call Type.Outputs[OLE DB Source Output].ExternalColumns[Call Type Code]"
+                          dataType="wstr"
+                          length="100"
+                          name="Call Type Code" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\Sequence Container Call Type\Data Flow Task Call Type\OLE DB Source Call Type.Outputs[OLE DB Source Error Output]"
+                      isErrorOut="true"
+                      name="OLE DB Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Sequence Container Call Type\Data Flow Task Call Type\OLE DB Source Call Type.Outputs[OLE DB Source Error Output].Columns[Call Type]"
+                          dataType="wstr"
+                          length="100"
+                          lineageId="Package\Sequence Container Call Type\Data Flow Task Call Type\OLE DB Source Call Type.Outputs[OLE DB Source Error Output].Columns[Call Type]"
+                          name="Call Type" />
+                        <outputColumn
+                          refId="Package\Sequence Container Call Type\Data Flow Task Call Type\OLE DB Source Call Type.Outputs[OLE DB Source Error Output].Columns[PricePerMinuter]"
+                          dataType="cy"
+                          lineageId="Package\Sequence Container Call Type\Data Flow Task Call Type\OLE DB Source Call Type.Outputs[OLE DB Source Error Output].Columns[PricePerMinuter]"
+                          name="PricePerMinuter" />
+                        <outputColumn
+                          refId="Package\Sequence Container Call Type\Data Flow Task Call Type\OLE DB Source Call Type.Outputs[OLE DB Source Error Output].Columns[Call Type Desc]"
+                          dataType="wstr"
+                          length="100"
+                          lineageId="Package\Sequence Container Call Type\Data Flow Task Call Type\OLE DB Source Call Type.Outputs[OLE DB Source Error Output].Columns[Call Type Desc]"
+                          name="Call Type Desc" />
+                        <outputColumn
+                          refId="Package\Sequence Container Call Type\Data Flow Task Call Type\OLE DB Source Call Type.Outputs[OLE DB Source Error Output].Columns[Call Type Code]"
+                          dataType="wstr"
+                          length="100"
+                          lineageId="Package\Sequence Container Call Type\Data Flow Task Call Type\OLE DB Source Call Type.Outputs[OLE DB Source Error Output].Columns[Call Type Code]"
+                          name="Call Type Code" />
+                        <outputColumn
+                          refId="Package\Sequence Container Call Type\Data Flow Task Call Type\OLE DB Source Call Type.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Sequence Container Call Type\Data Flow Task Call Type\OLE DB Source Call Type.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Sequence Container Call Type\Data Flow Task Call Type\OLE DB Source Call Type.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Sequence Container Call Type\Data Flow Task Call Type\OLE DB Source Call Type.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\Sequence Container Call Type\Data Flow Task Call Type.Paths[Derived Column Output]"
+                  endId="Package\Sequence Container Call Type\Data Flow Task Call Type\OLE DB Destination Call Type.Inputs[OLE DB Destination Input]"
+                  name="Derived Column Output"
+                  startId="Package\Sequence Container Call Type\Data Flow Task Call Type\Derived Column Call Type.Outputs[Derived Column Output]" />
+                <path
+                  refId="Package\Sequence Container Call Type\Data Flow Task Call Type.Paths[OLE DB Source Output]"
+                  endId="Package\Sequence Container Call Type\Data Flow Task Call Type\Derived Column Call Type.Inputs[Derived Column Input]"
+                  name="OLE DB Source Output"
+                  startId="Package\Sequence Container Call Type\Data Flow Task Call Type\OLE DB Source Call Type.Outputs[OLE DB Source Output]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Sequence Container Call Type\Execute SQL Task Call Type"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{70319CD1-6787-464D-ABAA-79A5538ED45C}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Execute SQL Task Call Type"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{A41E3DDE-4E0C-443B-B00B-B1E1639A4A6E}"
+              SQLTask:SqlStatementSource="Truncate Table [dbo].[Stg_Call Type]" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Sequence Container Call Type.PrecedenceConstraints[Constraint]"
+          DTS:CreationName=""
+          DTS:DTSID="{138CBADA-F213-430A-A8D1-C1AC342A5DF2}"
+          DTS:From="Package\Sequence Container Call Type\Execute SQL Task Call Type"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint"
+          DTS:To="Package\Sequence Container Call Type\Data Flow Task Call Type" />
+      </DTS:PrecedenceConstraints>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Sequence Container Countries"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:DTSID="{4371F67A-B471-411F-98E8-F4870A595FC0}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Sequence Container Countries">
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\Sequence Container Countries\Data Flow Task Countries"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:Description="Data Flow Task"
+          DTS:DTSID="{50F4A895-169E-44F4-B7A3-67C7E668114E}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Data Flow Task Countries"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\Sequence Container Countries\Data Flow Task Countries\Derived Column"
+                  componentClassID="Microsoft.DerivedColumn"
+                  contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+                  description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+                  name="Derived Column"
+                  usesDispositions="true">
+                  <inputs>
+                    <input
+                      refId="Package\Sequence Container Countries\Data Flow Task Countries\Derived Column.Inputs[Derived Column Input]"
+                      description="Input to the Derived Column Transformation"
+                      name="Derived Column Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Sequence Container Countries\Data Flow Task Countries\Derived Column.Inputs[Derived Column Input].Columns[Country]"
+                          cachedDataType="wstr"
+                          cachedLength="100"
+                          cachedName="COUNTRY_CODE"
+                          errorOrTruncationOperation="Computation"
+                          errorRowDisposition="FailComponent"
+                          lineageId="Package\Sequence Container Countries\Data Flow Task Countries\OLE DB Source Mrr_Countries.Outputs[OLE DB Source Output].Columns[COUNTRY_CODE]"
+                          name="Country"
+                          truncationRowDisposition="FailComponent"
+                          usageType="readWrite">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Expression"
+                              name="Expression">[ISNULL](#{Package\Sequence Container Countries\Data Flow Task Countries\OLE DB Source Mrr_Countries.Outputs[OLE DB Source Output].Columns[COUNTRY_CODE]}) ? "Unknoun" : #{Package\Sequence Container Countries\Data Flow Task Countries\OLE DB Source Mrr_Countries.Outputs[OLE DB Source Output].Columns[COUNTRY_CODE]}</property>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Friendly Expression"
+                              expressionType="Notify"
+                              name="FriendlyExpression">ISNULL(Country) ? "Unknoun" : Country</property>
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\Sequence Container Countries\Data Flow Task Countries\Derived Column.Inputs[Derived Column Input].Columns[Region]"
+                          cachedDataType="wstr"
+                          cachedLength="100"
+                          cachedName="REGION"
+                          errorOrTruncationOperation="Computation"
+                          errorRowDisposition="FailComponent"
+                          lineageId="Package\Sequence Container Countries\Data Flow Task Countries\OLE DB Source Mrr_Countries.Outputs[OLE DB Source Output].Columns[REGION]"
+                          name="Region"
+                          truncationRowDisposition="FailComponent"
+                          usageType="readWrite">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Expression"
+                              name="Expression">[ISNULL](#{Package\Sequence Container Countries\Data Flow Task Countries\OLE DB Source Mrr_Countries.Outputs[OLE DB Source Output].Columns[REGION]}) ? "Unknoun" : #{Package\Sequence Container Countries\Data Flow Task Countries\OLE DB Source Mrr_Countries.Outputs[OLE DB Source Output].Columns[REGION]}</property>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Friendly Expression"
+                              expressionType="Notify"
+                              name="FriendlyExpression">ISNULL(Region) ? "Unknoun" : Region</property>
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\Sequence Container Countries\Data Flow Task Countries\Derived Column.Inputs[Derived Column Input].Columns[Area]"
+                          cachedDataType="wstr"
+                          cachedLength="100"
+                          cachedName="AREA"
+                          errorOrTruncationOperation="Computation"
+                          errorRowDisposition="FailComponent"
+                          lineageId="Package\Sequence Container Countries\Data Flow Task Countries\OLE DB Source Mrr_Countries.Outputs[OLE DB Source Output].Columns[AREA]"
+                          name="Area"
+                          truncationRowDisposition="FailComponent"
+                          usageType="readWrite">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Expression"
+                              name="Expression">[ISNULL](#{Package\Sequence Container Countries\Data Flow Task Countries\OLE DB Source Mrr_Countries.Outputs[OLE DB Source Output].Columns[AREA]}) ? "Unknoun" : #{Package\Sequence Container Countries\Data Flow Task Countries\OLE DB Source Mrr_Countries.Outputs[OLE DB Source Output].Columns[AREA]}</property>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Friendly Expression"
+                              expressionType="Notify"
+                              name="FriendlyExpression">ISNULL(Area) ? "Unknoun" : Area</property>
+                          </properties>
+                        </inputColumn>
+                      </inputColumns>
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Sequence Container Countries\Data Flow Task Countries\Derived Column.Outputs[Derived Column Output]"
+                      description="Default Output of the Derived Column Transformation"
+                      exclusionGroup="1"
+                      name="Derived Column Output"
+                      synchronousInputId="Package\Sequence Container Countries\Data Flow Task Countries\Derived Column.Inputs[Derived Column Input]">
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\Sequence Container Countries\Data Flow Task Countries\Derived Column.Outputs[Derived Column Error Output]"
+                      description="Error Output of the Derived Column Transformation"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="Derived Column Error Output"
+                      synchronousInputId="Package\Sequence Container Countries\Data Flow Task Countries\Derived Column.Inputs[Derived Column Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Sequence Container Countries\Data Flow Task Countries\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Sequence Container Countries\Data Flow Task Countries\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Sequence Container Countries\Data Flow Task Countries\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Sequence Container Countries\Data Flow Task Countries\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Sequence Container Countries\Data Flow Task Countries\OLE DB Destination Stg_Countries"
+                  componentClassID="Microsoft.OLEDBDestination"
+                  contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+                  description="OLE DB Destination"
+                  name="OLE DB Destination Stg_Countries"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[dbo].[Stg_Countries]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1255</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">3</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepIdentity">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                      name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Sequence Container Countries\Data Flow Task Countries\OLE DB Destination Stg_Countries.Connections[OleDbConnection]"
+                      connectionManagerID="{A41E3DDE-4E0C-443B-B00B-B1E1639A4A6E}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[LENOVO-FLEX2-15_SQLDEV.Stg_TheVoice]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\Sequence Container Countries\Data Flow Task Countries\OLE DB Destination Stg_Countries.Inputs[OLE DB Destination Input]"
+                      errorOrTruncationOperation="Insert"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="OLE DB Destination Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Sequence Container Countries\Data Flow Task Countries\OLE DB Destination Stg_Countries.Inputs[OLE DB Destination Input].Columns[COUNTRY_CODE]"
+                          cachedDataType="wstr"
+                          cachedLength="100"
+                          cachedName="COUNTRY_CODE"
+                          externalMetadataColumnId="Package\Sequence Container Countries\Data Flow Task Countries\OLE DB Destination Stg_Countries.Inputs[OLE DB Destination Input].ExternalColumns[Country]"
+                          lineageId="Package\Sequence Container Countries\Data Flow Task Countries\OLE DB Source Mrr_Countries.Outputs[OLE DB Source Output].Columns[COUNTRY_CODE]" />
+                        <inputColumn
+                          refId="Package\Sequence Container Countries\Data Flow Task Countries\OLE DB Destination Stg_Countries.Inputs[OLE DB Destination Input].Columns[REGION]"
+                          cachedDataType="wstr"
+                          cachedLength="100"
+                          cachedName="REGION"
+                          externalMetadataColumnId="Package\Sequence Container Countries\Data Flow Task Countries\OLE DB Destination Stg_Countries.Inputs[OLE DB Destination Input].ExternalColumns[Region]"
+                          lineageId="Package\Sequence Container Countries\Data Flow Task Countries\OLE DB Source Mrr_Countries.Outputs[OLE DB Source Output].Columns[REGION]" />
+                        <inputColumn
+                          refId="Package\Sequence Container Countries\Data Flow Task Countries\OLE DB Destination Stg_Countries.Inputs[OLE DB Destination Input].Columns[AREA]"
+                          cachedDataType="wstr"
+                          cachedLength="100"
+                          cachedName="AREA"
+                          externalMetadataColumnId="Package\Sequence Container Countries\Data Flow Task Countries\OLE DB Destination Stg_Countries.Inputs[OLE DB Destination Input].ExternalColumns[Area]"
+                          lineageId="Package\Sequence Container Countries\Data Flow Task Countries\OLE DB Source Mrr_Countries.Outputs[OLE DB Source Output].Columns[AREA]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container Countries\Data Flow Task Countries\OLE DB Destination Stg_Countries.Inputs[OLE DB Destination Input].ExternalColumns[Country]"
+                          dataType="wstr"
+                          length="100"
+                          name="Country" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container Countries\Data Flow Task Countries\OLE DB Destination Stg_Countries.Inputs[OLE DB Destination Input].ExternalColumns[Region]"
+                          dataType="wstr"
+                          length="100"
+                          name="Region" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container Countries\Data Flow Task Countries\OLE DB Destination Stg_Countries.Inputs[OLE DB Destination Input].ExternalColumns[Area]"
+                          dataType="wstr"
+                          length="100"
+                          name="Area" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Sequence Container Countries\Data Flow Task Countries\OLE DB Destination Stg_Countries.Outputs[OLE DB Destination Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Destination Error Output"
+                      synchronousInputId="Package\Sequence Container Countries\Data Flow Task Countries\OLE DB Destination Stg_Countries.Inputs[OLE DB Destination Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Sequence Container Countries\Data Flow Task Countries\OLE DB Destination Stg_Countries.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Sequence Container Countries\Data Flow Task Countries\OLE DB Destination Stg_Countries.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Sequence Container Countries\Data Flow Task Countries\OLE DB Destination Stg_Countries.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Sequence Container Countries\Data Flow Task Countries\OLE DB Destination Stg_Countries.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Sequence Container Countries\Data Flow Task Countries\OLE DB Source Mrr_Countries"
+                  componentClassID="Microsoft.OLEDBSource"
+                  contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+                  description="OLE DB Source"
+                  name="OLE DB Source Mrr_Countries"
+                  usesDispositions="true"
+                  version="7">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[dbo].[Mrr_Countries]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                    <property
+                      dataType="System.String"
+                      description="The variable that contains the SQL command to be executed."
+                      name="SqlCommandVariable"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1255</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">0</property>
+                    <property
+                      dataType="System.String"
+                      description="The mappings between the parameters in the SQL command and variables."
+                      name="ParameterMapping"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Sequence Container Countries\Data Flow Task Countries\OLE DB Source Mrr_Countries.Connections[OleDbConnection]"
+                      connectionManagerID="{7EE7D0E9-62E4-4BEB-823D-BA0917F15F78}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[LENOVO-FLEX2-15_SQLDEV.Mrr_TheVoice]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\Sequence Container Countries\Data Flow Task Countries\OLE DB Source Mrr_Countries.Outputs[OLE DB Source Output]"
+                      name="OLE DB Source Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Sequence Container Countries\Data Flow Task Countries\OLE DB Source Mrr_Countries.Outputs[OLE DB Source Output].Columns[COUNTRY_CODE]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container Countries\Data Flow Task Countries\OLE DB Source Mrr_Countries.Outputs[OLE DB Source Output].ExternalColumns[COUNTRY_CODE]"
+                          length="100"
+                          lineageId="Package\Sequence Container Countries\Data Flow Task Countries\OLE DB Source Mrr_Countries.Outputs[OLE DB Source Output].Columns[COUNTRY_CODE]"
+                          name="COUNTRY_CODE"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container Countries\Data Flow Task Countries\OLE DB Source Mrr_Countries.Outputs[OLE DB Source Output].Columns[REGION]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container Countries\Data Flow Task Countries\OLE DB Source Mrr_Countries.Outputs[OLE DB Source Output].ExternalColumns[REGION]"
+                          length="100"
+                          lineageId="Package\Sequence Container Countries\Data Flow Task Countries\OLE DB Source Mrr_Countries.Outputs[OLE DB Source Output].Columns[REGION]"
+                          name="REGION"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container Countries\Data Flow Task Countries\OLE DB Source Mrr_Countries.Outputs[OLE DB Source Output].Columns[AREA]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container Countries\Data Flow Task Countries\OLE DB Source Mrr_Countries.Outputs[OLE DB Source Output].ExternalColumns[AREA]"
+                          length="100"
+                          lineageId="Package\Sequence Container Countries\Data Flow Task Countries\OLE DB Source Mrr_Countries.Outputs[OLE DB Source Output].Columns[AREA]"
+                          name="AREA"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container Countries\Data Flow Task Countries\OLE DB Source Mrr_Countries.Outputs[OLE DB Source Output].ExternalColumns[COUNTRY_CODE]"
+                          dataType="wstr"
+                          length="100"
+                          name="COUNTRY_CODE" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container Countries\Data Flow Task Countries\OLE DB Source Mrr_Countries.Outputs[OLE DB Source Output].ExternalColumns[DESC]"
+                          dataType="wstr"
+                          length="100"
+                          name="DESC" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container Countries\Data Flow Task Countries\OLE DB Source Mrr_Countries.Outputs[OLE DB Source Output].ExternalColumns[REGION]"
+                          dataType="wstr"
+                          length="100"
+                          name="REGION" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container Countries\Data Flow Task Countries\OLE DB Source Mrr_Countries.Outputs[OLE DB Source Output].ExternalColumns[AREA]"
+                          dataType="wstr"
+                          length="100"
+                          name="AREA" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container Countries\Data Flow Task Countries\OLE DB Source Mrr_Countries.Outputs[OLE DB Source Output].ExternalColumns[insert_date]"
+                          dataType="dbTimeStamp"
+                          name="insert_date" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container Countries\Data Flow Task Countries\OLE DB Source Mrr_Countries.Outputs[OLE DB Source Output].ExternalColumns[update_date]"
+                          dataType="dbTimeStamp"
+                          name="update_date" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\Sequence Container Countries\Data Flow Task Countries\OLE DB Source Mrr_Countries.Outputs[OLE DB Source Error Output]"
+                      isErrorOut="true"
+                      name="OLE DB Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Sequence Container Countries\Data Flow Task Countries\OLE DB Source Mrr_Countries.Outputs[OLE DB Source Error Output].Columns[COUNTRY_CODE]"
+                          dataType="wstr"
+                          length="100"
+                          lineageId="Package\Sequence Container Countries\Data Flow Task Countries\OLE DB Source Mrr_Countries.Outputs[OLE DB Source Error Output].Columns[COUNTRY_CODE]"
+                          name="COUNTRY_CODE" />
+                        <outputColumn
+                          refId="Package\Sequence Container Countries\Data Flow Task Countries\OLE DB Source Mrr_Countries.Outputs[OLE DB Source Error Output].Columns[REGION]"
+                          dataType="wstr"
+                          length="100"
+                          lineageId="Package\Sequence Container Countries\Data Flow Task Countries\OLE DB Source Mrr_Countries.Outputs[OLE DB Source Error Output].Columns[REGION]"
+                          name="REGION" />
+                        <outputColumn
+                          refId="Package\Sequence Container Countries\Data Flow Task Countries\OLE DB Source Mrr_Countries.Outputs[OLE DB Source Error Output].Columns[AREA]"
+                          dataType="wstr"
+                          length="100"
+                          lineageId="Package\Sequence Container Countries\Data Flow Task Countries\OLE DB Source Mrr_Countries.Outputs[OLE DB Source Error Output].Columns[AREA]"
+                          name="AREA" />
+                        <outputColumn
+                          refId="Package\Sequence Container Countries\Data Flow Task Countries\OLE DB Source Mrr_Countries.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Sequence Container Countries\Data Flow Task Countries\OLE DB Source Mrr_Countries.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Sequence Container Countries\Data Flow Task Countries\OLE DB Source Mrr_Countries.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Sequence Container Countries\Data Flow Task Countries\OLE DB Source Mrr_Countries.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\Sequence Container Countries\Data Flow Task Countries.Paths[Derived Column Output]"
+                  endId="Package\Sequence Container Countries\Data Flow Task Countries\OLE DB Destination Stg_Countries.Inputs[OLE DB Destination Input]"
+                  name="Derived Column Output"
+                  startId="Package\Sequence Container Countries\Data Flow Task Countries\Derived Column.Outputs[Derived Column Output]" />
+                <path
+                  refId="Package\Sequence Container Countries\Data Flow Task Countries.Paths[OLE DB Source Output]"
+                  endId="Package\Sequence Container Countries\Data Flow Task Countries\Derived Column.Inputs[Derived Column Input]"
+                  name="OLE DB Source Output"
+                  startId="Package\Sequence Container Countries\Data Flow Task Countries\OLE DB Source Mrr_Countries.Outputs[OLE DB Source Output]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Sequence Container Countries\Execute SQL Task Countries"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{BEFDBE71-49AD-4676-9280-A2C4575716FB}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Execute SQL Task Countries"
+          DTS:ThreadHint="2">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{A41E3DDE-4E0C-443B-B00B-B1E1639A4A6E}"
+              SQLTask:SqlStatementSource="Truncate Table [dbo].[Stg_Countries]" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Sequence Container Countries.PrecedenceConstraints[Constraint]"
+          DTS:CreationName=""
+          DTS:DTSID="{F91EC8CC-F9FB-4A77-94EA-253F791A670F}"
+          DTS:From="Package\Sequence Container Countries\Execute SQL Task Countries"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint"
+          DTS:To="Package\Sequence Container Countries\Data Flow Task Countries" />
+      </DTS:PrecedenceConstraints>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Sequence Container OPFILEOPP"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:DTSID="{c141ce2d-7c52-4510-9fc1-97b36a8e672b}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Sequence Container OPFILEOPP">
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\Sequence Container OPFILEOPP\Data Flow Task OPFILEOPP"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:Description="Data Flow Task"
+          DTS:DTSID="{d8e36445-2305-429d-a5ac-48d6ee545b4d}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Data Flow Task OPFILEOPP"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\Sequence Container OPFILEOPP\Data Flow Task OPFILEOPP\Derived Column"
+                  componentClassID="Microsoft.DerivedColumn"
+                  contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+                  description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+                  name="Derived Column"
+                  usesDispositions="true">
+                  <inputs>
+                    <input
+                      refId="Package\Sequence Container OPFILEOPP\Data Flow Task OPFILEOPP\Derived Column.Inputs[Derived Column Input]"
+                      description="Input to the Derived Column Transformation"
+                      name="Derived Column Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Sequence Container OPFILEOPP\Data Flow Task OPFILEOPP\Derived Column.Inputs[Derived Column Input].Columns[Prepre]"
+                          cachedDataType="wstr"
+                          cachedLength="50"
+                          cachedName="Prepre"
+                          errorOrTruncationOperation="Computation"
+                          errorRowDisposition="FailComponent"
+                          lineageId="Package\Sequence Container OPFILEOPP\Data Flow Task OPFILEOPP\OLE DB Source OPFILEOPP.Outputs[OLE DB Source Output].Columns[Prepre]"
+                          truncationRowDisposition="FailComponent"
+                          usageType="readWrite">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Expression"
+                              name="Expression">(DT_WSTR,19)("0" + #{Package\Sequence Container OPFILEOPP\Data Flow Task OPFILEOPP\OLE DB Source OPFILEOPP.Outputs[OLE DB Source Output].Columns[Prepre]})</property>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Friendly Expression"
+                              expressionType="Notify"
+                              name="FriendlyExpression">(DT_WSTR,19)("0" + [Mobile Prefix])</property>
+                          </properties>
+                        </inputColumn>
+                      </inputColumns>
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Sequence Container OPFILEOPP\Data Flow Task OPFILEOPP\Derived Column.Outputs[Derived Column Output]"
+                      description="Default Output of the Derived Column Transformation"
+                      exclusionGroup="1"
+                      name="Derived Column Output"
+                      synchronousInputId="Package\Sequence Container OPFILEOPP\Data Flow Task OPFILEOPP\Derived Column.Inputs[Derived Column Input]">
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\Sequence Container OPFILEOPP\Data Flow Task OPFILEOPP\Derived Column.Outputs[Derived Column Error Output]"
+                      description="Error Output of the Derived Column Transformation"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="Derived Column Error Output"
+                      synchronousInputId="Package\Sequence Container OPFILEOPP\Data Flow Task OPFILEOPP\Derived Column.Inputs[Derived Column Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Sequence Container OPFILEOPP\Data Flow Task OPFILEOPP\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Sequence Container OPFILEOPP\Data Flow Task OPFILEOPP\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Sequence Container OPFILEOPP\Data Flow Task OPFILEOPP\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Sequence Container OPFILEOPP\Data Flow Task OPFILEOPP\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Sequence Container OPFILEOPP\Data Flow Task OPFILEOPP\Derived Column OPFILEOPP"
+                  componentClassID="Microsoft.DerivedColumn"
+                  contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+                  description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+                  name="Derived Column OPFILEOPP"
+                  usesDispositions="true">
+                  <inputs>
+                    <input
+                      refId="Package\Sequence Container OPFILEOPP\Data Flow Task OPFILEOPP\Derived Column OPFILEOPP.Inputs[Derived Column Input]"
+                      description="Input to the Derived Column Transformation"
+                      name="Derived Column Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Sequence Container OPFILEOPP\Data Flow Task OPFILEOPP\Derived Column OPFILEOPP.Inputs[Derived Column Input].Columns[Mobile Prefix]"
+                          cachedDataType="wstr"
+                          cachedLength="50"
+                          cachedName="Prepre"
+                          errorOrTruncationOperation="Computation"
+                          errorRowDisposition="FailComponent"
+                          lineageId="Package\Sequence Container OPFILEOPP\Data Flow Task OPFILEOPP\OLE DB Source OPFILEOPP.Outputs[OLE DB Source Output].Columns[Prepre]"
+                          name="Mobile Prefix"
+                          truncationRowDisposition="FailComponent"
+                          usageType="readWrite">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Expression"
+                              name="Expression">[ISNULL](#{Package\Sequence Container OPFILEOPP\Data Flow Task OPFILEOPP\OLE DB Source OPFILEOPP.Outputs[OLE DB Source Output].Columns[Prepre]}) ? "Unknoun" : #{Package\Sequence Container OPFILEOPP\Data Flow Task OPFILEOPP\OLE DB Source OPFILEOPP.Outputs[OLE DB Source Output].Columns[Prepre]}</property>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Friendly Expression"
+                              expressionType="Notify"
+                              name="FriendlyExpression">ISNULL([Mobile Prefix]) ? "Unknoun" : [Mobile Prefix]</property>
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\Sequence Container OPFILEOPP\Data Flow Task OPFILEOPP\Derived Column OPFILEOPP.Inputs[Derived Column Input].Columns[Operating Company]"
+                          cachedDataType="wstr"
+                          cachedLength="50"
+                          cachedName="OPDDD"
+                          errorOrTruncationOperation="Computation"
+                          errorRowDisposition="FailComponent"
+                          lineageId="Package\Sequence Container OPFILEOPP\Data Flow Task OPFILEOPP\OLE DB Source OPFILEOPP.Outputs[OLE DB Source Output].Columns[OPDDD]"
+                          name="Operating Company"
+                          truncationRowDisposition="FailComponent"
+                          usageType="readWrite">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Expression"
+                              name="Expression">[ISNULL](#{Package\Sequence Container OPFILEOPP\Data Flow Task OPFILEOPP\OLE DB Source OPFILEOPP.Outputs[OLE DB Source Output].Columns[OPDDD]}) ? "Unknoun" : #{Package\Sequence Container OPFILEOPP\Data Flow Task OPFILEOPP\OLE DB Source OPFILEOPP.Outputs[OLE DB Source Output].Columns[OPDDD]}</property>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Friendly Expression"
+                              expressionType="Notify"
+                              name="FriendlyExpression">ISNULL([Operating Company]) ? "Unknoun" : [Operating Company]</property>
+                          </properties>
+                        </inputColumn>
+                      </inputColumns>
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Sequence Container OPFILEOPP\Data Flow Task OPFILEOPP\Derived Column OPFILEOPP.Outputs[Derived Column Output]"
+                      description="Default Output of the Derived Column Transformation"
+                      exclusionGroup="1"
+                      name="Derived Column Output"
+                      synchronousInputId="Package\Sequence Container OPFILEOPP\Data Flow Task OPFILEOPP\Derived Column OPFILEOPP.Inputs[Derived Column Input]">
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\Sequence Container OPFILEOPP\Data Flow Task OPFILEOPP\Derived Column OPFILEOPP.Outputs[Derived Column Error Output]"
+                      description="Error Output of the Derived Column Transformation"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="Derived Column Error Output"
+                      synchronousInputId="Package\Sequence Container OPFILEOPP\Data Flow Task OPFILEOPP\Derived Column OPFILEOPP.Inputs[Derived Column Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Sequence Container OPFILEOPP\Data Flow Task OPFILEOPP\Derived Column OPFILEOPP.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Sequence Container OPFILEOPP\Data Flow Task OPFILEOPP\Derived Column OPFILEOPP.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Sequence Container OPFILEOPP\Data Flow Task OPFILEOPP\Derived Column OPFILEOPP.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Sequence Container OPFILEOPP\Data Flow Task OPFILEOPP\Derived Column OPFILEOPP.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Sequence Container OPFILEOPP\Data Flow Task OPFILEOPP\OLE DB Destination OPFILEOPP"
+                  componentClassID="Microsoft.OLEDBDestination"
+                  contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+                  description="OLE DB Destination"
+                  name="OLE DB Destination OPFILEOPP"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[dbo].[Stg_OPFILEOPP]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1255</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">3</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepIdentity">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                      name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Sequence Container OPFILEOPP\Data Flow Task OPFILEOPP\OLE DB Destination OPFILEOPP.Connections[OleDbConnection]"
+                      connectionManagerID="{A41E3DDE-4E0C-443B-B00B-B1E1639A4A6E}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[LENOVO-FLEX2-15_SQLDEV.Stg_TheVoice]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\Sequence Container OPFILEOPP\Data Flow Task OPFILEOPP\OLE DB Destination OPFILEOPP.Inputs[OLE DB Destination Input]"
+                      errorOrTruncationOperation="Insert"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="OLE DB Destination Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Sequence Container OPFILEOPP\Data Flow Task OPFILEOPP\OLE DB Destination OPFILEOPP.Inputs[OLE DB Destination Input].Columns[Prepre]"
+                          cachedDataType="wstr"
+                          cachedLength="50"
+                          cachedName="Prepre"
+                          externalMetadataColumnId="Package\Sequence Container OPFILEOPP\Data Flow Task OPFILEOPP\OLE DB Destination OPFILEOPP.Inputs[OLE DB Destination Input].ExternalColumns[Mobile Prefix]"
+                          lineageId="Package\Sequence Container OPFILEOPP\Data Flow Task OPFILEOPP\OLE DB Source OPFILEOPP.Outputs[OLE DB Source Output].Columns[Prepre]" />
+                        <inputColumn
+                          refId="Package\Sequence Container OPFILEOPP\Data Flow Task OPFILEOPP\OLE DB Destination OPFILEOPP.Inputs[OLE DB Destination Input].Columns[OPDDD]"
+                          cachedDataType="wstr"
+                          cachedLength="50"
+                          cachedName="OPDDD"
+                          externalMetadataColumnId="Package\Sequence Container OPFILEOPP\Data Flow Task OPFILEOPP\OLE DB Destination OPFILEOPP.Inputs[OLE DB Destination Input].ExternalColumns[Operating Company]"
+                          lineageId="Package\Sequence Container OPFILEOPP\Data Flow Task OPFILEOPP\OLE DB Source OPFILEOPP.Outputs[OLE DB Source Output].Columns[OPDDD]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container OPFILEOPP\Data Flow Task OPFILEOPP\OLE DB Destination OPFILEOPP.Inputs[OLE DB Destination Input].ExternalColumns[Mobile Prefix]"
+                          dataType="wstr"
+                          length="50"
+                          name="Mobile Prefix" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container OPFILEOPP\Data Flow Task OPFILEOPP\OLE DB Destination OPFILEOPP.Inputs[OLE DB Destination Input].ExternalColumns[Operating Company]"
+                          dataType="wstr"
+                          length="50"
+                          name="Operating Company" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Sequence Container OPFILEOPP\Data Flow Task OPFILEOPP\OLE DB Destination OPFILEOPP.Outputs[OLE DB Destination Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Destination Error Output"
+                      synchronousInputId="Package\Sequence Container OPFILEOPP\Data Flow Task OPFILEOPP\OLE DB Destination OPFILEOPP.Inputs[OLE DB Destination Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Sequence Container OPFILEOPP\Data Flow Task OPFILEOPP\OLE DB Destination OPFILEOPP.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Sequence Container OPFILEOPP\Data Flow Task OPFILEOPP\OLE DB Destination OPFILEOPP.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Sequence Container OPFILEOPP\Data Flow Task OPFILEOPP\OLE DB Destination OPFILEOPP.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Sequence Container OPFILEOPP\Data Flow Task OPFILEOPP\OLE DB Destination OPFILEOPP.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Sequence Container OPFILEOPP\Data Flow Task OPFILEOPP\OLE DB Source OPFILEOPP"
+                  componentClassID="Microsoft.OLEDBSource"
+                  contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+                  description="OLE DB Source"
+                  name="OLE DB Source OPFILEOPP"
+                  usesDispositions="true"
+                  version="7">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset"></property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select Distinct*
+from [dbo].[Mrr_OPFILEOPP]</property>
+                    <property
+                      dataType="System.String"
+                      description="The variable that contains the SQL command to be executed."
+                      name="SqlCommandVariable"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1255</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">2</property>
+                    <property
+                      dataType="System.String"
+                      description="The mappings between the parameters in the SQL command and variables."
+                      name="ParameterMapping"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Sequence Container OPFILEOPP\Data Flow Task OPFILEOPP\OLE DB Source OPFILEOPP.Connections[OleDbConnection]"
+                      connectionManagerID="{7EE7D0E9-62E4-4BEB-823D-BA0917F15F78}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[LENOVO-FLEX2-15_SQLDEV.Mrr_TheVoice]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\Sequence Container OPFILEOPP\Data Flow Task OPFILEOPP\OLE DB Source OPFILEOPP.Outputs[OLE DB Source Output]"
+                      name="OLE DB Source Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Sequence Container OPFILEOPP\Data Flow Task OPFILEOPP\OLE DB Source OPFILEOPP.Outputs[OLE DB Source Output].Columns[Prepre]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container OPFILEOPP\Data Flow Task OPFILEOPP\OLE DB Source OPFILEOPP.Outputs[OLE DB Source Output].ExternalColumns[Prepre]"
+                          length="50"
+                          lineageId="Package\Sequence Container OPFILEOPP\Data Flow Task OPFILEOPP\OLE DB Source OPFILEOPP.Outputs[OLE DB Source Output].Columns[Prepre]"
+                          name="Prepre"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container OPFILEOPP\Data Flow Task OPFILEOPP\OLE DB Source OPFILEOPP.Outputs[OLE DB Source Output].Columns[OPDDD]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container OPFILEOPP\Data Flow Task OPFILEOPP\OLE DB Source OPFILEOPP.Outputs[OLE DB Source Output].ExternalColumns[OPDDD]"
+                          length="50"
+                          lineageId="Package\Sequence Container OPFILEOPP\Data Flow Task OPFILEOPP\OLE DB Source OPFILEOPP.Outputs[OLE DB Source Output].Columns[OPDDD]"
+                          name="OPDDD"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container OPFILEOPP\Data Flow Task OPFILEOPP\OLE DB Source OPFILEOPP.Outputs[OLE DB Source Output].Columns[OPCCC]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container OPFILEOPP\Data Flow Task OPFILEOPP\OLE DB Source OPFILEOPP.Outputs[OLE DB Source Output].ExternalColumns[OPCCC]"
+                          length="50"
+                          lineageId="Package\Sequence Container OPFILEOPP\Data Flow Task OPFILEOPP\OLE DB Source OPFILEOPP.Outputs[OLE DB Source Output].Columns[OPCCC]"
+                          name="OPCCC"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container OPFILEOPP\Data Flow Task OPFILEOPP\OLE DB Source OPFILEOPP.Outputs[OLE DB Source Output].ExternalColumns[Prepre]"
+                          dataType="wstr"
+                          length="50"
+                          name="Prepre" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container OPFILEOPP\Data Flow Task OPFILEOPP\OLE DB Source OPFILEOPP.Outputs[OLE DB Source Output].ExternalColumns[OPDDD]"
+                          dataType="wstr"
+                          length="50"
+                          name="OPDDD" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container OPFILEOPP\Data Flow Task OPFILEOPP\OLE DB Source OPFILEOPP.Outputs[OLE DB Source Output].ExternalColumns[OPCCC]"
+                          dataType="wstr"
+                          length="50"
+                          name="OPCCC" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\Sequence Container OPFILEOPP\Data Flow Task OPFILEOPP\OLE DB Source OPFILEOPP.Outputs[OLE DB Source Error Output]"
+                      isErrorOut="true"
+                      name="OLE DB Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Sequence Container OPFILEOPP\Data Flow Task OPFILEOPP\OLE DB Source OPFILEOPP.Outputs[OLE DB Source Error Output].Columns[Prepre]"
+                          dataType="wstr"
+                          length="50"
+                          lineageId="Package\Sequence Container OPFILEOPP\Data Flow Task OPFILEOPP\OLE DB Source OPFILEOPP.Outputs[OLE DB Source Error Output].Columns[Prepre]"
+                          name="Prepre" />
+                        <outputColumn
+                          refId="Package\Sequence Container OPFILEOPP\Data Flow Task OPFILEOPP\OLE DB Source OPFILEOPP.Outputs[OLE DB Source Error Output].Columns[OPDDD]"
+                          dataType="wstr"
+                          length="50"
+                          lineageId="Package\Sequence Container OPFILEOPP\Data Flow Task OPFILEOPP\OLE DB Source OPFILEOPP.Outputs[OLE DB Source Error Output].Columns[OPDDD]"
+                          name="OPDDD" />
+                        <outputColumn
+                          refId="Package\Sequence Container OPFILEOPP\Data Flow Task OPFILEOPP\OLE DB Source OPFILEOPP.Outputs[OLE DB Source Error Output].Columns[OPCCC]"
+                          dataType="wstr"
+                          length="50"
+                          lineageId="Package\Sequence Container OPFILEOPP\Data Flow Task OPFILEOPP\OLE DB Source OPFILEOPP.Outputs[OLE DB Source Error Output].Columns[OPCCC]"
+                          name="OPCCC" />
+                        <outputColumn
+                          refId="Package\Sequence Container OPFILEOPP\Data Flow Task OPFILEOPP\OLE DB Source OPFILEOPP.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Sequence Container OPFILEOPP\Data Flow Task OPFILEOPP\OLE DB Source OPFILEOPP.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Sequence Container OPFILEOPP\Data Flow Task OPFILEOPP\OLE DB Source OPFILEOPP.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Sequence Container OPFILEOPP\Data Flow Task OPFILEOPP\OLE DB Source OPFILEOPP.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\Sequence Container OPFILEOPP\Data Flow Task OPFILEOPP.Paths[Derived Column Output]"
+                  endId="Package\Sequence Container OPFILEOPP\Data Flow Task OPFILEOPP\Derived Column.Inputs[Derived Column Input]"
+                  name="Derived Column Output"
+                  startId="Package\Sequence Container OPFILEOPP\Data Flow Task OPFILEOPP\Derived Column OPFILEOPP.Outputs[Derived Column Output]" />
+                <path
+                  refId="Package\Sequence Container OPFILEOPP\Data Flow Task OPFILEOPP.Paths[Derived Column Output1]"
+                  endId="Package\Sequence Container OPFILEOPP\Data Flow Task OPFILEOPP\OLE DB Destination OPFILEOPP.Inputs[OLE DB Destination Input]"
+                  name="Derived Column Output"
+                  startId="Package\Sequence Container OPFILEOPP\Data Flow Task OPFILEOPP\Derived Column.Outputs[Derived Column Output]" />
+                <path
+                  refId="Package\Sequence Container OPFILEOPP\Data Flow Task OPFILEOPP.Paths[OLE DB Source Output]"
+                  endId="Package\Sequence Container OPFILEOPP\Data Flow Task OPFILEOPP\Derived Column OPFILEOPP.Inputs[Derived Column Input]"
+                  name="OLE DB Source Output"
+                  startId="Package\Sequence Container OPFILEOPP\Data Flow Task OPFILEOPP\OLE DB Source OPFILEOPP.Outputs[OLE DB Source Output]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Sequence Container OPFILEOPP\Execute SQL Task OPFILEOPP"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{e2e07019-8047-4eaf-928b-c1d944a9e670}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Execute SQL Task OPFILEOPP"
+          DTS:ThreadHint="1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{A41E3DDE-4E0C-443B-B00B-B1E1639A4A6E}"
+              SQLTask:SqlStatementSource="Truncate Table [dbo].[Stg_OPFILEOPP]" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Sequence Container OPFILEOPP.PrecedenceConstraints[Constraint]"
+          DTS:CreationName=""
+          DTS:DTSID="{e16c03c4-38ba-4391-a6f1-d16f5d4dc1c7}"
+          DTS:From="Package\Sequence Container OPFILEOPP\Execute SQL Task OPFILEOPP"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint"
+          DTS:To="Package\Sequence Container OPFILEOPP\Data Flow Task OPFILEOPP" />
+      </DTS:PrecedenceConstraints>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="197.6,41.6"
+          Id="Package\Sequence Container Call Type\Data Flow Task Call Type"
+          TopLeft="19.6571487640841,89.8352966229402" />
+        <NodeLayout
+          Size="209.6,41.6"
+          Id="Package\Sequence Container Call Type\Execute SQL Task Call Type"
+          TopLeft="13.4857211365994,19.9529433299926" />
+        <EdgeLayout
+          Id="Package\Sequence Container Call Type.PrecedenceConstraints[Constraint]"
+          TopLeft="118.371434950342,61.5529433299926">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,28.2823532929476"
+              Start="0,0"
+              End="0,20.7823532929476">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,20.7823532929476" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="252.8,188"
+          Size="252.8,231.2"
+          Id="Package\Sequence Container Call Type"
+          TopLeft="320.571434030728,73.8352948726667" />
+        <NodeLayout
+          Size="198.4,41.6"
+          Id="Package\Sequence Container Countries\Data Flow Task Countries"
+          TopLeft="43.885719842327,93.1294156513413" />
+        <NodeLayout
+          Size="210.4,41.6"
+          Id="Package\Sequence Container Countries\Execute SQL Task Countries"
+          TopLeft="37.4857157551513,16.235295456091" />
+        <EdgeLayout
+          Id="Package\Sequence Container Countries.PrecedenceConstraints[Constraint]"
+          TopLeft="142.885717798739,57.835295456091">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,35.2941201952503"
+              Start="0,0"
+              End="0,27.7941201952503">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,27.7941201952503" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="269.6,189.6"
+          Size="269.6,232.8"
+          Id="Package\Sequence Container Countries"
+          TopLeft="48.5714293985951,72.1882363065304" />
+        <NodeLayout
+          Size="207.2,41.6"
+          Id="Package\Sequence Container OPFILEOPP\Data Flow Task OPFILEOPP"
+          TopLeft="19.6571487640841,89.8352966229402" />
+        <NodeLayout
+          Size="219.2,41.6"
+          Id="Package\Sequence Container OPFILEOPP\Execute SQL Task OPFILEOPP"
+          TopLeft="13.4857211365994,19.9529433299926" />
+        <EdgeLayout
+          Id="Package\Sequence Container OPFILEOPP.PrecedenceConstraints[Constraint]"
+          TopLeft="123.171434950342,61.5529433299926">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,28.2823532929476"
+              Start="0,0"
+              End="0,20.7823532929476">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,20.7823532929476" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="252.8,186.4"
+          Size="252.8,229.6"
+          Id="Package\Sequence Container OPFILEOPP"
+          TopLeft="574.285724065742,75.0588202176209" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Sequence Container Call Type\Data Flow Task Call Type">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="216.8,41.6"
+          Id="Package\Sequence Container Call Type\Data Flow Task Call Type\OLE DB Destination Call Type"
+          TopLeft="270.857147469813,210.44706177497" />
+        <NodeLayout
+          Size="196,41.6"
+          Id="Package\Sequence Container Call Type\Data Flow Task Call Type\OLE DB Source Call Type"
+          TopLeft="274.285718956772,47.7176477280455" />
+        <NodeLayout
+          Size="200,41.6"
+          Id="Package\Sequence Container Call Type\Data Flow Task Call Type\Derived Column Call Type"
+          TopLeft="272.571433213292,126.023531179197" />
+        <EdgeLayout
+          Id="Package\Sequence Container Call Type\Data Flow Task Call Type.Paths[OLE DB Source Output]"
+          TopLeft="372.428576085032,89.3176477280455">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,36.7058834511517"
+              Start="0,0"
+              End="0,29.2058834511517">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,29.2058834511517" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Sequence Container Call Type\Data Flow Task Call Type.Paths[Derived Column Output]"
+          TopLeft="375.914290341552,167.623531179197">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,42.8235305957728"
+              Start="0,0"
+              End="0,35.3235305957728">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,35.3235305957728" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Sequence Container Call Type\Data Flow Task Call Type\OLE DB Destination Call Type">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Sequence Container Call Type\Data Flow Task Call Type\OLE DB Source Call Type">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\Sequence Container Countries\Data Flow Task Countries">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="219.2,41.6"
+          Id="Package\Sequence Container Countries\Data Flow Task Countries\OLE DB Source Mrr_Countries"
+          TopLeft="112.571430488509,16.5176472904773" />
+        <NodeLayout
+          Size="239.2,41.6"
+          Id="Package\Sequence Container Countries\Data Flow Task Countries\OLE DB Destination Stg_Countries"
+          TopLeft="109.142859001549,178.63529662294" />
+        <NodeLayout
+          Size="152.8,41.6"
+          Id="Package\Sequence Container Countries\Data Flow Task Countries\Derived Column"
+          TopLeft="150.857145426225,96.3764718837804" />
+        <EdgeLayout
+          Id="Package\Sequence Container Countries\Data Flow Task Countries.Paths[OLE DB Source Output]"
+          TopLeft="224.714287957367,58.1176472904773">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,38.2588245933031"
+              Start="0,0"
+              End="0,30.7588245933031">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,30.7588245933031" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Sequence Container Countries\Data Flow Task Countries.Paths[Derived Column Output]"
+          TopLeft="228.000002213887,137.97647188378">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,40.6588247391593"
+              Start="0,0"
+              End="0,33.1588247391593">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,33.1588247391593" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Sequence Container Countries\Data Flow Task Countries\OLE DB Source Mrr_Countries">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Sequence Container Countries\Data Flow Task Countries\OLE DB Destination Stg_Countries">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\Sequence Container OPFILEOPP\Data Flow Task OPFILEOPP">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="210.4,41.6"
+          Id="Package\Sequence Container OPFILEOPP\Data Flow Task OPFILEOPP\Derived Column OPFILEOPP"
+          TopLeft="276.8,123.2" />
+        <NodeLayout
+          Size="206.4,41.6"
+          Id="Package\Sequence Container OPFILEOPP\Data Flow Task OPFILEOPP\OLE DB Source OPFILEOPP"
+          TopLeft="274.285718956772,47.7176477280455" />
+        <EdgeLayout
+          Id="Package\Sequence Container OPFILEOPP\Data Flow Task OPFILEOPP.Paths[OLE DB Source Output]"
+          TopLeft="379.742859478386,89.3176477280455">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,33.8823522719545"
+              Start="0,0"
+              End="0,26.3823522719545">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,26.3823522719545" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="227.2,41.6"
+          Id="Package\Sequence Container OPFILEOPP\Data Flow Task OPFILEOPP\OLE DB Destination OPFILEOPP"
+          TopLeft="265.857147384663,271.01176850672" />
+        <NodeLayout
+          Size="152.8,41.6"
+          Id="Package\Sequence Container OPFILEOPP\Data Flow Task OPFILEOPP\Derived Column"
+          TopLeft="300.71429083542,188.88235540786" />
+        <EdgeLayout
+          Id="Package\Sequence Container OPFILEOPP\Data Flow Task OPFILEOPP.Paths[Derived Column Output]"
+          TopLeft="379.55714541771,164.8">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,24.0823554078601"
+              Start="0,0"
+              End="0,16.5823554078601">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,16.5823554078601" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Sequence Container OPFILEOPP\Data Flow Task OPFILEOPP.Paths[Derived Column Output1]"
+          TopLeft="378.285719110041,230.48235540786">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,40.5294130988599"
+              Start="0,0"
+              End="0,33.0294130988599">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,33.0294130988599" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-8,8.51470654942997,16,16"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Sequence Container OPFILEOPP\Data Flow Task OPFILEOPP\OLE DB Source OPFILEOPP">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Sequence Container OPFILEOPP\Data Flow Task OPFILEOPP\OLE DB Destination OPFILEOPP">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
