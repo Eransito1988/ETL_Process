@@ -30,7 +30,7 @@ CREATE TABLE [dbo].[Stg_Customer_Invoice](
 	[Invoice Date] [datetime] NULL,
 	[Invoice Status] int NOT NULL,
 	[Invoice Descripion] [nvarchar](50) NOT NULL,
-	[Invoice Currency] [nvarchar](50) NOT NULL,
+	[Invoice Currncy] [nvarchar](50) NOT NULL,
 	[Invoice Amount] decimal(10) NOT NULL,
 )
 
@@ -76,34 +76,6 @@ CREATE TABLE [dbo].[Stg_Customer](
 	[Insert Date] [datetime] NULL,
 	[Update Date] [datetime] NULL
 )
-
-CREATE TABLE [dbo].[Stg_Usage_Main](
-	[Call Number] int NOT NULL,
-	[Customer ID] int  NOT NULL,
-	[Calling Number] [nvarchar](20) NOT NULL,
-	[Calling Country Prefix] [nvarchar](20) NOT NULL,
-	[Calling Country] [nvarchar](100) NOT NULL,
-	[Answer Time] [datetime] NULL,
-	[Seized Time] [datetime] NULL,
-	[Disconnect Time] [datetime] NULL,
-	[Minutes Of Conversation] int NOT NULL,
-	[Called Number] [nvarchar](20) NOT NULL,
-	[Called Country Prefix] [nvarchar](20) NOT NULL,
-	[Called Country] [nvarchar](100) NOT NULL,
-	[Call Type] [nvarchar](50) NULL,
-	[Call Type Descripion] [nvarchar](50) NULL,
-	[Call Rank] int NOT NULL,
-	[Currency] [nvarchar](50) NOT NULL,
-	[Destination Cell] int NOT NULL,
-	[Source Cell] int NOT NULL,
-	[High or Low Time Rating] int NOT NULL,
-	[Call Date] [datetime] NULL,
-	[Insert Date] [datetime] NULL,
-	[Update Date] [datetime] NULL
-)
-	
-
-
 
 
 
