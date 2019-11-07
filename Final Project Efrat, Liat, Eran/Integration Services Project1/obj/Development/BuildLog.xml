@@ -2,13 +2,13 @@
 <BuildLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <ProjectInfo>
     <Name>Integration Services Project1</Name>
-    <LastWriteTime>2019-10-26T09:33:55.4313516Z</LastWriteTime>
+    <LastWriteTime>2019-10-29T15:19:03.8986117Z</LastWriteTime>
     <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
   </ProjectInfo>
   <LastBuildInfos>
     <ProjectBuildItemInfo>
       <Name>Opp to Mrr.dtsx</Name>
-      <LastWriteTime>2019-10-26T19:15:15.1301859Z</LastWriteTime>
+      <LastWriteTime>2019-11-02T09:39:54.9998604Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
@@ -18,7 +18,12 @@
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
       <Name>Mrr to Stg.dtsx</Name>
-      <LastWriteTime>2019-10-28T17:00:21.3914032Z</LastWriteTime>
+      <LastWriteTime>2019-11-06T17:59:00.5831729Z</LastWriteTime>
+      <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
+    </ProjectBuildItemInfo>
+    <ProjectBuildItemInfo>
+      <Name>Stg to DW - Dim.dtsx</Name>
+      <LastWriteTime>2019-11-07T19:17:41.1819377Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
   </LastBuildInfos>

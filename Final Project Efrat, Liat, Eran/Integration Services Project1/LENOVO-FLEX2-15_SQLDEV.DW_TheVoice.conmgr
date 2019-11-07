@@ -1,0 +1,10 @@
+﻿<?xml version="1.0"?>
+<DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:ObjectName="LENOVO-FLEX2-15_SQLDEV.DW_TheVoice"
+  DTS:DTSID="{9937E2A3-CEE3-4DAD-9928-972C38EDEA6A}"
+  DTS:CreationName="OLEDB">
+  <DTS:ObjectData>
+    <DTS:ConnectionManager
+      DTS:ConnectionString="Data Source=LENOVO-FLEX2-15\SQLDEV;Initial Catalog=DW_TheVoice;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+  </DTS:ObjectData>
+</DTS:ConnectionManager>

@@ -44,7 +44,7 @@ CREATE TABLE Mrr_Customer_Invoice(
 	[PACKAGE_NUM] [int] primary key  NOT NULL,
 	[createdate] [datetime] NULL,
 	[enddate] [datetime] NULL,
-	[status] [nvarchar](4) NULL,
+	[status] [nvarchar](10) NULL,
 	[pack_type] [nvarchar](10) NULL,
 	[pack_desc] [nvarchar](100) NULL,
 	[insert_date] [datetime] NULL,
@@ -73,7 +73,7 @@ CREATE TABLE Mrr_Customer_Invoice(
 
 	CREATE TABLE Mrr_XXCOUNTRYPRE(
 	[COUNTRY_CODE] nvarchar(100) primary key  NOT NULL,
-[COUNTRY_PRE] [nvarchar](10) NOT NULL)
+	[COUNTRY_PRE] [nvarchar](10) NOT NULL)
 
 CREATE TABLE Mrr_Call_Type 
 ([Call Type] [NVARCHAR](50) NOT NULL,
