@@ -477,23 +477,41 @@ end
 set @hour=@hour+1
 end
 
-
-create table dbo.[Dim_time]
-(
-KeyTime int,
-FullTime time, 
-CodeHour int,
-DescHour nvarchar(50),
-KeyMinute int,
-CodeMinute int,
-DescMinute nvarchar(50)
+CREATE TABLE dbo.[Dim_Time](
+	[Key Time] int,
+	[Full Time] time, 
+	[Code Hour] int,
+	[Descripion Hour] nvarchar(50),
+	[Key Minute] int,
+	[Code Minute] int,
+	[Descripion Minute] nvarchar(50)
 )
 go
 
 
-insert into dbo.[Dim_time] 
+insert into dbo.[Dim_Time] 
 select Timekey,fulltimeString24,minutecode,minuteshortstring, Timekey ,second,secondshortstring
 from Time
 go
 
+
+--Build that Fact Table 
+
+CREATE TABLE [dbo].[Fact_Usage_Main] (
+	[Call ID] int identity (1,1),
+	[Key Customer] int,
+	[Key Call Type] int,
+	[Key Origin Country] int,
+	[Key Origin Operator] int,
+	[Key Destination Country] int,
+	[Key Destination Operator] int,
+	[Key Package] int,
+	[Key Call Origin Type] int,
+	[Key Call Date] int,
+	[Key Call Time] int, 
+	[Duration] int,
+	[Billable Duration] int,
+	[Amount] float,
+	[Billable Amount] float
+)
 

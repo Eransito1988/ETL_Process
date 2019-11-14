@@ -26,7 +26,7 @@
           <SSIS:Property SSIS:Name="CreatorComputerName">LENOVO-FLEX2-15</SSIS:Property>
           <SSIS:Property SSIS:Name="Description">
           </SSIS:Property>
-          <SSIS:Property SSIS:Name="PasswordVerifier" SSIS:Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAtBDjqGerpk2Ho5gM+JeYuwAAAAACAAAAAAAQZgAAAAEAACAAAADUA6QYeB21aiiZwT9VPTxWyZ9NCW3y+F/fJxARES1UaQAAAAAOgAAAAAIAACAAAADAapz4vEB15C9Z6TbL9cY6DTUXq/qNeP1QIN42Zn9wA5AAAABdPVrnIKYwkJc+6TMCvWXIK90QE743ensbmjCaSBqSeicLcV6wgk2fEX6bjZrwPRkKFOjDi70tzCzNKQ0JBh16IvmUOAiOrzJp7qvQxhMSWCrEn+84aBedacN+QxeMOa1MaKa37jhmID3xNkQmm2Bm5s+TrBYBYcHQtBCTWcoLEB7qcBVvhyLPywQPMLCG9kZAAAAAI3OANGTVOKVlRL0cuX4A4vHNe7taZ7KKDCiNiySzYoeIIbu5BzBvZTZLTQRigLm5gmVR7hpjUsTnMflw6JjeeA==</SSIS:Property>
+          <SSIS:Property SSIS:Name="PasswordVerifier" SSIS:Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAyy+zTOos3U+0uocveHEMIQAAAAACAAAAAAAQZgAAAAEAACAAAADMMHHPwm2cNutctyWpExc0yWxHrKaDkSO48xoVhOOWpwAAAAAOgAAAAAIAACAAAABcbqm98cD6ttFlSZ+KvI8DKaWZpp6jC7+hqMkkwaEcFpAAAADA+xruS130VGPPTRAwwcgRs3LgCDDGJ6fsSLDuVgKdzX4EBt/M3WoTMI03NmlCg3t3xovq/XQj9+Bl5jD9aUuOgnzlJDdCh/lv5C6ROIXaJWBVqOa7OELPEGiBiN141690s6hZGaYMnpTg6WuKKD5l6ueBQWmMI4CvBNszwpNx7Ifg7k80W/+Um/2d/8RYlMFAAAAAUJh9CXTxl9pkf/02irwJn2+R0Qh8mOiRjMXVo0QN62/KnD7TU8zV9JU1fZ//hvyibnmR+IQLEO5SDH763W20Zg==</SSIS:Property>
           <SSIS:Property SSIS:Name="FormatVersion">1</SSIS:Property>
         </SSIS:Properties>
         <SSIS:Packages>
@@ -34,6 +34,7 @@
           <SSIS:Package SSIS:Name="Flat File To SSMS.dtsx" SSIS:EntryPoint="1" />
           <SSIS:Package SSIS:Name="Mrr to Stg.dtsx" SSIS:EntryPoint="1" />
           <SSIS:Package SSIS:Name="Stg to DW - Dim.dtsx" SSIS:EntryPoint="1" />
+          <SSIS:Package SSIS:Name="Stg to DW - Fact.dtsx" SSIS:EntryPoint="1" />
         </SSIS:Packages>
         <SSIS:ConnectionManagers>
           <SSIS:ConnectionManager SSIS:Name="LENOVO-FLEX2-15_SQLDEV.TheVoice.conmgr" />
@@ -1114,10 +1115,10 @@
                 <SSIS:Property SSIS:Name="Name">Mrr to Stg</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">181</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">248</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{F1B3ABE5-1201-4E2F-BA96-DAB2495C95EE}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{EEDC74F9-E022-40F8-9C68-20322587D4BD}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
@@ -1135,6 +1136,23 @@
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionGUID">{A5E0EF9C-6D30-41A5-B44F-52E5A17CD215}</SSIS:Property>
+                <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
+                <SSIS:Property SSIS:Name="Description">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="ProtectionLevel">1</SSIS:Property>
+              </SSIS:Properties>
+              <SSIS:Parameters />
+            </SSIS:PackageMetaData>
+            <SSIS:PackageMetaData SSIS:Name="Stg to DW - Fact.dtsx">
+              <SSIS:Properties>
+                <SSIS:Property SSIS:Name="ID">{4399A737-EAD6-4950-8C39-AE396A5545DB}</SSIS:Property>
+                <SSIS:Property SSIS:Name="Name">Stg to DW - Fact</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">2</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionComments">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{D6BE16D2-6B49-447B-9806-00BB4BD4F98B}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>

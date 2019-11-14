@@ -12,8 +12,8 @@
   DTS:LocaleID="1037"
   DTS:ObjectName="Flat File To SSMS"
   DTS:PackageType="5"
-  DTS:VersionBuild="103"
-  DTS:VersionGUID="{4F9CD439-B943-44AC-AB36-4EAD836E252A}">
+  DTS:VersionBuild="104"
+  DTS:VersionGUID="{DF13B3E1-408B-410F-90C7-86E55FFB05E6}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -223,7 +223,7 @@
       DTS:Namespace="User"
       DTS:ObjectName="Variable_RenameFile1">
       <DTS:VariableValue
-        DTS:DataType="8">C:\Users\User\Documents\ETL_Process\Process_call_type\Done_call_type\2019-10-26 12.07.44 </DTS:VariableValue>
+        DTS:DataType="8">C:\Users\User\Documents\ETL_Process\Process_call_type\Done_call_type\2019-11-10 18.23.45 </DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
@@ -234,7 +234,7 @@
       DTS:Namespace="User"
       DTS:ObjectName="Variable_RenameFile2">
       <DTS:VariableValue
-        DTS:DataType="8">C:\Users\User\Documents\ETL_Process\Process_OPFILEOPP\Done_OPFILEOPP\2019-10-26 12.07.44 </DTS:VariableValue>
+        DTS:DataType="8">C:\Users\User\Documents\ETL_Process\Process_OPFILEOPP\Done_OPFILEOPP\2019-11-10 18.23.45 </DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
@@ -655,7 +655,7 @@
           DTS:ExecutableType="Microsoft.FileSystemTask"
           DTS:LocaleID="-1"
           DTS:ObjectName="Move File to Done"
-          DTS:ThreadHint="1">
+          DTS:ThreadHint="0">
           <DTS:Variables />
           <DTS:ObjectData>
             <FileSystemData
@@ -674,7 +674,7 @@
           DTS:ExecutableType="Microsoft.FileSystemTask"
           DTS:LocaleID="-1"
           DTS:ObjectName="Move File to Process"
-          DTS:ThreadHint="1">
+          DTS:ThreadHint="0">
           <DTS:Variables />
           <DTS:ObjectData>
             <FileSystemData
@@ -693,7 +693,7 @@
           DTS:ExecutableType="Microsoft.FileSystemTask"
           DTS:LocaleID="-1"
           DTS:ObjectName="Rename File"
-          DTS:ThreadHint="1">
+          DTS:ThreadHint="0">
           <DTS:Variables />
           <DTS:ObjectData>
             <FileSystemData
@@ -734,8 +734,8 @@
       <DTS:ForEachVariableMappings>
         <DTS:ForEachVariableMapping
           DTS:CreationName=""
-          DTS:DTSID="{360B6FF7-3962-4C47-B5F5-DB2852CEA6FB}"
-          DTS:ObjectName="{360B6FF7-3962-4C47-B5F5-DB2852CEA6FB}"
+          DTS:DTSID="{9CBCE694-B910-407E-8B69-7F167495ACCD}"
+          DTS:ObjectName="{9CBCE694-B910-407E-8B69-7F167495ACCD}"
           DTS:ValueIndex="0"
           DTS:VariableName="User::Variable_FileName" />
       </DTS:ForEachVariableMappings>
@@ -1076,7 +1076,7 @@
           DTS:ExecutableType="Microsoft.FileSystemTask"
           DTS:LocaleID="-1"
           DTS:ObjectName="Move File to Done"
-          DTS:ThreadHint="0">
+          DTS:ThreadHint="1">
           <DTS:Variables />
           <DTS:ObjectData>
             <FileSystemData
@@ -1095,7 +1095,7 @@
           DTS:ExecutableType="Microsoft.FileSystemTask"
           DTS:LocaleID="-1"
           DTS:ObjectName="Move File to Process"
-          DTS:ThreadHint="0">
+          DTS:ThreadHint="1">
           <DTS:Variables />
           <DTS:ObjectData>
             <FileSystemData
@@ -1114,7 +1114,7 @@
           DTS:ExecutableType="Microsoft.FileSystemTask"
           DTS:LocaleID="-1"
           DTS:ObjectName="Rename File"
-          DTS:ThreadHint="0">
+          DTS:ThreadHint="1">
           <DTS:Variables />
           <DTS:ObjectData>
             <FileSystemData

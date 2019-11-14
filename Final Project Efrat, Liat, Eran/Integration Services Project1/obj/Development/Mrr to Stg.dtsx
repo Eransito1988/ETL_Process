@@ -11,8 +11,8 @@
   DTS:LocaleID="1037"
   DTS:ObjectName="Mrr to Stg"
   DTS:PackageType="5"
-  DTS:VersionBuild="247"
-  DTS:VersionGUID="{159D293D-4A08-42CA-821D-AEA668DAAD41}">
+  DTS:VersionBuild="250"
+  DTS:VersionGUID="{D66A9AAF-9294-417A-80FE-CC57D6D7DAA3}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -648,7 +648,7 @@ from [dbo].[Mrr_Call_Type]</property>
           DTS:ExecutableType="Microsoft.ExecuteSQLTask"
           DTS:LocaleID="-1"
           DTS:ObjectName="Execute SQL Task Call Type"
-          DTS:ThreadHint="4">
+          DTS:ThreadHint="2">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -1581,7 +1581,7 @@ order by INVOICE_NUM</property>
           DTS:ExecutableType="Microsoft.ExecuteSQLTask"
           DTS:LocaleID="-1"
           DTS:ObjectName="Execute SQL Task Cosumer Invoice"
-          DTS:ThreadHint="2">
+          DTS:ThreadHint="5">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -2078,7 +2078,7 @@ order by INVOICE_NUM</property>
           DTS:ExecutableType="Microsoft.ExecuteSQLTask"
           DTS:LocaleID="-1"
           DTS:ObjectName="Execute SQL Task Countries"
-          DTS:ThreadHint="7">
+          DTS:ThreadHint="3">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -2801,7 +2801,7 @@ order by customer_id</property>
           DTS:ExecutableType="Microsoft.ExecuteSQLTask"
           DTS:LocaleID="-1"
           DTS:ObjectName="Execute SQL Task Customer"
-          DTS:ThreadHint="3">
+          DTS:ThreadHint="4">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -3730,7 +3730,7 @@ where PHONE_NO like '+1%'</property>
           DTS:ExecutableType="Microsoft.ExecuteSQLTask"
           DTS:LocaleID="-1"
           DTS:ObjectName="Execute SQL Task Customer Lines"
-          DTS:ThreadHint="5">
+          DTS:ThreadHint="6">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -4199,7 +4199,7 @@ from [dbo].[Mrr_OPFILEOPP]</property>
           DTS:ExecutableType="Microsoft.ExecuteSQLTask"
           DTS:LocaleID="-1"
           DTS:ObjectName="Execute SQL Task OPFILEOPP"
-          DTS:ThreadHint="1">
+          DTS:ThreadHint="7">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -4990,7 +4990,7 @@ from [dbo].[Mrr_Call_Type]</property>
           DTS:ExecutableType="Microsoft.ExecuteSQLTask"
           DTS:LocaleID="-1"
           DTS:ObjectName="Execute SQL Task Package Catalog"
-          DTS:ThreadHint="0">
+          DTS:ThreadHint="8">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -5455,7 +5455,7 @@ from [dbo].[Mrr_Call_Type]</property>
                       description="The SQL command to be executed."
                       name="SqlCommand"
                       UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select*
-from [Mrr_Region Prefix]
+from [Mrr_Region_Prefix]
 order by Country</property>
                     <property
                       dataType="System.String"
@@ -5626,7 +5626,7 @@ order by Country</property>
           DTS:ExecutableType="Microsoft.ExecuteSQLTask"
           DTS:LocaleID="-1"
           DTS:ObjectName="Execute SQL Task Region Prefix"
-          DTS:ThreadHint="9">
+          DTS:ThreadHint="1">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -6725,25 +6725,25 @@ order by Country</property>
                       UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select *
 from 
 (select CALL_NO as [Call Number], CUST_ID as [Customer ID], CALLING_NO as [Calling Number], right(CALLING_NO,7) as [C_Number], case when CALLING_NO like '+___%' then SUBSTRING(CALLING_NO,2,3) end [Calling Country Prefix], case when CALLING_NO like '+___%' then SUBSTRING(CALLING_NO,5,2) end [Calling Prefix Operation],
-ANSWER_TIME as [Answer Time], convert(date,SEIZED_TIME) as [Seized Date], convert(time,SEIZED_TIME) as [Seized Time], DISCONNECT_TIME as [Disconnect Time], DURATION as [Duration], DES_NO as [Destination Number], right(DES_NO,7) as [D_Number], case when DES_NO like '+___%' then SUBSTRING(DES_NO,2,3) end [Destination Country Prefix], case when DES_NO like '+___%' then SUBSTRING(DES_NO,5,2) end [Destination Prefix Operation],
+ANSWER_TIME as [Answer Time], convert(date,SEIZED_TIME) as [Seized Date], convert(time,(convert(smalldatetime,SEIZED_TIME))) as [Seized Time], DISCONNECT_TIME as [Disconnect Time], DURATION as [Duration], DES_NO as [Destination Number], right(DES_NO,7) as [D_Number], case when DES_NO like '+___%' then SUBSTRING(DES_NO,2,3) end [Destination Country Prefix], case when DES_NO like '+___%' then SUBSTRING(DES_NO,5,2) end [Destination Prefix Operation],
 CALL_TYPE as [Call Type], PROD_TYPE as [Call Type Descripion], RATED_AMNT as [Call Rank], RATED_CURR_CODE as [Currency], CELL as [Cell], CELL_ORIGIN as [Cell Origin], HIGH_LOW_RATE as [High or Low Time Rating], convert(date,CALL_DATETIME) as [Call Date]
 from Mrr_Usage_Main
 where CALLING_NO like '+972%' and DES_NO like '+972%'
 union all
 select CALL_NO as [Call Number], CUST_ID as [Customer ID], CALLING_NO as [Calling Number], right(CALLING_NO,7) as [C_Number], case when CALLING_NO like '+_%' then SUBSTRING(CALLING_NO,2,1) end [Calling Country Prefix], case when CALLING_NO like '+_%' then SUBSTRING(CALLING_NO,3,3) end [Calling Prefix Operation],
-ANSWER_TIME as [Answer Time], convert(date,SEIZED_TIME) as [Seized Date], convert(time,SEIZED_TIME) as [Seized Time], DISCONNECT_TIME as [Disconnect Time], DURATION as [Duration], DES_NO as [Destination Number], right(DES_NO,7) as [D_Number], case when DES_NO like '+___%' then SUBSTRING(DES_NO,2,3) end [Destination Country Prefix], case when DES_NO like '+___%' then SUBSTRING(DES_NO,5,2) end [Destination Prefix Operation],
+ANSWER_TIME as [Answer Time], convert(date,SEIZED_TIME) as [Seized Date], convert(time,(convert(smalldatetime,SEIZED_TIME))) as [Seized Time], DISCONNECT_TIME as [Disconnect Time], DURATION as [Duration], DES_NO as [Destination Number], right(DES_NO,7) as [D_Number], case when DES_NO like '+___%' then SUBSTRING(DES_NO,2,3) end [Destination Country Prefix], case when DES_NO like '+___%' then SUBSTRING(DES_NO,5,2) end [Destination Prefix Operation],
 CALL_TYPE as [Call Type], PROD_TYPE as [Call Type Descripion], RATED_AMNT as [Call Rank], RATED_CURR_CODE as [Currency], CELL as [Cell], CELL_ORIGIN as [Cell Origin], HIGH_LOW_RATE as [High or Low Time Rating], convert(date,CALL_DATETIME) as [Call Date]
 from Mrr_Usage_Main
 where CALLING_NO like '+1%' and DES_NO like '+972%'
 union all
 select CALL_NO as [Call Number], CUST_ID as [Customer ID], CALLING_NO as [Calling Number], right(CALLING_NO,7) as [C_Number], case when CALLING_NO like '+___%' then SUBSTRING(CALLING_NO,2,3) end [Calling Country Prefix], case when CALLING_NO like '+___%' then SUBSTRING(CALLING_NO,5,2) end [Calling Prefix Operation],
-ANSWER_TIME as [Answer Time], convert(date,SEIZED_TIME) as [Seized Date], convert(time,SEIZED_TIME) as [Seized Time], DISCONNECT_TIME as [Disconnect Time], DURATION as [Duration], DES_NO as [Destination Number], right(DES_NO,7) as [D_Number], case when DES_NO like '+_%' then SUBSTRING(DES_NO,2,1) end [Destination Country Prefix], case when DES_NO like '+_%' then SUBSTRING(DES_NO,3,3) end [Destination Prefix Operation],
+ANSWER_TIME as [Answer Time], convert(date,SEIZED_TIME) as [Seized Date], convert(time,(convert(smalldatetime,SEIZED_TIME))) as [Seized Time], DISCONNECT_TIME as [Disconnect Time], DURATION as [Duration], DES_NO as [Destination Number], right(DES_NO,7) as [D_Number], case when DES_NO like '+_%' then SUBSTRING(DES_NO,2,1) end [Destination Country Prefix], case when DES_NO like '+_%' then SUBSTRING(DES_NO,3,3) end [Destination Prefix Operation],
 CALL_TYPE as [Call Type], PROD_TYPE as [Call Type Descripion], RATED_AMNT as [Call Rank], RATED_CURR_CODE as [Currency], CELL as [Cell], CELL_ORIGIN as [Cell Origin], HIGH_LOW_RATE as [High or Low Time Rating], convert(date,CALL_DATETIME) as [Call Date]
 from Mrr_Usage_Main
 where CALLING_NO like '+972%' and DES_NO like '+1%'
 union all
 select CALL_NO as [Call Number], CUST_ID as [Customer ID], CALLING_NO as [Calling Number], right(CALLING_NO,7) as [C_Number], case when CALLING_NO like '+_%' then SUBSTRING(CALLING_NO,2,1) end [Calling Country Prefix], case when CALLING_NO like '+_%' then SUBSTRING(CALLING_NO,3,3) end [Calling Prefix Operation],
-ANSWER_TIME as [Answer Time], convert(date,SEIZED_TIME) as [Seized Date], convert(time,SEIZED_TIME) as [Seized Time], DISCONNECT_TIME as [Disconnect Time], DURATION as [Duration], DES_NO as [Destination Number], right(DES_NO,7) as [D_Number], case when DES_NO like '+_%' then SUBSTRING(DES_NO,2,1) end [Destination Country Prefix], case when DES_NO like '+_%' then SUBSTRING(DES_NO,3,3) end [Destination Prefix Operation],
+ANSWER_TIME as [Answer Time], convert(date,SEIZED_TIME) as [Seized Date], convert(time,(convert(smalldatetime,SEIZED_TIME))) as [Seized Time], DISCONNECT_TIME as [Disconnect Time], DURATION as [Duration], DES_NO as [Destination Number], right(DES_NO,7) as [D_Number], case when DES_NO like '+_%' then SUBSTRING(DES_NO,2,1) end [Destination Country Prefix], case when DES_NO like '+_%' then SUBSTRING(DES_NO,3,3) end [Destination Prefix Operation],
 CALL_TYPE as [Call Type], PROD_TYPE as [Call Type Descripion], RATED_AMNT as [Call Rank], RATED_CURR_CODE as [Currency], CELL as [Cell], CELL_ORIGIN as [Cell Origin], HIGH_LOW_RATE as [High or Low Time Rating], convert(date,CALL_DATETIME) as [Call Date]
 from Mrr_Usage_Main
 where CALLING_NO like '+1%' and DES_NO like '+1%') tab
@@ -7289,7 +7289,7 @@ order by [Call Number]</property>
           DTS:ExecutableType="Microsoft.ExecuteSQLTask"
           DTS:LocaleID="-1"
           DTS:ObjectName="Execute SQL Task Usage_Main"
-          DTS:ThreadHint="8">
+          DTS:ThreadHint="0">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -7714,7 +7714,7 @@ from [dbo].[Mrr_OPFILEOPP]</property>
           DTS:ExecutableType="Microsoft.ExecuteSQLTask"
           DTS:LocaleID="-1"
           DTS:ObjectName="Execute SQL Task XXCOUNTRYPRE"
-          DTS:ThreadHint="6">
+          DTS:ThreadHint="9">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -8241,7 +8241,7 @@ from [dbo].[Mrr_OPFILEOPP]</property>
     design-time-name="Package\Sequence Container Cosumer Invoice\Data Flow Task Cosumer Invoice">
     <LayoutInfo>
       <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="276.8,41.6"
           Id="Package\Sequence Container Cosumer Invoice\Data Flow Task Cosumer Invoice\OLE DB Destination Stg_Customer Invoice"
@@ -8273,9 +8273,7 @@ from [dbo].[Mrr_OPFILEOPP]</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -8297,9 +8295,7 @@ from [dbo].[Mrr_OPFILEOPP]</property>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -8820,39 +8816,17 @@ from [dbo].[Mrr_OPFILEOPP]</property>
       <GraphLayout
         Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="239.2,41.6"
-          Id="Package\Sequence Container Region Prefix\Data Flow Task Region Prefix\OLE DB Source Mrr_Region_Prefix"
-          TopLeft="353.322451195563,150.870590474613" />
-        <NodeLayout
           Size="236,41.6"
           Id="Package\Sequence Container Region Prefix\Data Flow Task Region Prefix\OLE DB Destination Region Prefix"
           TopLeft="360.314285198523,418.630253498117" />
         <NodeLayout
+          Size="239.2,41.6"
+          Id="Package\Sequence Container Region Prefix\Data Flow Task Region Prefix\OLE DB Source Mrr_Region_Prefix"
+          TopLeft="353.322451195563,150.870590474613" />
+        <NodeLayout
           Size="218.4,41.6"
           Id="Package\Sequence Container Region Prefix\Data Flow Task Region Prefix\Derived Column Region Prefix"
           TopLeft="364.571434780044,331.200001604417" />
-        <EdgeLayout
-          Id="Package\Sequence Container Region Prefix\Data Flow Task Region Prefix.Paths[Derived Column Output]"
-          TopLeft="476.042859989283,372.800001604417">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,45.8302518936999"
-              Start="0,0"
-              End="0,38.3302518936999">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,38.3302518936999" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
         <NodeLayout
           Size="220.8,41.6"
           Id="Package\Sequence Container Region Prefix\Data Flow Task Region Prefix\Data Conversion Region Prefix"
@@ -8871,6 +8845,28 @@ from [dbo].[Mrr_OPFILEOPP]</property>
                   Capacity="5">
                   <mssgle:LineSegment
                     End="0,37.9117644227503" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Sequence Container Region Prefix\Data Flow Task Region Prefix.Paths[Derived Column Output]"
+          TopLeft="476.042859989283,372.800001604417">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,45.8302518936999"
+              Start="0,0"
+              End="0,38.3302518936999">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,38.3302518936999" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -8905,7 +8901,7 @@ from [dbo].[Mrr_OPFILEOPP]</property>
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\Sequence Container Region Prefix\Data Flow Task Region Prefix\OLE DB Source Mrr_Region_Prefix">
+    design-time-name="Package\Sequence Container Region Prefix\Data Flow Task Region Prefix\OLE DB Destination Region Prefix">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -8918,7 +8914,7 @@ from [dbo].[Mrr_OPFILEOPP]</property>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Sequence Container Region Prefix\Data Flow Task Region Prefix\OLE DB Destination Region Prefix">
+    design-time-name="Package\Sequence Container Region Prefix\Data Flow Task Region Prefix\OLE DB Source Mrr_Region_Prefix">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -8940,6 +8936,10 @@ from [dbo].[Mrr_OPFILEOPP]</property>
           Id="Package\Sequence Container Usage_Main\Data Flow Task Usage_Main\Derived Column Usage Main"
           TopLeft="264.41904754444,190.745099166025" />
         <NodeLayout
+          Size="228.8,41.6"
+          Id="Package\Sequence Container Usage_Main\Data Flow Task Usage_Main\OLE DB Source Mrr_Usage Main"
+          TopLeft="253.714290035014,42.58823557725" />
+        <NodeLayout
           Size="228,41.6"
           Id="Package\Sequence Container Usage_Main\Data Flow Task Usage_Main\OLE DB Destination Usage Main"
           TopLeft="256.000004359655,270.603925363745" />
@@ -8947,6 +8947,28 @@ from [dbo].[Mrr_OPFILEOPP]</property>
           Size="155.2,41.6"
           Id="Package\Sequence Container Usage_Main\Data Flow Task Usage_Main\Data Conversion"
           TopLeft="292.57143355389,122.164707023462" />
+        <EdgeLayout
+          Id="Package\Sequence Container Usage_Main\Data Flow Task Usage_Main.Paths[OLE DB Source Output]"
+          TopLeft="369.142861794452,84.18823557725">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,37.976471446212"
+              Start="0,0"
+              End="0,30.476471446212">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,30.476471446212" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
         <EdgeLayout
           Id="Package\Sequence Container Usage_Main\Data Flow Task Usage_Main.Paths[Derived Column Output]"
           TopLeft="370.009525952048,232.345099166025">
@@ -8983,32 +9005,6 @@ from [dbo].[Mrr_OPFILEOPP]</property>
                   Capacity="5">
                   <mssgle:LineSegment
                     End="0,19.480392142563" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="228.8,41.6"
-          Id="Package\Sequence Container Usage_Main\Data Flow Task Usage_Main\OLE DB Source Mrr_Usage Main"
-          TopLeft="253.714290035014,42.58823557725" />
-        <EdgeLayout
-          Id="Package\Sequence Container Usage_Main\Data Flow Task Usage_Main.Paths[OLE DB Source Output]"
-          TopLeft="369.142861794452,84.18823557725">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,37.976471446212"
-              Start="0,0"
-              End="0,30.476471446212">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,30.476471446212" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>

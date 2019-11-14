@@ -11,8 +11,8 @@
   DTS:LocaleID="1037"
   DTS:ObjectName="Stg to DW - Dim"
   DTS:PackageType="5"
-  DTS:VersionBuild="86"
-  DTS:VersionGUID="{A410C413-C9FD-411F-B9AC-AF484D077603}">
+  DTS:VersionBuild="90"
+  DTS:VersionGUID="{5BE0521E-97B8-4826-8829-9C19D51949AD}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -156,6 +156,29 @@
                               name="FriendlyExpression">ISNULL([Data Conversion].[Call Origin Type]) ? "Unknoun" : [Data Conversion].[Call Origin Type]</property>
                           </properties>
                         </inputColumn>
+                        <inputColumn
+                          refId="Package\Sequence Container Call_Origin_Type (Usage_Main)\Data Flow Task Call_Origin_Type (Usage_Main)\Derived Column.Inputs[Derived Column Input].Columns[Cell Origin]"
+                          cachedDataType="i4"
+                          cachedName="Cell Origin"
+                          errorOrTruncationOperation="Computation"
+                          errorRowDisposition="FailComponent"
+                          lineageId="Package\Sequence Container Call_Origin_Type (Usage_Main)\Data Flow Task Call_Origin_Type (Usage_Main)\OLE DB Source Stg_Origin_Type_(Usage_Main).Outputs[OLE DB Source Output].Columns[Cell Origin]"
+                          truncationRowDisposition="FailComponent"
+                          usageType="readWrite">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Expression"
+                              name="Expression">[ISNULL](#{Package\Sequence Container Call_Origin_Type (Usage_Main)\Data Flow Task Call_Origin_Type (Usage_Main)\OLE DB Source Stg_Origin_Type_(Usage_Main).Outputs[OLE DB Source Output].Columns[Cell Origin]}) ? -1 : #{Package\Sequence Container Call_Origin_Type (Usage_Main)\Data Flow Task Call_Origin_Type (Usage_Main)\OLE DB Source Stg_Origin_Type_(Usage_Main).Outputs[OLE DB Source Output].Columns[Cell Origin]}</property>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Friendly Expression"
+                              expressionType="Notify"
+                              name="FriendlyExpression">ISNULL([Cell Origin]) ? -1 : [Cell Origin]</property>
+                          </properties>
+                        </inputColumn>
                       </inputColumns>
                       <externalMetadataColumns />
                     </input>
@@ -273,6 +296,12 @@
                           cachedName="Call Origin Type"
                           externalMetadataColumnId="Package\Sequence Container Call_Origin_Type (Usage_Main)\Data Flow Task Call_Origin_Type (Usage_Main)\OLE DB Destination Dim_Call_Origin_Type.Inputs[OLE DB Destination Input].ExternalColumns[Call Origin Type]"
                           lineageId="Package\Sequence Container Call_Origin_Type (Usage_Main)\Data Flow Task Call_Origin_Type (Usage_Main)\Data Conversion.Outputs[Data Conversion Output].Columns[Call Origin Type]" />
+                        <inputColumn
+                          refId="Package\Sequence Container Call_Origin_Type (Usage_Main)\Data Flow Task Call_Origin_Type (Usage_Main)\OLE DB Destination Dim_Call_Origin_Type.Inputs[OLE DB Destination Input].Columns[Cell Origin]"
+                          cachedDataType="i4"
+                          cachedName="Cell Origin"
+                          externalMetadataColumnId="Package\Sequence Container Call_Origin_Type (Usage_Main)\Data Flow Task Call_Origin_Type (Usage_Main)\OLE DB Destination Dim_Call_Origin_Type.Inputs[OLE DB Destination Input].ExternalColumns[Key Source Cell]"
+                          lineageId="Package\Sequence Container Call_Origin_Type (Usage_Main)\Data Flow Task Call_Origin_Type (Usage_Main)\OLE DB Source Stg_Origin_Type_(Usage_Main).Outputs[OLE DB Source Output].Columns[Cell Origin]" />
                       </inputColumns>
                       <externalMetadataColumns
                         isUsed="True">
@@ -338,7 +367,8 @@
                       dataType="System.String"
                       description="The SQL command to be executed."
                       name="SqlCommand"
-                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select distinct case when [Cell Origin] = 1 then 'Cellular Call' when [Cell Origin] = 0 then 'Line Call' else 'Unknoun' end 'Call Origin Type'
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select distinct case when [Cell Origin] = 1 then 'Cellular Call' when [Cell Origin] = 0 then 'Line Call' else 'Unknoun' end 'Call Origin Type',
+case when [Cell Origin] = 1 then 1 when [Cell Origin] = 0 then 0 else -1 end 'Cell Origin'
 from Stg_Usage_Main</property>
                     <property
                       dataType="System.String"
@@ -386,6 +416,15 @@ from Stg_Usage_Main</property>
                           lineageId="Package\Sequence Container Call_Origin_Type (Usage_Main)\Data Flow Task Call_Origin_Type (Usage_Main)\OLE DB Source Stg_Origin_Type_(Usage_Main).Outputs[OLE DB Source Output].Columns[Call Origin Type]"
                           name="Call Origin Type"
                           truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Sequence Container Call_Origin_Type (Usage_Main)\Data Flow Task Call_Origin_Type (Usage_Main)\OLE DB Source Stg_Origin_Type_(Usage_Main).Outputs[OLE DB Source Output].Columns[Cell Origin]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Sequence Container Call_Origin_Type (Usage_Main)\Data Flow Task Call_Origin_Type (Usage_Main)\OLE DB Source Stg_Origin_Type_(Usage_Main).Outputs[OLE DB Source Output].ExternalColumns[Cell Origin]"
+                          lineageId="Package\Sequence Container Call_Origin_Type (Usage_Main)\Data Flow Task Call_Origin_Type (Usage_Main)\OLE DB Source Stg_Origin_Type_(Usage_Main).Outputs[OLE DB Source Output].Columns[Cell Origin]"
+                          name="Cell Origin"
+                          truncationRowDisposition="FailComponent" />
                       </outputColumns>
                       <externalMetadataColumns
                         isUsed="True">
@@ -395,6 +434,10 @@ from Stg_Usage_Main</property>
                           dataType="str"
                           length="13"
                           name="Call Origin Type" />
+                        <externalMetadataColumn
+                          refId="Package\Sequence Container Call_Origin_Type (Usage_Main)\Data Flow Task Call_Origin_Type (Usage_Main)\OLE DB Source Stg_Origin_Type_(Usage_Main).Outputs[OLE DB Source Output].ExternalColumns[Cell Origin]"
+                          dataType="i4"
+                          name="Cell Origin" />
                       </externalMetadataColumns>
                     </output>
                     <output
@@ -409,6 +452,11 @@ from Stg_Usage_Main</property>
                           length="13"
                           lineageId="Package\Sequence Container Call_Origin_Type (Usage_Main)\Data Flow Task Call_Origin_Type (Usage_Main)\OLE DB Source Stg_Origin_Type_(Usage_Main).Outputs[OLE DB Source Error Output].Columns[Call Origin Type]"
                           name="Call Origin Type" />
+                        <outputColumn
+                          refId="Package\Sequence Container Call_Origin_Type (Usage_Main)\Data Flow Task Call_Origin_Type (Usage_Main)\OLE DB Source Stg_Origin_Type_(Usage_Main).Outputs[OLE DB Source Error Output].Columns[Cell Origin]"
+                          dataType="i4"
+                          lineageId="Package\Sequence Container Call_Origin_Type (Usage_Main)\Data Flow Task Call_Origin_Type (Usage_Main)\OLE DB Source Stg_Origin_Type_(Usage_Main).Outputs[OLE DB Source Error Output].Columns[Cell Origin]"
+                          name="Cell Origin" />
                         <outputColumn
                           refId="Package\Sequence Container Call_Origin_Type (Usage_Main)\Data Flow Task Call_Origin_Type (Usage_Main)\OLE DB Source Stg_Origin_Type_(Usage_Main).Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
                           dataType="i4"
@@ -455,7 +503,7 @@ from Stg_Usage_Main</property>
           DTS:ExecutableType="Microsoft.ExecuteSQLTask"
           DTS:LocaleID="-1"
           DTS:ObjectName="Execute SQL Task Dim_Call_Origin_Type"
-          DTS:ThreadHint="5">
+          DTS:ThreadHint="1">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -1770,7 +1818,7 @@ from Stg_Usage_Main</property>
           DTS:ExecutableType="Microsoft.ExecuteSQLTask"
           DTS:LocaleID="-1"
           DTS:ObjectName="Execute SQL Task Dim_Countries"
-          DTS:ThreadHint="3">
+          DTS:ThreadHint="0">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -6482,44 +6530,44 @@ from Stg_Usage_Main</property>
                   startId="Package\Sequence Container Customers + Customer Lines\Data Flow Task Customers + Customer_Lines\OLE DB Source XXCOUNTRYPRE.Outputs[OLE DB Source Output]" />
                 <path
                   refId="Package\Sequence Container Customers + Customer Lines\Data Flow Task Customers + Customer_Lines.Paths[Sort Output7]"
-                  endId="Package\Sequence Container Customers + Customer Lines\Data Flow Task Customers + Customer_Lines\Merge Join 1.Inputs[Merge Join Left Input]"
-                  name="Sort Output"
-                  startId="Package\Sequence Container Customers + Customer Lines\Data Flow Task Customers + Customer_Lines\Sort 2.Outputs[Sort Output]" />
-                <path
-                  refId="Package\Sequence Container Customers + Customer Lines\Data Flow Task Customers + Customer_Lines.Paths[Sort Output]"
-                  endId="Package\Sequence Container Customers + Customer Lines\Data Flow Task Customers + Customer_Lines\Merge Join.Inputs[Merge Join Left Input]"
-                  name="Sort Output"
-                  startId="Package\Sequence Container Customers + Customer Lines\Data Flow Task Customers + Customer_Lines\Sort 1.Outputs[Sort Output]" />
-                <path
-                  refId="Package\Sequence Container Customers + Customer Lines\Data Flow Task Customers + Customer_Lines.Paths[Sort Output1]"
-                  endId="Package\Sequence Container Customers + Customer Lines\Data Flow Task Customers + Customer_Lines\Merge Join 2.Inputs[Merge Join Right Input]"
-                  name="Sort Output"
-                  startId="Package\Sequence Container Customers + Customer Lines\Data Flow Task Customers + Customer_Lines\Sort 5.Outputs[Sort Output]" />
-                <path
-                  refId="Package\Sequence Container Customers + Customer Lines\Data Flow Task Customers + Customer_Lines.Paths[Sort Output2]"
-                  endId="Package\Sequence Container Customers + Customer Lines\Data Flow Task Customers + Customer_Lines\Merge Join 3.Inputs[Merge Join Right Input]"
-                  name="Sort Output"
-                  startId="Package\Sequence Container Customers + Customer Lines\Data Flow Task Customers + Customer_Lines\Sort 6.Outputs[Sort Output]" />
-                <path
-                  refId="Package\Sequence Container Customers + Customer Lines\Data Flow Task Customers + Customer_Lines.Paths[Sort Output3]"
                   endId="Package\Sequence Container Customers + Customer Lines\Data Flow Task Customers + Customer_Lines\Merge Join 2.Inputs[Merge Join Left Input]"
                   name="Sort Output"
                   startId="Package\Sequence Container Customers + Customer Lines\Data Flow Task Customers + Customer_Lines\Sort 4.Outputs[Sort Output]" />
                 <path
-                  refId="Package\Sequence Container Customers + Customer Lines\Data Flow Task Customers + Customer_Lines.Paths[Sort Output4]"
+                  refId="Package\Sequence Container Customers + Customer Lines\Data Flow Task Customers + Customer_Lines.Paths[Sort Output]"
                   endId="Package\Sequence Container Customers + Customer Lines\Data Flow Task Customers + Customer_Lines\Merge Join 1.Inputs[Merge Join Right Input]"
                   name="Sort Output"
                   startId="Package\Sequence Container Customers + Customer Lines\Data Flow Task Customers + Customer_Lines\Sort 3.Outputs[Sort Output]" />
                 <path
-                  refId="Package\Sequence Container Customers + Customer Lines\Data Flow Task Customers + Customer_Lines.Paths[Sort Output5]"
+                  refId="Package\Sequence Container Customers + Customer Lines\Data Flow Task Customers + Customer_Lines.Paths[Sort Output1]"
                   endId="Package\Sequence Container Customers + Customer Lines\Data Flow Task Customers + Customer_Lines\Merge Join 3.Inputs[Merge Join Left Input]"
                   name="Sort Output"
                   startId="Package\Sequence Container Customers + Customer Lines\Data Flow Task Customers + Customer_Lines\Sort 7.Outputs[Sort Output]" />
                 <path
-                  refId="Package\Sequence Container Customers + Customer Lines\Data Flow Task Customers + Customer_Lines.Paths[Sort Output6]"
+                  refId="Package\Sequence Container Customers + Customer Lines\Data Flow Task Customers + Customer_Lines.Paths[Sort Output2]"
                   endId="Package\Sequence Container Customers + Customer Lines\Data Flow Task Customers + Customer_Lines\Merge Join.Inputs[Merge Join Right Input]"
                   name="Sort Output"
                   startId="Package\Sequence Container Customers + Customer Lines\Data Flow Task Customers + Customer_Lines\Sort.Outputs[Sort Output]" />
+                <path
+                  refId="Package\Sequence Container Customers + Customer Lines\Data Flow Task Customers + Customer_Lines.Paths[Sort Output3]"
+                  endId="Package\Sequence Container Customers + Customer Lines\Data Flow Task Customers + Customer_Lines\Merge Join 1.Inputs[Merge Join Left Input]"
+                  name="Sort Output"
+                  startId="Package\Sequence Container Customers + Customer Lines\Data Flow Task Customers + Customer_Lines\Sort 2.Outputs[Sort Output]" />
+                <path
+                  refId="Package\Sequence Container Customers + Customer Lines\Data Flow Task Customers + Customer_Lines.Paths[Sort Output4]"
+                  endId="Package\Sequence Container Customers + Customer Lines\Data Flow Task Customers + Customer_Lines\Merge Join.Inputs[Merge Join Left Input]"
+                  name="Sort Output"
+                  startId="Package\Sequence Container Customers + Customer Lines\Data Flow Task Customers + Customer_Lines\Sort 1.Outputs[Sort Output]" />
+                <path
+                  refId="Package\Sequence Container Customers + Customer Lines\Data Flow Task Customers + Customer_Lines.Paths[Sort Output5]"
+                  endId="Package\Sequence Container Customers + Customer Lines\Data Flow Task Customers + Customer_Lines\Merge Join 2.Inputs[Merge Join Right Input]"
+                  name="Sort Output"
+                  startId="Package\Sequence Container Customers + Customer Lines\Data Flow Task Customers + Customer_Lines\Sort 5.Outputs[Sort Output]" />
+                <path
+                  refId="Package\Sequence Container Customers + Customer Lines\Data Flow Task Customers + Customer_Lines.Paths[Sort Output6]"
+                  endId="Package\Sequence Container Customers + Customer Lines\Data Flow Task Customers + Customer_Lines\Merge Join 3.Inputs[Merge Join Right Input]"
+                  name="Sort Output"
+                  startId="Package\Sequence Container Customers + Customer Lines\Data Flow Task Customers + Customer_Lines\Sort 6.Outputs[Sort Output]" />
                 <path
                   refId="Package\Sequence Container Customers + Customer Lines\Data Flow Task Customers + Customer_Lines.Paths[Union All Output 1]"
                   endId="Package\Sequence Container Customers + Customer Lines\Data Flow Task Customers + Customer_Lines\Derived Column.Inputs[Derived Column Input]"
@@ -6537,7 +6585,7 @@ from Stg_Usage_Main</property>
           DTS:ExecutableType="Microsoft.ExecuteSQLTask"
           DTS:LocaleID="-1"
           DTS:ObjectName="Execute SQL Task Dim_Customers"
-          DTS:ThreadHint="4">
+          DTS:ThreadHint="3">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -6877,7 +6925,7 @@ from Stg_Usage_Main</property>
           DTS:ExecutableType="Microsoft.ExecuteSQLTask"
           DTS:LocaleID="-1"
           DTS:ObjectName="Execute SQL Task Dim_Operators"
-          DTS:ThreadHint="0">
+          DTS:ThreadHint="4">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -7342,7 +7390,7 @@ from Stg_Usage_Main</property>
           DTS:ExecutableType="Microsoft.ExecuteSQLTask"
           DTS:LocaleID="-1"
           DTS:ObjectName="Execute SQL Task Dim_Package_Catalog"
-          DTS:ThreadHint="1">
+          DTS:ThreadHint="5">
           <DTS:Variables />
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
@@ -7606,21 +7654,21 @@ from Stg_Usage_Main</property>
       <GraphLayout
         Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="301.6,41.6"
-          Id="Package\Sequence Container Call_Origin_Type (Usage_Main)\Data Flow Task Call_Origin_Type (Usage_Main)\OLE DB Source Stg_Origin_Type_(Usage_Main)"
-          TopLeft="146.285716776945,36.7058828677273" />
+          Size="152.8,41.6"
+          Id="Package\Sequence Container Call_Origin_Type (Usage_Main)\Data Flow Task Call_Origin_Type (Usage_Main)\Derived Column"
+          TopLeft="219.428575165418,177.694120049394" />
         <NodeLayout
           Size="277.6,41.6"
           Id="Package\Sequence Container Call_Origin_Type (Usage_Main)\Data Flow Task Call_Origin_Type (Usage_Main)\OLE DB Destination Dim_Call_Origin_Type"
           TopLeft="158.285716981304,252.047062358394" />
         <NodeLayout
-          Size="152.8,41.6"
-          Id="Package\Sequence Container Call_Origin_Type (Usage_Main)\Data Flow Task Call_Origin_Type (Usage_Main)\Derived Column"
-          TopLeft="219.428575165418,177.694120049394" />
-        <NodeLayout
           Size="155.2,41.6"
           Id="Package\Sequence Container Call_Origin_Type (Usage_Main)\Data Flow Task Call_Origin_Type (Usage_Main)\Data Conversion"
           TopLeft="219.428575165418,110.588236160674" />
+        <NodeLayout
+          Size="301.6,41.6"
+          Id="Package\Sequence Container Call_Origin_Type (Usage_Main)\Data Flow Task Call_Origin_Type (Usage_Main)\OLE DB Source Stg_Origin_Type_(Usage_Main)"
+          TopLeft="146.285716776945,36.7058828677273" />
         <EdgeLayout
           Id="Package\Sequence Container Call_Origin_Type (Usage_Main)\Data Flow Task Call_Origin_Type (Usage_Main).Paths[OLE DB Source Output]"
           TopLeft="297.057145971181,78.3058828677273">
@@ -7635,28 +7683,6 @@ from Stg_Usage_Main</property>
                   Capacity="5">
                   <mssgle:LineSegment
                     End="0,24.7823532929471" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Sequence Container Call_Origin_Type (Usage_Main)\Data Flow Task Call_Origin_Type (Usage_Main).Paths[Data Conversion Output]"
-          TopLeft="296.428575165418,152.188236160674">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,25.5058838887198"
-              Start="0,0"
-              End="0,18.0058838887198">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,18.0058838887198" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -7687,9 +7713,44 @@ from Stg_Usage_Main</property>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Sequence Container Call_Origin_Type (Usage_Main)\Data Flow Task Call_Origin_Type (Usage_Main).Paths[Data Conversion Output]"
+          TopLeft="296.428575165418,152.188236160674">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,25.5058838887198"
+              Start="0,0"
+              End="0,18.0058838887198">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,18.0058838887198" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Sequence Container Call_Origin_Type (Usage_Main)\Data Flow Task Call_Origin_Type (Usage_Main)\OLE DB Destination Dim_Call_Origin_Type">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
   <PipelineComponentMetadata
     design-time-name="Package\Sequence Container Call_Origin_Type (Usage_Main)\Data Flow Task Call_Origin_Type (Usage_Main)\OLE DB Source Stg_Origin_Type_(Usage_Main)">
     <Properties>
@@ -7983,26 +8044,6 @@ from Stg_Usage_Main</property>
       <GraphLayout
         Capacity="64" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="203.2,41.6"
-          Id="Package\Sequence Container Customers + Customer Lines\Data Flow Task Customers + Customer_Lines\OLE DB Stg_Region_Prefix"
-          TopLeft="603.371428571429,11.2459406175304" />
-        <NodeLayout
-          Size="138.4,41.6"
-          Id="Package\Sequence Container Customers + Customer Lines\Data Flow Task Customers + Customer_Lines\Merge Join 1"
-          TopLeft="538,155.039215714874" />
-        <NodeLayout
-          Size="106.4,41.6"
-          Id="Package\Sequence Container Customers + Customer Lines\Data Flow Task Customers + Customer_Lines\Sort 7"
-          TopLeft="360.000006130764,249.600003500546" />
-        <NodeLayout
-          Size="106.4,41.6"
-          Id="Package\Sequence Container Customers + Customer Lines\Data Flow Task Customers + Customer_Lines\Sort 4"
-          TopLeft="697.14286901513,492.517651228591" />
-        <NodeLayout
-          Size="97.6,41.6"
-          Id="Package\Sequence Container Customers + Customer Lines\Data Flow Task Customers + Customer_Lines\Sort"
-          TopLeft="63.2857140521614,95.4862745727222" />
-        <NodeLayout
           Size="138.4,41.6"
           Id="Package\Sequence Container Customers + Customer Lines\Data Flow Task Customers + Customer_Lines\Merge Join 3"
           TopLeft="241.142861249496,320.564710378152" />
@@ -8010,6 +8051,10 @@ from Stg_Usage_Main</property>
           Size="170.4,41.6"
           Id="Package\Sequence Container Customers + Customer Lines\Data Flow Task Customers + Customer_Lines\OLE DB Destination"
           TopLeft="786.285727676081,667.011770986274" />
+        <NodeLayout
+          Size="97.6,41.6"
+          Id="Package\Sequence Container Customers + Customer Lines\Data Flow Task Customers + Customer_Lines\Sort 1"
+          TopLeft="261.428571623199,94.0392157148737" />
         <NodeLayout
           Size="120,41.6"
           Id="Package\Sequence Container Customers + Customer Lines\Data Flow Task Customers + Customer_Lines\Union All"
@@ -8020,8 +8065,8 @@ from Stg_Usage_Main</property>
           TopLeft="291.42857639157,177.411767194015" />
         <NodeLayout
           Size="106.4,41.6"
-          Id="Package\Sequence Container Customers + Customer Lines\Data Flow Task Customers + Customer_Lines\Sort 2"
-          TopLeft="466,93.0392157148737" />
+          Id="Package\Sequence Container Customers + Customer Lines\Data Flow Task Customers + Customer_Lines\Sort 5"
+          TopLeft="924.571444316787,488.847062941818" />
         <NodeLayout
           Size="106.4,41.6"
           Id="Package\Sequence Container Customers + Customer Lines\Data Flow Task Customers + Customer_Lines\Sort 3"
@@ -8040,28 +8085,48 @@ from Stg_Usage_Main</property>
           TopLeft="17.7142857142857,10.324930000588" />
         <NodeLayout
           Size="106.4,41.6"
-          Id="Package\Sequence Container Customers + Customer Lines\Data Flow Task Customers + Customer_Lines\Sort 5"
-          TopLeft="924.571444316787,488.847062941818" />
+          Id="Package\Sequence Container Customers + Customer Lines\Data Flow Task Customers + Customer_Lines\Sort 7"
+          TopLeft="360.000006130764,249.600003500546" />
         <NodeLayout
           Size="97.6,41.6"
-          Id="Package\Sequence Container Customers + Customer Lines\Data Flow Task Customers + Customer_Lines\Sort 1"
-          TopLeft="261.428571623199,94.0392157148737" />
+          Id="Package\Sequence Container Customers + Customer Lines\Data Flow Task Customers + Customer_Lines\Sort"
+          TopLeft="63.2857140521614,95.4862745727222" />
+        <NodeLayout
+          Size="106.4,41.6"
+          Id="Package\Sequence Container Customers + Customer Lines\Data Flow Task Customers + Customer_Lines\Sort 2"
+          TopLeft="466,93.0392157148737" />
         <NodeLayout
           Size="211.2,41.6"
           Id="Package\Sequence Container Customers + Customer Lines\Data Flow Task Customers + Customer_Lines\OLE DB Stg_Customer Lines"
           TopLeft="964.761906906051,401.912610468721" />
         <NodeLayout
-          Size="152.8,41.6"
-          Id="Package\Sequence Container Customers + Customer Lines\Data Flow Task Customers + Customer_Lines\Derived Column"
-          TopLeft="530.285723316427,408.964711617929" />
+          Size="106.4,41.6"
+          Id="Package\Sequence Container Customers + Customer Lines\Data Flow Task Customers + Customer_Lines\Sort 6"
+          TopLeft="150.857145426225,252.047062358394" />
         <NodeLayout
           Size="129.6,41.6"
           Id="Package\Sequence Container Customers + Customer Lines\Data Flow Task Customers + Customer_Lines\Merge Join"
           TopLeft="145.64285716232,177.724090007645" />
         <NodeLayout
+          Size="203.2,41.6"
+          Id="Package\Sequence Container Customers + Customer Lines\Data Flow Task Customers + Customer_Lines\OLE DB Stg_Region_Prefix"
+          TopLeft="603.371428571429,11.2459406175304" />
+        <NodeLayout
+          Size="138.4,41.6"
+          Id="Package\Sequence Container Customers + Customer Lines\Data Flow Task Customers + Customer_Lines\Merge Join 1"
+          TopLeft="538,155.039215714874" />
+        <NodeLayout
+          Size="138.4,41.6"
+          Id="Package\Sequence Container Customers + Customer Lines\Data Flow Task Customers + Customer_Lines\Merge Join 2"
+          TopLeft="804.571442273199,570.258827510425" />
+        <NodeLayout
           Size="106.4,41.6"
-          Id="Package\Sequence Container Customers + Customer Lines\Data Flow Task Customers + Customer_Lines\Sort 6"
-          TopLeft="150.857145426225,252.047062358394" />
+          Id="Package\Sequence Container Customers + Customer Lines\Data Flow Task Customers + Customer_Lines\Sort 4"
+          TopLeft="697.14286901513,492.517651228591" />
+        <NodeLayout
+          Size="152.8,41.6"
+          Id="Package\Sequence Container Customers + Customer Lines\Data Flow Task Customers + Customer_Lines\Derived Column"
+          TopLeft="530.285723316427,408.964711617929" />
         <EdgeLayout
           Id="Package\Sequence Container Customers + Customer Lines\Data Flow Task Customers + Customer_Lines.Paths[Union All Output 1]"
           TopLeft="608.342866341435,358.188239734148">
@@ -8086,30 +8151,24 @@ from Stg_Usage_Main</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Sequence Container Customers + Customer Lines\Data Flow Task Customers + Customer_Lines.Paths[Sort Output]"
-          TopLeft="310.228571623199,135.639215714874">
+          TopLeft="640,113.839215714874">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-79.5190477942123,42.0848742927711"
+              EndConnector="-11.0666666666666,41.2"
               Start="0,0"
-              End="-79.5190477942123,34.5848742927711">
+              End="-11.0666666666666,33.7">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,20.9429864710814" />
+                    End="-7.06666666666661,0" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,20.9429864710814"
-                    Point2="0,24.9429864710814"
-                    Point3="-4,24.9429864710814" />
+                    Point1="-7.06666666666661,0"
+                    Point2="-11.0666666666666,0"
+                    Point3="-11.0666666666666,4" />
                   <mssgle:LineSegment
-                    End="-75.5190477942123,24.9429864710814" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-75.5190477942123,24.9429864710814"
-                    Point2="-79.5190477942123,24.9429864710814"
-                    Point3="-79.5190477942123,28.9429864710814" />
-                  <mssgle:LineSegment
-                    End="-79.5190477942123,34.5848742927711" />
+                    End="-11.0666666666666,33.7" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -8120,24 +8179,30 @@ from Stg_Usage_Main</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Sequence Container Customers + Customer Lines\Data Flow Task Customers + Customer_Lines.Paths[Sort Output7]"
-          TopLeft="572.4,113.839215714874">
+          TopLeft="750.34286901513,534.117651228591">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="13.0666666666666,41.2"
+              EndConnector="101.695239924736,36.1411762818334"
               Start="0,0"
-              End="13.0666666666666,33.7">
+              End="101.695239924736,28.6411762818334">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="9.06666666666661,0" />
+                    End="0,17.4368805603103" />
                   <mssgle:CubicBezierSegment
-                    Point1="9.06666666666661,0"
-                    Point2="13.0666666666666,0"
-                    Point3="13.0666666666666,4" />
+                    Point1="0,17.4368805603103"
+                    Point2="0,21.4368805603103"
+                    Point3="4,21.4368805603103" />
                   <mssgle:LineSegment
-                    End="13.0666666666666,33.7" />
+                    End="97.6952399247357,21.4368805603103" />
+                  <mssgle:CubicBezierSegment
+                    Point1="97.6952399247357,21.4368805603103"
+                    Point2="101.695239924736,21.4368805603103"
+                    Point3="101.695239924736,25.4368805603103" />
+                  <mssgle:LineSegment
+                    End="101.695239924736,28.6411762818334" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -8148,74 +8213,6 @@ from Stg_Usage_Main</property>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Sequence Container Customers + Customer Lines\Data Flow Task Customers + Customer_Lines.Paths[Sort Output6]"
-          TopLeft="112.085714052161,137.086274572722">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="78.0904764434918,40.6378154349227"
-              Start="0,0"
-              End="78.0904764434918,33.1378154349227">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,20.0853393919176" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,20.0853393919176"
-                    Point2="0,24.0853393919176"
-                    Point3="4,24.0853393919176" />
-                  <mssgle:LineSegment
-                    End="74.0904764434918,24.0853393919176" />
-                  <mssgle:CubicBezierSegment
-                    Point1="74.0904764434918,24.0853393919176"
-                    Point2="78.0904764434918,24.0853393919176"
-                    Point3="78.0904764434918,28.0853393919176" />
-                  <mssgle:LineSegment
-                    End="78.0904764434918,33.1378154349227" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Sequence Container Customers + Customer Lines\Data Flow Task Customers + Customer_Lines.Paths[Sort Output5]"
-          TopLeft="413.200006130764,291.200003500546">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-81.1238115479346,29.3647068776063"
-              Start="0,0"
-              End="-81.1238115479346,21.8647068776063">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,13.4174661365459" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,13.4174661365459"
-                    Point2="0,17.4174661365459"
-                    Point3="-4,17.4174661365459" />
-                  <mssgle:LineSegment
-                    End="-77.1238115479346,17.4174661365459" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-77.1238115479346,17.4174661365459"
-                    Point2="-81.1238115479346,17.4174661365459"
-                    Point3="-81.1238115479346,21.4174661365459" />
-                  <mssgle:LineSegment
-                    End="-81.1238115479346,21.8647068776063" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Sequence Container Customers + Customer Lines\Data Flow Task Customers + Customer_Lines.Paths[Sort Output2]"
           TopLeft="204.057145426225,293.647062358394">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -8249,25 +8246,31 @@ from Stg_Usage_Main</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Sequence Container Customers + Customer Lines\Data Flow Task Customers + Customer_Lines.Paths[Sort Output4]"
-          TopLeft="640,113.839215714874">
+          Id="Package\Sequence Container Customers + Customer Lines\Data Flow Task Customers + Customer_Lines.Paths[Sort Output5]"
+          TopLeft="977.771444316787,530.447062941818">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-11.0666666666666,41.2"
+              EndConnector="-82.2666687102549,39.8117645686062"
               Start="0,0"
-              End="-11.0666666666666,33.7">
+              End="-82.2666687102549,32.3117645686062">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="-7.06666666666661,0" />
+                    End="0,19.6140637841219" />
                   <mssgle:CubicBezierSegment
-                    Point1="-7.06666666666661,0"
-                    Point2="-11.0666666666666,0"
-                    Point3="-11.0666666666666,4" />
+                    Point1="0,19.6140637841219"
+                    Point2="0,23.6140637841219"
+                    Point3="-4,23.6140637841219" />
                   <mssgle:LineSegment
-                    End="-11.0666666666666,33.7" />
+                    End="-78.2666687102549,23.6140637841219" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-78.2666687102549,23.6140637841219"
+                    Point2="-82.2666687102549,23.6140637841219"
+                    Point3="-82.2666687102549,27.6140637841219" />
+                  <mssgle:LineSegment
+                    End="-82.2666687102549,32.3117645686062" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -8277,31 +8280,193 @@ from Stg_Usage_Main</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Sequence Container Customers + Customer Lines\Data Flow Task Customers + Customer_Lines.Paths[OLE DB Source Output4]"
-          TopLeft="508.085714285714,53.3820728577309">
+          Id="Package\Sequence Container Customers + Customer Lines\Data Flow Task Customers + Customer_Lines.Paths[Sort Output4]"
+          TopLeft="310.228571623199,135.639215714874">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="11.1142857142857,39.6571428571428"
+              EndConnector="-79.5190477942123,42.0848742927711"
               Start="0,0"
-              End="11.1142857142857,32.1571428571428">
+              End="-79.5190477942123,34.5848742927711">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,15.8285714285714" />
+                    End="0,20.9429864710814" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,15.8285714285714"
-                    Point2="0,19.8285714285714"
-                    Point3="4,19.8285714285714" />
+                    Point1="0,20.9429864710814"
+                    Point2="0,24.9429864710814"
+                    Point3="-4,24.9429864710814" />
                   <mssgle:LineSegment
-                    End="7.1142857142857,19.8285714285714" />
+                    End="-75.5190477942123,24.9429864710814" />
                   <mssgle:CubicBezierSegment
-                    Point1="7.1142857142857,19.8285714285714"
-                    Point2="11.1142857142857,19.8285714285714"
-                    Point3="11.1142857142857,23.8285714285714" />
+                    Point1="-75.5190477942123,24.9429864710814"
+                    Point2="-79.5190477942123,24.9429864710814"
+                    Point3="-79.5190477942123,28.9429864710814" />
                   <mssgle:LineSegment
-                    End="11.1142857142857,32.1571428571428" />
+                    End="-79.5190477942123,34.5848742927711" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Sequence Container Customers + Customer Lines\Data Flow Task Customers + Customer_Lines.Paths[Sort Output3]"
+          TopLeft="572.4,113.839215714874">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="13.0666666666666,41.2"
+              Start="0,0"
+              End="13.0666666666666,33.7">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="9.06666666666661,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="9.06666666666661,0"
+                    Point2="13.0666666666666,0"
+                    Point3="13.0666666666666,4" />
+                  <mssgle:LineSegment
+                    End="13.0666666666666,33.7" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Sequence Container Customers + Customer Lines\Data Flow Task Customers + Customer_Lines.Paths[Sort Output2]"
+          TopLeft="112.085714052161,137.086274572722">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="78.0904764434918,40.6378154349227"
+              Start="0,0"
+              End="78.0904764434918,33.1378154349227">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,20.0853393919176" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,20.0853393919176"
+                    Point2="0,24.0853393919176"
+                    Point3="4,24.0853393919176" />
+                  <mssgle:LineSegment
+                    End="74.0904764434918,24.0853393919176" />
+                  <mssgle:CubicBezierSegment
+                    Point1="74.0904764434918,24.0853393919176"
+                    Point2="78.0904764434918,24.0853393919176"
+                    Point3="78.0904764434918,28.0853393919176" />
+                  <mssgle:LineSegment
+                    End="78.0904764434918,33.1378154349227" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Sequence Container Customers + Customer Lines\Data Flow Task Customers + Customer_Lines.Paths[Sort Output1]"
+          TopLeft="413.200006130764,291.200003500546">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-81.1238115479346,29.3647068776063"
+              Start="0,0"
+              End="-81.1238115479346,21.8647068776063">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,13.4174661365459" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,13.4174661365459"
+                    Point2="0,17.4174661365459"
+                    Point3="-4,17.4174661365459" />
+                  <mssgle:LineSegment
+                    End="-77.1238115479346,17.4174661365459" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-77.1238115479346,17.4174661365459"
+                    Point2="-81.1238115479346,17.4174661365459"
+                    Point3="-81.1238115479346,21.4174661365459" />
+                  <mssgle:LineSegment
+                    End="-81.1238115479346,21.8647068776063" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Sequence Container Customers + Customer Lines\Data Flow Task Customers + Customer_Lines.Paths[OLE DB Source Output]"
+          TopLeft="310.614285811599,52.6392157148737">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,41.4"
+              Start="0,0"
+              End="0,33.9">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,33.9" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Sequence Container Customers + Customer Lines\Data Flow Task Customers + Customer_Lines.Paths[OLE DB Source Output2]"
+          TopLeft="409.914291261167,219.011767194015">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,30.5882363065304"
+              Start="0,0"
+              End="0,23.0882363065304">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,23.0882363065304" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Sequence Container Customers + Customer Lines\Data Flow Task Customers + Customer_Lines.Paths[OLE DB Source Output1]"
+          TopLeft="112.899999883224,51.924930000588">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,43.5613445721342"
+              Start="0,0"
+              End="0,36.0613445721342">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,36.0613445721342" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -8379,85 +8544,31 @@ from Stg_Usage_Main</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Sequence Container Customers + Customer Lines\Data Flow Task Customers + Customer_Lines.Paths[OLE DB Source Output2]"
-          TopLeft="409.914291261167,219.011767194015">
+          Id="Package\Sequence Container Customers + Customer Lines\Data Flow Task Customers + Customer_Lines.Paths[OLE DB Source Output4]"
+          TopLeft="508.085714285714,53.3820728577309">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,30.5882363065304"
+              EndConnector="11.1142857142857,39.6571428571428"
               Start="0,0"
-              End="0,23.0882363065304">
+              End="11.1142857142857,32.1571428571428">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,23.0882363065304" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Sequence Container Customers + Customer Lines\Data Flow Task Customers + Customer_Lines.Paths[OLE DB Source Output1]"
-          TopLeft="112.899999883224,51.924930000588">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,43.5613445721342"
-              Start="0,0"
-              End="0,36.0613445721342">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
+                    End="0,15.8285714285714" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,15.8285714285714"
+                    Point2="0,19.8285714285714"
+                    Point3="4,19.8285714285714" />
                   <mssgle:LineSegment
-                    End="0,36.0613445721342" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Sequence Container Customers + Customer Lines\Data Flow Task Customers + Customer_Lines.Paths[OLE DB Source Output]"
-          TopLeft="310.614285811599,52.6392157148737">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,41.4"
-              Start="0,0"
-              End="0,33.9">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
+                    End="7.1142857142857,19.8285714285714" />
+                  <mssgle:CubicBezierSegment
+                    Point1="7.1142857142857,19.8285714285714"
+                    Point2="11.1142857142857,19.8285714285714"
+                    Point3="11.1142857142857,23.8285714285714" />
                   <mssgle:LineSegment
-                    End="0,33.9" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Sequence Container Customers + Customer Lines\Data Flow Task Customers + Customer_Lines.Paths[Merge Join Output]"
-          TopLeft="608.600004683222,196.639215714874">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,119.949024019274"
-              Start="0,0"
-              End="0,112.449024019274">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,112.449024019274" />
+                    End="11.1142857142857,32.1571428571428" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -8511,6 +8622,50 @@ from Stg_Usage_Main</property>
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
+          Id="Package\Sequence Container Customers + Customer Lines\Data Flow Task Customers + Customer_Lines.Paths[Merge Join Output1]"
+          TopLeft="872.62858497464,611.858827510425">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,55.1529434758485"
+              Start="0,0"
+              End="0,47.6529434758485">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,47.6529434758485" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Sequence Container Customers + Customer Lines\Data Flow Task Customers + Customer_Lines.Paths[Merge Join Output]"
+          TopLeft="608.600004683222,196.639215714874">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,119.949024019274"
+              Start="0,0"
+              End="0,112.449024019274">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,112.449024019274" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
           Id="Package\Sequence Container Customers + Customer Lines\Data Flow Task Customers + Customer_Lines.Paths[Derived Column Output]"
           TopLeft="606.685723316427,450.564711617929">
           <EdgeLayout.Curve>
@@ -8536,100 +8691,6 @@ from Stg_Usage_Main</property>
                     Point3="143.657145698703,24.9764698053314" />
                   <mssgle:LineSegment
                     End="143.657145698703,34.4529396106627" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="138.4,41.6"
-          Id="Package\Sequence Container Customers + Customer Lines\Data Flow Task Customers + Customer_Lines\Merge Join 2"
-          TopLeft="804.571442273199,570.258827510425" />
-        <EdgeLayout
-          Id="Package\Sequence Container Customers + Customer Lines\Data Flow Task Customers + Customer_Lines.Paths[Sort Output1]"
-          TopLeft="977.771444316787,530.447062941818">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-82.2666687102549,39.8117645686062"
-              Start="0,0"
-              End="-82.2666687102549,32.3117645686062">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,19.6140637841219" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,19.6140637841219"
-                    Point2="0,23.6140637841219"
-                    Point3="-4,23.6140637841219" />
-                  <mssgle:LineSegment
-                    End="-78.2666687102549,23.6140637841219" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-78.2666687102549,23.6140637841219"
-                    Point2="-82.2666687102549,23.6140637841219"
-                    Point3="-82.2666687102549,27.6140637841219" />
-                  <mssgle:LineSegment
-                    End="-82.2666687102549,32.3117645686062" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Sequence Container Customers + Customer Lines\Data Flow Task Customers + Customer_Lines.Paths[Sort Output3]"
-          TopLeft="750.34286901513,534.117651228591">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="101.695239924736,36.1411762818334"
-              Start="0,0"
-              End="101.695239924736,28.6411762818334">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,17.4368805603103" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,17.4368805603103"
-                    Point2="0,21.4368805603103"
-                    Point3="4,21.4368805603103" />
-                  <mssgle:LineSegment
-                    End="97.6952399247357,21.4368805603103" />
-                  <mssgle:CubicBezierSegment
-                    Point1="97.6952399247357,21.4368805603103"
-                    Point2="101.695239924736,21.4368805603103"
-                    Point3="101.695239924736,25.4368805603103" />
-                  <mssgle:LineSegment
-                    End="101.695239924736,28.6411762818334" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Sequence Container Customers + Customer Lines\Data Flow Task Customers + Customer_Lines.Paths[Merge Join Output1]"
-          TopLeft="872.62858497464,611.858827510425">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,55.1529434758485"
-              Start="0,0"
-              End="0,47.6529434758485">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,47.6529434758485" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -8853,19 +8914,6 @@ from Stg_Usage_Main</property>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
     design-time-name="Package\Sequence Container Package_Catalog\Data Flow Task Package_Catalog\OLE DB Source Stg_Package_Catalog">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Sequence Container Call_Origin_Type (Usage_Main)\Data Flow Task Call_Origin_Type (Usage_Main)\OLE DB Destination Dim_Call_Origin_Type">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
