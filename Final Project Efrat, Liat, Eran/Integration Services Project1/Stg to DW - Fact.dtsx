@@ -11,8 +11,8 @@
   DTS:LocaleID="1037"
   DTS:ObjectName="Stg to DW - Fact"
   DTS:PackageType="5"
-  DTS:VersionBuild="116"
-  DTS:VersionGUID="{38446728-6EED-406D-9907-18EAA7FFD7D1}">
+  DTS:VersionBuild="119"
+  DTS:VersionGUID="{8B66DA44-57E6-446D-9851-C314EB0D61FF}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -10575,14 +10575,14 @@ where [refTable].[Key Customer] = ? and [refTable].[Key Call Date] = ? and [refT
               startId="Package\Data Flow Task - Fact_Usage_Main -  Only Delta\Derived Column BillableAmount.Outputs[Derived Column Output]" />
             <path
               refId="Package\Data Flow Task - Fact_Usage_Main -  Only Delta.Paths[Lookup Match Output10]"
+              endId="Package\Data Flow Task - Fact_Usage_Main -  Only Delta\Lookup Dim_Date.Inputs[Lookup Input]"
+              name="Lookup Match Output"
+              startId="Package\Data Flow Task - Fact_Usage_Main -  Only Delta\Lookup Dim_Call_Origin_Type.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\Data Flow Task - Fact_Usage_Main -  Only Delta.Paths[Lookup Match Output9]"
               endId="Package\Data Flow Task - Fact_Usage_Main -  Only Delta\Derived Column 1.Inputs[Derived Column Input]"
               name="Lookup Match Output"
               startId="Package\Data Flow Task - Fact_Usage_Main -  Only Delta\Lookup Dim_Time.Outputs[Lookup Match Output]" />
-            <path
-              refId="Package\Data Flow Task - Fact_Usage_Main -  Only Delta.Paths[Lookup Match Output9]"
-              endId="Package\Data Flow Task - Fact_Usage_Main -  Only Delta\Data Conversion 1.Inputs[Data Conversion Input]"
-              name="Lookup Match Output"
-              startId="Package\Data Flow Task - Fact_Usage_Main -  Only Delta\Lookup Dim_Countries_Destination.Outputs[Lookup Match Output]" />
             <path
               refId="Package\Data Flow Task - Fact_Usage_Main -  Only Delta.Paths[Lookup Match Output7]"
               endId="Package\Data Flow Task - Fact_Usage_Main -  Only Delta\Derived Column.Inputs[Derived Column Input]"
@@ -10595,14 +10595,14 @@ where [refTable].[Key Customer] = ? and [refTable].[Key Call Date] = ? and [refT
               startId="Package\Data Flow Task - Fact_Usage_Main -  Only Delta\Lookup Dim_Call_Types.Outputs[Lookup Match Output]" />
             <path
               refId="Package\Data Flow Task - Fact_Usage_Main -  Only Delta.Paths[Lookup Match Output5]"
-              endId="Package\Data Flow Task - Fact_Usage_Main -  Only Delta\Lookup Dim_Date.Inputs[Lookup Input]"
+              endId="Package\Data Flow Task - Fact_Usage_Main -  Only Delta\Data Conversion.Inputs[Data Conversion Input]"
               name="Lookup Match Output"
-              startId="Package\Data Flow Task - Fact_Usage_Main -  Only Delta\Lookup Dim_Call_Origin_Type.Outputs[Lookup Match Output]" />
+              startId="Package\Data Flow Task - Fact_Usage_Main -  Only Delta\Lookup Dim_Countries_Calling.Outputs[Lookup Match Output]" />
             <path
               refId="Package\Data Flow Task - Fact_Usage_Main -  Only Delta.Paths[Lookup Match Output8]"
-              endId="Package\Data Flow Task - Fact_Usage_Main -  Only Delta\Lookup Dim_Time.Inputs[Lookup Input]"
+              endId="Package\Data Flow Task - Fact_Usage_Main -  Only Delta\Data Conversion 1.Inputs[Data Conversion Input]"
               name="Lookup Match Output"
-              startId="Package\Data Flow Task - Fact_Usage_Main -  Only Delta\Lookup Dim_Date.Outputs[Lookup Match Output]" />
+              startId="Package\Data Flow Task - Fact_Usage_Main -  Only Delta\Lookup Dim_Countries_Destination.Outputs[Lookup Match Output]" />
             <path
               refId="Package\Data Flow Task - Fact_Usage_Main -  Only Delta.Paths[Lookup Match Output3]"
               endId="Package\Data Flow Task - Fact_Usage_Main -  Only Delta\Lookup Dim_Countries_Destination.Inputs[Lookup Input]"
@@ -10615,19 +10615,19 @@ where [refTable].[Key Customer] = ? and [refTable].[Key Call Date] = ? and [refT
               startId="Package\Data Flow Task - Fact_Usage_Main -  Only Delta\Lookup Dim_Package_Catalog.Outputs[Lookup Match Output]" />
             <path
               refId="Package\Data Flow Task - Fact_Usage_Main -  Only Delta.Paths[Lookup Match Output1]"
-              endId="Package\Data Flow Task - Fact_Usage_Main -  Only Delta\Data Conversion.Inputs[Data Conversion Input]"
-              name="Lookup Match Output"
-              startId="Package\Data Flow Task - Fact_Usage_Main -  Only Delta\Lookup Dim_Countries_Calling.Outputs[Lookup Match Output]" />
-            <path
-              refId="Package\Data Flow Task - Fact_Usage_Main -  Only Delta.Paths[Lookup Match Output]"
               endId="Package\Data Flow Task - Fact_Usage_Main -  Only Delta\Derived Column 3.Inputs[Derived Column Input]"
               name="Lookup Match Output"
               startId="Package\Data Flow Task - Fact_Usage_Main -  Only Delta\Lookup Dim_Operators_Destination.Outputs[Lookup Match Output]" />
             <path
-              refId="Package\Data Flow Task - Fact_Usage_Main -  Only Delta.Paths[Lookup Match Output4]"
+              refId="Package\Data Flow Task - Fact_Usage_Main -  Only Delta.Paths[Lookup Match Output]"
               endId="Package\Data Flow Task - Fact_Usage_Main -  Only Delta\Lookup Dim_Countries_Calling.Inputs[Lookup Input]"
               name="Lookup Match Output"
               startId="Package\Data Flow Task - Fact_Usage_Main -  Only Delta\Lookup Dim_Customers.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\Data Flow Task - Fact_Usage_Main -  Only Delta.Paths[Lookup Match Output4]"
+              endId="Package\Data Flow Task - Fact_Usage_Main -  Only Delta\Lookup Dim_Time.Inputs[Lookup Input]"
+              name="Lookup Match Output"
+              startId="Package\Data Flow Task - Fact_Usage_Main -  Only Delta\Lookup Dim_Date.Outputs[Lookup Match Output]" />
             <path
               refId="Package\Data Flow Task - Fact_Usage_Main -  Only Delta.Paths[Lookup No Match Output]"
               endId="Package\Data Flow Task - Fact_Usage_Main -  Only Delta\OLE DB Destination Fact_Usage_Main.Inputs[OLE DB Destination Input]"
@@ -10650,49 +10650,49 @@ where [refTable].[Key Customer] = ? and [refTable].[Key Call Date] = ? and [refT
               startId="Package\Data Flow Task - Fact_Usage_Main -  Only Delta\Merge Join 2.Outputs[Merge Join Output]" />
             <path
               refId="Package\Data Flow Task - Fact_Usage_Main -  Only Delta.Paths[OLE DB Source Output3]"
-              endId="Package\Data Flow Task - Fact_Usage_Main -  Only Delta\Sort 3.Inputs[Sort Input]"
-              name="OLE DB Source Output"
-              startId="Package\Data Flow Task - Fact_Usage_Main -  Only Delta\OLE DB Source Stg_Customer_Lines Destination.Outputs[OLE DB Source Output]" />
-            <path
-              refId="Package\Data Flow Task - Fact_Usage_Main -  Only Delta.Paths[OLE DB Source Output2]"
               endId="Package\Data Flow Task - Fact_Usage_Main -  Only Delta\Sort.Inputs[Sort Input]"
               name="OLE DB Source Output"
               startId="Package\Data Flow Task - Fact_Usage_Main -  Only Delta\OLE DB Source Stg_Usage_Main_Calling.Outputs[OLE DB Source Output]" />
             <path
-              refId="Package\Data Flow Task - Fact_Usage_Main -  Only Delta.Paths[OLE DB Source Output]"
-              endId="Package\Data Flow Task - Fact_Usage_Main -  Only Delta\Sort 2.Inputs[Sort Input]"
+              refId="Package\Data Flow Task - Fact_Usage_Main -  Only Delta.Paths[OLE DB Source Output2]"
+              endId="Package\Data Flow Task - Fact_Usage_Main -  Only Delta\Sort 3.Inputs[Sort Input]"
               name="OLE DB Source Output"
-              startId="Package\Data Flow Task - Fact_Usage_Main -  Only Delta\OLE DB Source Stg_Usage_Main Destination.Outputs[OLE DB Source Output]" />
+              startId="Package\Data Flow Task - Fact_Usage_Main -  Only Delta\OLE DB Source Stg_Customer_Lines Destination.Outputs[OLE DB Source Output]" />
             <path
-              refId="Package\Data Flow Task - Fact_Usage_Main -  Only Delta.Paths[OLE DB Source Output1]"
+              refId="Package\Data Flow Task - Fact_Usage_Main -  Only Delta.Paths[OLE DB Source Output]"
               endId="Package\Data Flow Task - Fact_Usage_Main -  Only Delta\Sort 1.Inputs[Sort Input]"
               name="OLE DB Source Output"
               startId="Package\Data Flow Task - Fact_Usage_Main -  Only Delta\OLE DB Source Stg_Customer_Lines_Calling.Outputs[OLE DB Source Output]" />
             <path
+              refId="Package\Data Flow Task - Fact_Usage_Main -  Only Delta.Paths[OLE DB Source Output1]"
+              endId="Package\Data Flow Task - Fact_Usage_Main -  Only Delta\Sort 2.Inputs[Sort Input]"
+              name="OLE DB Source Output"
+              startId="Package\Data Flow Task - Fact_Usage_Main -  Only Delta\OLE DB Source Stg_Usage_Main Destination.Outputs[OLE DB Source Output]" />
+            <path
               refId="Package\Data Flow Task - Fact_Usage_Main -  Only Delta.Paths[Sort Output4]"
-              endId="Package\Data Flow Task - Fact_Usage_Main -  Only Delta\Merge Join.Inputs[Merge Join Right Input]"
-              name="Sort Output"
-              startId="Package\Data Flow Task - Fact_Usage_Main -  Only Delta\Sort 1.Outputs[Sort Output]" />
-            <path
-              refId="Package\Data Flow Task - Fact_Usage_Main -  Only Delta.Paths[Sort Output]"
-              endId="Package\Data Flow Task - Fact_Usage_Main -  Only Delta\Merge Join.Inputs[Merge Join Left Input]"
-              name="Sort Output"
-              startId="Package\Data Flow Task - Fact_Usage_Main -  Only Delta\Sort.Outputs[Sort Output]" />
-            <path
-              refId="Package\Data Flow Task - Fact_Usage_Main -  Only Delta.Paths[Sort Output1]"
-              endId="Package\Data Flow Task - Fact_Usage_Main -  Only Delta\Merge Join 1.Inputs[Merge Join Right Input]"
-              name="Sort Output"
-              startId="Package\Data Flow Task - Fact_Usage_Main -  Only Delta\Sort 2.Outputs[Sort Output]" />
-            <path
-              refId="Package\Data Flow Task - Fact_Usage_Main -  Only Delta.Paths[Sort Output2]"
               endId="Package\Data Flow Task - Fact_Usage_Main -  Only Delta\Merge Join 2.Inputs[Merge Join Left Input]"
               name="Sort Output"
               startId="Package\Data Flow Task - Fact_Usage_Main -  Only Delta\Sort 5.Outputs[Sort Output]" />
             <path
-              refId="Package\Data Flow Task - Fact_Usage_Main -  Only Delta.Paths[Sort Output3]"
+              refId="Package\Data Flow Task - Fact_Usage_Main -  Only Delta.Paths[Sort Output]"
               endId="Package\Data Flow Task - Fact_Usage_Main -  Only Delta\Merge Join 2.Inputs[Merge Join Right Input]"
               name="Sort Output"
               startId="Package\Data Flow Task - Fact_Usage_Main -  Only Delta\Sort 4.Outputs[Sort Output]" />
+            <path
+              refId="Package\Data Flow Task - Fact_Usage_Main -  Only Delta.Paths[Sort Output1]"
+              endId="Package\Data Flow Task - Fact_Usage_Main -  Only Delta\Merge Join.Inputs[Merge Join Right Input]"
+              name="Sort Output"
+              startId="Package\Data Flow Task - Fact_Usage_Main -  Only Delta\Sort 1.Outputs[Sort Output]" />
+            <path
+              refId="Package\Data Flow Task - Fact_Usage_Main -  Only Delta.Paths[Sort Output2]"
+              endId="Package\Data Flow Task - Fact_Usage_Main -  Only Delta\Merge Join.Inputs[Merge Join Left Input]"
+              name="Sort Output"
+              startId="Package\Data Flow Task - Fact_Usage_Main -  Only Delta\Sort.Outputs[Sort Output]" />
+            <path
+              refId="Package\Data Flow Task - Fact_Usage_Main -  Only Delta.Paths[Sort Output3]"
+              endId="Package\Data Flow Task - Fact_Usage_Main -  Only Delta\Merge Join 1.Inputs[Merge Join Right Input]"
+              name="Sort Output"
+              startId="Package\Data Flow Task - Fact_Usage_Main -  Only Delta\Sort 2.Outputs[Sort Output]" />
             <path
               refId="Package\Data Flow Task - Fact_Usage_Main -  Only Delta.Paths[Sort Output5]"
               endId="Package\Data Flow Task - Fact_Usage_Main -  Only Delta\Merge Join 1.Inputs[Merge Join Left Input]"
@@ -10865,28 +10865,6 @@ where [refTable].[Key Customer] = ? and [refTable].[Key Call Date] = ? and [refT
           TopLeft="1160.00001975468,750.588239734148" />
         <EdgeLayout
           Id="Package\Data Flow Task - Fact_Usage_Main -  Only Delta.Paths[OLE DB Source Output3]"
-          TopLeft="1185.71430590688,88.0941185908334">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-45.02857400738,0"
-              Start="0,0"
-              End="-37.52857400738,0">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="-37.52857400738,0" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Data Flow Task - Fact_Usage_Main -  Only Delta.Paths[OLE DB Source Output2]"
           TopLeft="357.142858660952,24.7764706440038">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -10908,19 +10886,19 @@ where [refTable].[Key Customer] = ? and [refTable].[Key Call Date] = ? and [refT
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Data Flow Task - Fact_Usage_Main -  Only Delta.Paths[OLE DB Source Output1]"
-          TopLeft="367.695239493312,99.1137261565581">
+          Id="Package\Data Flow Task - Fact_Usage_Main -  Only Delta.Paths[OLE DB Source Output2]"
+          TopLeft="1185.71430590688,88.0941185908334">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="42.019053198367,0"
+              EndConnector="-45.02857400738,0"
               Start="0,0"
-              End="34.519053198367,0">
+              End="-37.52857400738,0">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="34.519053198367,0" />
+                    End="-37.52857400738,0" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -10930,7 +10908,7 @@ where [refTable].[Key Customer] = ? and [refTable].[Key Call Date] = ? and [refT
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Data Flow Task - Fact_Usage_Main -  Only Delta.Paths[OLE DB Source Output]"
+          Id="Package\Data Flow Task - Fact_Usage_Main -  Only Delta.Paths[OLE DB Source Output1]"
           TopLeft="1200.00002043588,24.6235294653883">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -10943,6 +10921,28 @@ where [refTable].[Key Customer] = ? and [refTable].[Key Call Date] = ? and [refT
                   Capacity="5">
                   <mssgle:LineSegment
                     End="-59.1857170834837,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data Flow Task - Fact_Usage_Main -  Only Delta.Paths[OLE DB Source Output]"
+          TopLeft="367.695239493312,99.1137261565581">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="42.019053198367,0"
+              Start="0,0"
+              End="34.519053198367,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="34.519053198367,0" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -11023,26 +11023,50 @@ where [refTable].[Key Customer] = ? and [refTable].[Key Call Date] = ? and [refT
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,-55.0274581230503"
+              EndConnector="0,-55.02745812305"
               Start="0,0"
-              End="0,-47.5274581230503">
+              End="0,-47.52745812305">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,-47.5274581230503" />
+                    End="0,-47.52745812305" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-55.80638671875,-29.5684165615252,111.6127734375,11.609375"
+              BoundingBox="-55.80638671875,-29.568416561525,111.6127734375,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Data Flow Task - Fact_Usage_Main -  Only Delta.Paths[Lookup Match Output10]"
+          TopLeft="770.08980740486,852.290207448055">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,34.9064396333524"
+              Start="0,0"
+              End="0,27.4064396333524">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,27.4064396333524" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,7.8985323166762,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data Flow Task - Fact_Usage_Main -  Only Delta.Paths[Lookup Match Output9]"
           TopLeft="850.955113753216,987.593844307618">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -11066,7 +11090,7 @@ where [refTable].[Key Customer] = ? and [refTable].[Key Call Date] = ? and [refT
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Data Flow Task - Fact_Usage_Main -  Only Delta.Paths[Lookup Match Output9]"
+          Id="Package\Data Flow Task - Fact_Usage_Main -  Only Delta.Paths[Lookup Match Output8]"
           TopLeft="916.628585281178,246.556865193192">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -11086,30 +11110,6 @@ where [refTable].[Key Customer] = ? and [refTable].[Key Call Date] = ? and [refT
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
               BoundingBox="-48.19138671875,10.7551163557903,96.3827734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Data Flow Task - Fact_Usage_Main -  Only Delta.Paths[Lookup Match Output8]"
-          TopLeft="770.243549145902,928.796647081407">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,39.6067205999027"
-              Start="0,0"
-              End="0,32.1067205999027">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,32.1067205999027" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-48.19138671875,10.2486727999514,96.3827734375,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -11163,49 +11163,49 @@ where [refTable].[Key Customer] = ? and [refTable].[Key Call Date] = ? and [refT
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Data Flow Task - Fact_Usage_Main -  Only Delta.Paths[Lookup Match Output5]"
-          TopLeft="770.08980740486,852.290207448055">
+          TopLeft="627.247628125366,245.113728344399">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,34.9064396333524"
+              EndConnector="0,43.3602166115504"
               Start="0,0"
-              End="0,27.4064396333524">
+              End="0,35.8602166115504">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,27.4064396333524" />
+                    End="0,35.8602166115504" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-48.19138671875,7.8985323166762,96.3827734375,11.609375"
+              BoundingBox="-48.19138671875,12.1254208057752,96.3827734375,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Data Flow Task - Fact_Usage_Main -  Only Delta.Paths[Lookup Match Output4]"
-          TopLeft="628.076199203608,173.521570466382">
+          TopLeft="770.243549145902,928.796647081407">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,29.9921578780163"
+              EndConnector="0,39.6067205999029"
               Start="0,0"
-              End="0,22.4921578780163">
+              End="0,32.1067205999029">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,22.4921578780163" />
+                    End="0,32.1067205999029" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-48.19138671875,5.44139143900815,96.3827734375,11.609375"
+              BoundingBox="-48.19138671875,10.2486727999515,96.3827734375,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -11259,30 +11259,6 @@ where [refTable].[Key Customer] = ? and [refTable].[Key Call Date] = ? and [refT
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Data Flow Task - Fact_Usage_Main -  Only Delta.Paths[Lookup Match Output1]"
-          TopLeft="627.247628125366,245.113728344399">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,43.3602166115504"
-              Start="0,0"
-              End="0,35.8602166115504">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,35.8602166115504" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-48.19138671875,12.1254208057752,96.3827734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Data Flow Task - Fact_Usage_Main -  Only Delta.Paths[Lookup Match Output]"
           TopLeft="917.809534239931,393.835298908018">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -11302,6 +11278,30 @@ where [refTable].[Key Customer] = ? and [refTable].[Key Call Date] = ? and [refT
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
               BoundingBox="-48.19138671875,5.5685580435173,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data Flow Task - Fact_Usage_Main -  Only Delta.Paths[Lookup Match Output]"
+          TopLeft="628.076199203608,173.521570466382">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,29.9921578780163"
+              Start="0,0"
+              End="0,22.4921578780163">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,22.4921578780163" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,5.44139143900815,96.3827734375,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -11517,74 +11517,6 @@ where [refTable].[Key Customer] = ? and [refTable].[Key Call Date] = ? and [refT
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Data Flow Task - Fact_Usage_Main -  Only Delta.Paths[Sort Output4]"
-          TopLeft="516.114292691679,99.5294120049394">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="44.4571454262249,-32.1411761359772"
-              Start="0,0"
-              End="36.9571454262249,-32.1411761359772">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="21.6863506907077,0" />
-                  <mssgle:CubicBezierSegment
-                    Point1="21.6863506907077,0"
-                    Point2="25.6863506907077,0"
-                    Point3="25.6863506907077,-4" />
-                  <mssgle:LineSegment
-                    End="25.6863506907077,-28.1411761359772" />
-                  <mssgle:CubicBezierSegment
-                    Point1="25.6863506907077,-28.1411761359772"
-                    Point2="25.6863506907077,-32.1411761359772"
-                    Point3="29.6863506907077,-32.1411761359772" />
-                  <mssgle:LineSegment
-                    End="36.9571454262249,-32.1411761359772" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Data Flow Task - Fact_Usage_Main -  Only Delta.Paths[Sort Output3]"
-          TopLeft="632.057145880355,539.717649089369">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="116.266673285621,42.8705893077647"
-              Start="0,0"
-              End="116.266673285621,35.3705893077647">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,21.4283838294056" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,21.4283838294056"
-                    Point2="0,25.4283838294056"
-                    Point3="4,25.4283838294056" />
-                  <mssgle:LineSegment
-                    End="112.266673285621,25.4283838294056" />
-                  <mssgle:CubicBezierSegment
-                    Point1="112.266673285621,25.4283838294056"
-                    Point2="116.266673285621,25.4283838294056"
-                    Point3="116.266673285621,29.4283838294056" />
-                  <mssgle:LineSegment
-                    End="116.266673285621,35.3705893077647" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Data Flow Task - Fact_Usage_Main -  Only Delta.Paths[Sort Output2]"
           TopLeft="915.485722135687,542.776472661679">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -11618,7 +11550,7 @@ where [refTable].[Key Customer] = ? and [refTable].[Key Call Date] = ? and [refT
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Data Flow Task - Fact_Usage_Main -  Only Delta.Paths[Sort Output1]"
+          Id="Package\Data Flow Task - Fact_Usage_Main -  Only Delta.Paths[Sort Output3]"
           TopLeft="1035.7143033524,25.3882353584659">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -11652,7 +11584,7 @@ where [refTable].[Key Customer] = ? and [refTable].[Key Call Date] = ? and [refT
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Data Flow Task - Fact_Usage_Main -  Only Delta.Paths[Sort Output]"
+          Id="Package\Data Flow Task - Fact_Usage_Main -  Only Delta.Paths[Sort Output2]"
           TopLeft="511.314292759798,24.4705882867727">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -11677,6 +11609,74 @@ where [refTable].[Key Customer] = ? and [refTable].[Key Call Date] = ? and [refT
                     Point3="32.459683984683,31.7176475821895" />
                   <mssgle:LineSegment
                     End="41.7571453581052,31.7176475821895" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data Flow Task - Fact_Usage_Main -  Only Delta.Paths[Sort Output1]"
+          TopLeft="516.114292691679,99.5294120049394">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="44.4571454262249,-32.1411761359772"
+              Start="0,0"
+              End="36.9571454262249,-32.1411761359772">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="21.6863506907077,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="21.6863506907077,0"
+                    Point2="25.6863506907077,0"
+                    Point3="25.6863506907077,-4" />
+                  <mssgle:LineSegment
+                    End="25.6863506907077,-28.1411761359772" />
+                  <mssgle:CubicBezierSegment
+                    Point1="25.6863506907077,-28.1411761359772"
+                    Point2="25.6863506907077,-32.1411761359772"
+                    Point3="29.6863506907077,-32.1411761359772" />
+                  <mssgle:LineSegment
+                    End="36.9571454262249,-32.1411761359772" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data Flow Task - Fact_Usage_Main -  Only Delta.Paths[Sort Output]"
+          TopLeft="632.057145880355,539.717649089369">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="116.266673285621,42.8705893077647"
+              Start="0,0"
+              End="116.266673285621,35.3705893077647">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,21.4283838294056" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,21.4283838294056"
+                    Point2="0,25.4283838294056"
+                    Point3="4,25.4283838294056" />
+                  <mssgle:LineSegment
+                    End="112.266673285621,25.4283838294056" />
+                  <mssgle:CubicBezierSegment
+                    Point1="112.266673285621,25.4283838294056"
+                    Point2="116.266673285621,25.4283838294056"
+                    Point3="116.266673285621,29.4283838294056" />
+                  <mssgle:LineSegment
+                    End="116.266673285621,35.3705893077647" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>

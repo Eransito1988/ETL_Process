@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SharedDataSet xmlns="http://schemas.microsoft.com/sqlserver/reporting/2010/01/shareddatasetdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
+  <DataSet Name="DataSet1">
+    <Query>
+      <DataSourceReference>DW_TheVoice</DataSourceReference>
+      <CommandText>with cte as
+(
+select [Call ID], [Key Customer], Duration, [Billable Amount], ct.[Call Type], ct.[Category Of Call] ,Row_Number () over (partition by CT.[Call Type] order by CT.[Call Type] asc) 'Row Of Calls Per Types'
+from Fact_Usage_Main UM join Dim_Call_Types CT
+on UM.[Key Call Type] = CT.[Key Call Type]
+),
+cte2 as
+(
+select [Call ID], [Key Customer], [Call Type], Duration, [Billable Amount], max([Row Of Calls Per Types]) over (partition by [Call Type]) 'Sum Of Calls'
+from cte
+)
+select [Call Type], sum(Duration) 'Duration Per Type', sum([Billable Amount]) [Billable Amount Per Type], count([Sum Of Calls])[Sum Of Calls Per Type] 
+from cte2
+group by [Call Type]</CommandText>
+    </Query>
+    <Fields>
+      <Field Name="Call_Type">
+        <DataField>Call Type</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="Duration_Per_Type">
+        <DataField>Duration Per Type</DataField>
+        <rd:TypeName>System.Int32</rd:TypeName>
+      </Field>
+      <Field Name="Billable_Amount_Per_Type">
+        <DataField>Billable Amount Per Type</DataField>
+        <rd:TypeName>System.Double</rd:TypeName>
+      </Field>
+      <Field Name="Sum_Of_Calls_Per_Type">
+        <DataField>Sum Of Calls Per Type</DataField>
+        <rd:TypeName>System.Int32</rd:TypeName>
+      </Field>
+    </Fields>
+  </DataSet>
+</SharedDataSet>

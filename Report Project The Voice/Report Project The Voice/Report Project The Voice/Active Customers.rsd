@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SharedDataSet xmlns="http://schemas.microsoft.com/sqlserver/reporting/2010/01/shareddatasetdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
+  <DataSet Name="DataSet1">
+    <Query>
+      <DataSourceReference>DW_TheVoice</DataSourceReference>
+      <CommandText>with cte as
+(
+Select distinct [Customer ID]
+from Dim_Customers
+EXCEPT
+select distinct UM.[Key Customer]
+from Fact_Usage_Main UM join Dim_Customers C
+on UM.[Key Customer] = C.[Customer ID]
+)
+select count([Customer ID]) 'InActive Customers', (Select count([Customer ID]) from Dim_Customers) 'Registered Customers', (select count(*) from(select distinct [Key Customer] from Fact_Usage_Main)T) 'Active Customers'
+from cte</CommandText>
+    </Query>
+    <Fields>
+      <Field Name="InActive_Customers">
+        <DataField>InActive Customers</DataField>
+        <rd:TypeName>System.Int32</rd:TypeName>
+      </Field>
+      <Field Name="Registered_Customers">
+        <DataField>Registered Customers</DataField>
+        <rd:TypeName>System.Int32</rd:TypeName>
+      </Field>
+      <Field Name="Active_Customers">
+        <DataField>Active Customers</DataField>
+        <rd:TypeName>System.Int32</rd:TypeName>
+      </Field>
+    </Fields>
+  </DataSet>
+</SharedDataSet>
