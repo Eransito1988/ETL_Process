@@ -12,8 +12,8 @@
   DTS:LocaleID="1037"
   DTS:ObjectName="Flat File To SSMS"
   DTS:PackageType="5"
-  DTS:VersionBuild="104"
-  DTS:VersionGUID="{DF13B3E1-408B-410F-90C7-86E55FFB05E6}">
+  DTS:VersionBuild="107"
+  DTS:VersionGUID="{E1E1CB76-4A43-4276-B147-27F554FC7504}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -33,7 +33,7 @@
           DTS:RowDelimiter=""
           DTS:TextQualifier="_x0022_"
           DTS:CodePage="65001"
-          DTS:ConnectionString="C:\Users\User\Documents\ETL_Process\Process_call_type\">
+          DTS:ConnectionString="C:\Users\User\Documents\ETL_Process\SSIS Process + ETL\Process_call_type\">
           <DTS:FlatFileColumns>
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -90,7 +90,7 @@
           DTS:RowDelimiter=""
           DTS:TextQualifier="_x0022_"
           DTS:CodePage="1255"
-          DTS:ConnectionString="C:\Users\User\Documents\ETL_Process\Process_OPFILEOPP\">
+          DTS:ConnectionString="C:\Users\User\Documents\ETL_Process\SSIS Process + ETL\Process_OPFILEOPP\">
           <DTS:FlatFileColumns>
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
@@ -132,7 +132,7 @@
       DTS:Namespace="User"
       DTS:ObjectName="Variable_DoneFilePath_FileName">
       <DTS:VariableValue
-        DTS:DataType="8">C:\Users\User\Documents\ETL_Process\Process_call_type\Done_call_type\</DTS:VariableValue>
+        DTS:DataType="8">C:\Users\User\Documents\ETL_Process\SSIS Process + ETL\Process_call_type\Done_call_type\</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
@@ -143,7 +143,7 @@
       DTS:Namespace="User"
       DTS:ObjectName="Variable_DoneFilePath_FileName2">
       <DTS:VariableValue
-        DTS:DataType="8">C:\Users\User\Documents\ETL_Process\Process_OPFILEOPP\Done_OPFILEOPP\</DTS:VariableValue>
+        DTS:DataType="8">C:\Users\User\Documents\ETL_Process\SSIS Process + ETL\Process_OPFILEOPP\Done_OPFILEOPP\</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
@@ -172,7 +172,7 @@
       DTS:Namespace="User"
       DTS:ObjectName="Variable_MoveToDone_CallType">
       <DTS:VariableValue
-        DTS:DataType="8">C:\Users\User\Documents\ETL_Process\Process_call_type\Done_call_type</DTS:VariableValue>
+        DTS:DataType="8">C:\Users\User\Documents\ETL_Process\SSIS Process + ETL\Process_call_type\Done_call_type</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
@@ -181,7 +181,7 @@
       DTS:Namespace="User"
       DTS:ObjectName="Variable_MoveToDone_OPFILEOPP">
       <DTS:VariableValue
-        DTS:DataType="8">C:\Users\User\Documents\ETL_Process\Process_OPFILEOPP\Done_OPFILEOPP</DTS:VariableValue>
+        DTS:DataType="8">C:\Users\User\Documents\ETL_Process\SSIS Process + ETL\Process_OPFILEOPP\Done_OPFILEOPP</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
@@ -190,7 +190,7 @@
       DTS:Namespace="User"
       DTS:ObjectName="Variable_ProcessFilePath">
       <DTS:VariableValue
-        DTS:DataType="8">C:\Users\User\Documents\ETL_Process\Process_call_type</DTS:VariableValue>
+        DTS:DataType="8">C:\Users\User\Documents\ETL_Process\SSIS Process + ETL\Process_call_type</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
@@ -201,7 +201,7 @@
       DTS:Namespace="User"
       DTS:ObjectName="Variable_ProcessFilePath2_FileName2">
       <DTS:VariableValue
-        DTS:DataType="8">C:\Users\User\Documents\ETL_Process\Process_OPFILEOPP\</DTS:VariableValue>
+        DTS:DataType="8">C:\Users\User\Documents\ETL_Process\SSIS Process + ETL\Process_OPFILEOPP\</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
@@ -212,7 +212,7 @@
       DTS:Namespace="User"
       DTS:ObjectName="Variable_ProcessFilePath_FileName">
       <DTS:VariableValue
-        DTS:DataType="8">C:\Users\User\Documents\ETL_Process\Process_call_type\</DTS:VariableValue>
+        DTS:DataType="8">C:\Users\User\Documents\ETL_Process\SSIS Process + ETL\Process_call_type\</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
@@ -223,7 +223,7 @@
       DTS:Namespace="User"
       DTS:ObjectName="Variable_RenameFile1">
       <DTS:VariableValue
-        DTS:DataType="8">C:\Users\User\Documents\ETL_Process\Process_call_type\Done_call_type\2019-11-10 18.23.45 </DTS:VariableValue>
+        DTS:DataType="8">C:\Users\User\Documents\ETL_Process\SSIS Process + ETL\Process_call_type\Done_call_type\2019-11-24 21.01.03 </DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
@@ -234,7 +234,7 @@
       DTS:Namespace="User"
       DTS:ObjectName="Variable_RenameFile2">
       <DTS:VariableValue
-        DTS:DataType="8">C:\Users\User\Documents\ETL_Process\Process_OPFILEOPP\Done_OPFILEOPP\2019-11-10 18.23.45 </DTS:VariableValue>
+        DTS:DataType="8">C:\Users\User\Documents\ETL_Process\SSIS Process + ETL\Process_OPFILEOPP\Done_OPFILEOPP\2019-11-24 21.01.03 </DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
@@ -243,7 +243,7 @@
       DTS:Namespace="User"
       DTS:ObjectName="Variable_SourceFilePath">
       <DTS:VariableValue
-        DTS:DataType="8">C:\Users\User\Documents\ETL_Process</DTS:VariableValue>
+        DTS:DataType="8">C:\Users\User\Documents\ETL_Process\SSIS Process + ETL</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
@@ -254,7 +254,7 @@
       DTS:Namespace="User"
       DTS:ObjectName="Variable_SourceFilePath2_FileName2">
       <DTS:VariableValue
-        DTS:DataType="8">C:\Users\User\Documents\ETL_Process\</DTS:VariableValue>
+        DTS:DataType="8">C:\Users\User\Documents\ETL_Process\SSIS Process + ETL\</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
@@ -265,7 +265,7 @@
       DTS:Namespace="User"
       DTS:ObjectName="Variable_SourceFilePath_FileName">
       <DTS:VariableValue
-        DTS:DataType="8">C:\Users\User\Documents\ETL_Process\</DTS:VariableValue>
+        DTS:DataType="8">C:\Users\User\Documents\ETL_Process\SSIS Process + ETL\</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
@@ -274,7 +274,7 @@
       DTS:Namespace="User"
       DTS:ObjectName="Variable__ProcessFilePath2">
       <DTS:VariableValue
-        DTS:DataType="8">C:\Users\User\Documents\ETL_Process\Process_OPFILEOPP</DTS:VariableValue>
+        DTS:DataType="8">C:\Users\User\Documents\ETL_Process\SSIS Process + ETL\Process_OPFILEOPP</DTS:VariableValue>
     </DTS:Variable>
   </DTS:Variables>
   <DTS:Executables>
@@ -294,7 +294,7 @@
         <DTS:ObjectData>
           <ForEachFileEnumeratorProperties>
             <FEFEProperty
-              Folder="C:\Users\User\Documents\ETL_Process" />
+              Folder="C:\Users\User\Documents\ETL_Process\SSIS Process + ETL" />
             <FEFEProperty
               FileSpec="*call_type*.csv" />
             <FEFEProperty
@@ -734,8 +734,8 @@
       <DTS:ForEachVariableMappings>
         <DTS:ForEachVariableMapping
           DTS:CreationName=""
-          DTS:DTSID="{9CBCE694-B910-407E-8B69-7F167495ACCD}"
-          DTS:ObjectName="{9CBCE694-B910-407E-8B69-7F167495ACCD}"
+          DTS:DTSID="{176243F8-AC97-4969-A286-91BD9F4C4C07}"
+          DTS:ObjectName="{176243F8-AC97-4969-A286-91BD9F4C4C07}"
           DTS:ValueIndex="0"
           DTS:VariableName="User::Variable_FileName" />
       </DTS:ForEachVariableMappings>
@@ -755,7 +755,7 @@
         <DTS:ObjectData>
           <ForEachFileEnumeratorProperties>
             <FEFEProperty
-              Folder="C:\Users\User\Documents\ETL_Process" />
+              Folder="C:\Users\User\Documents\ETL_Process\SSIS Process + ETL" />
             <FEFEProperty
               FileSpec="*OPFILEOPP*.csv" />
             <FEFEProperty
@@ -1155,8 +1155,8 @@
       <DTS:ForEachVariableMappings>
         <DTS:ForEachVariableMapping
           DTS:CreationName=""
-          DTS:DTSID="{917D8C5A-B212-4623-8F40-AEB72F2C269D}"
-          DTS:ObjectName="{917D8C5A-B212-4623-8F40-AEB72F2C269D}"
+          DTS:DTSID="{6D4C862D-9395-4651-A3AB-40E4C1CDBB28}"
+          DTS:ObjectName="{6D4C862D-9395-4651-A3AB-40E4C1CDBB28}"
           DTS:ValueIndex="0"
           DTS:VariableName="User::Variable_FileName2" />
       </DTS:ForEachVariableMappings>
@@ -1359,7 +1359,7 @@
     design-time-name="Package\Foreach Loop Container - Call Type\Data Flow Task">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="170.4,41.6"
           Id="Package\Foreach Loop Container - Call Type\Data Flow Task\OLE DB Destination"
@@ -1387,7 +1387,9 @@
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>

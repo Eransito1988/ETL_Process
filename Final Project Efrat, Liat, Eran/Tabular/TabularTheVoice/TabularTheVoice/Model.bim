@@ -522,6 +522,46 @@
             }
           }
         ],
+        "measures": [
+          {
+            "name": "Sum Billable Amount",
+            "expression": "SUM('Usage Main'[Billable Amount])",
+            "formatString": "\"₪\" #,0.00;\"₪\"-#,0.00;\"₪\" #,0.00",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\"><Currency LCID=\"1037\" DisplayName=\"₪ Hebrew (Israel)\" Symbol=\"₪\" PositivePattern=\"2\" NegativePattern=\"2\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "Sum Amount",
+            "expression": "sum('Usage Main'[Amount])",
+            "formatString": "\"₪\" #,0.00;\"₪\"-#,0.00;\"₪\" #,0.00",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\"><Currency LCID=\"1037\" DisplayName=\"₪ Hebrew (Israel)\" Symbol=\"₪\" PositivePattern=\"2\" NegativePattern=\"2\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "Sum Discount",
+            "expression": "[Sum Amount]-[Sum Billable Amount]",
+            "formatString": "\"₪\" #,0.00;\"₪\"-#,0.00;\"₪\" #,0.00",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\"><Currency LCID=\"1037\" DisplayName=\"₪ Hebrew (Israel)\" Symbol=\"₪\" PositivePattern=\"2\" NegativePattern=\"2\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "Avarege Of Discount",
+            "expression": "[Sum Discount]/[Sum Amount]",
+            "formatString": "0.00%;-0.00%;0.00%"
+          }
+        ],
         "annotations": [
           {
             "name": "_TM_ExtProp_QueryDefinition",

@@ -43,7 +43,7 @@ Select Max(CALL_NO) from USAGE_MAIN
 ---------------------------------------------
 Declare
 
-@NumberOfNewRows int = 200,
+@NumberOfNewRows int = 19496,
 @I int = 1,
 @CallNumber int,
 @CallingNumber nvarchar(20),
@@ -63,7 +63,9 @@ Declare
 @Minutes int,
 @Max int,
 @Min int,
-@CallDateTime date
+@CallDateTime date,
+@N int
+
 
 
 set @FromDate = '2013-10-10 19:32:44'
@@ -91,6 +93,7 @@ While @NumberOfNewRows >= @I
 			set @CustomerID = (select customer_id from customer where CUST_NUMBER = @CallingNumber)
 			set @RatedAmount = dbo.fn_RandomNum(6,0)
 			set @DestinationNumber = @CalledNumber
+			set @N = 1
 		END
 		BEGIN 
 			IF LEN(@CallingNumber) = 13
@@ -108,9 +111,20 @@ While @NumberOfNewRows >= @I
 		BEGIN
 			set @ProductType = (Select top 1 [Call Type Desc] from [Call Type] where @CallType = [Call Type Code])
 
-				Insert into USAGE_MAIN (ANSWER_TIME,SEIZED_TIME, DISCONNECT_TIME, CALL_DATETIME,CALLING_NO,CALLED_NO, DES_NO, DURATION, CUST_ID, CALL_TYPE, PROD_TYPE,RATED_AMNT,RATED_CURR_CODE,CELL, CELL_ORIGIN, HIGH_LOW_RATE, insert_DATE,update_date)
-				Values (@AnswerTime, @AnswerTime, @DisconectTime, @CallDateTime, @CallingNumber, @CalledNumber, @DestinationNumber, @Duration, @CustomerID, @CallType, @ProductType, @RatedAmount, 'SHEKEL', @Cell, @CellOrigin, 1, @AnswerTime, NULL)
+
+				Lable:
+					Insert into USAGE_MAIN (ANSWER_TIME,SEIZED_TIME, DISCONNECT_TIME, CALL_DATETIME,CALLING_NO,CALLED_NO, DES_NO, DURATION, CUST_ID, CALL_TYPE, PROD_TYPE,RATED_AMNT,RATED_CURR_CODE,CELL, CELL_ORIGIN, HIGH_LOW_RATE, insert_DATE,update_date)
+					Values (@AnswerTime, @AnswerTime, @DisconectTime, @CallDateTime, @CallingNumber, @CalledNumber, @DestinationNumber, @Duration, @CustomerID, @CallType, @ProductType, @RatedAmount, 'SHEKEL', @Cell, @CellOrigin, 1, @AnswerTime, NULL)
 		
+
+
+							While exists (Select * From USAGE_MAIN where CALLING_NO = @CallingNumber and  CALLED_NO = @CalledNumber)
+							Begin
+							Set @CalledNumber = (Select top 1 CUST_NUMBER from customer order by NEWID())
+							End
+
+						Set @N = @N + 1
+					If 1 >= @N GOTO Lable
 
 			Set @I = @I + 1
 
