@@ -26,7 +26,7 @@
           <SSIS:Property SSIS:Name="CreatorComputerName">LENOVO-FLEX2-15</SSIS:Property>
           <SSIS:Property SSIS:Name="Description">
           </SSIS:Property>
-          <SSIS:Property SSIS:Name="PasswordVerifier" SSIS:Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAyy+zTOos3U+0uocveHEMIQAAAAACAAAAAAAQZgAAAAEAACAAAADMMHHPwm2cNutctyWpExc0yWxHrKaDkSO48xoVhOOWpwAAAAAOgAAAAAIAACAAAABcbqm98cD6ttFlSZ+KvI8DKaWZpp6jC7+hqMkkwaEcFpAAAADA+xruS130VGPPTRAwwcgRs3LgCDDGJ6fsSLDuVgKdzX4EBt/M3WoTMI03NmlCg3t3xovq/XQj9+Bl5jD9aUuOgnzlJDdCh/lv5C6ROIXaJWBVqOa7OELPEGiBiN141690s6hZGaYMnpTg6WuKKD5l6ueBQWmMI4CvBNszwpNx7Ifg7k80W/+Um/2d/8RYlMFAAAAAUJh9CXTxl9pkf/02irwJn2+R0Qh8mOiRjMXVo0QN62/KnD7TU8zV9JU1fZ//hvyibnmR+IQLEO5SDH763W20Zg==</SSIS:Property>
+          <SSIS:Property SSIS:Name="PasswordVerifier" SSIS:Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAyy+zTOos3U+0uocveHEMIQAAAAACAAAAAAAQZgAAAAEAACAAAADeU9iBaq2JsN9514TCXxmsA7bWkkx+3RvtKGv1/EGP6QAAAAAOgAAAAAIAACAAAADglvqvmKCpC/DLZOXD5qzKGoWOzg8DmsiIQCehoGk465AAAADFe5tJ84RaOh0P6YzNokboBeWtyXKJtVKkfsE5uJkb6e0oUGZkBH04QKNEBVPt83abip+Jqdzt6FSdmqGXJ0lF2z1xg+eMQlNgmFzI/+wE0ti7F/KY5pxfgYN4IwwOzmPzhO7wK/EWDffGRcfPWU6jFb/eNpDIFu7zkx/cTVAZfCyZiZ08dlJ3NZWOAm2mvL1AAAAAyJryK+ura6CL655hfSb0kidRvJtqIF6mlyCE1PcAyfhs6AeVKewBsS2DhB7aKxLx+4Jbn7/siSS8NzOLlDvCoA==</SSIS:Property>
           <SSIS:Property SSIS:Name="FormatVersion">1</SSIS:Property>
         </SSIS:Properties>
         <SSIS:Packages>
@@ -35,6 +35,7 @@
           <SSIS:Package SSIS:Name="Mrr to Stg.dtsx" SSIS:EntryPoint="1" />
           <SSIS:Package SSIS:Name="Stg to DW - Dim.dtsx" SSIS:EntryPoint="1" />
           <SSIS:Package SSIS:Name="Stg to DW - Fact.dtsx" SSIS:EntryPoint="1" />
+          <SSIS:Package SSIS:Name="Package SSAS Tabular TheVoice.dtsx" SSIS:EntryPoint="1" />
         </SSIS:Packages>
         <SSIS:ConnectionManagers>
           <SSIS:ConnectionManager SSIS:Name="LENOVO-FLEX2-15_SQLDEV.TheVoice.conmgr" />
@@ -1159,6 +1160,112 @@
                 <SSIS:Property SSIS:Name="ProtectionLevel">1</SSIS:Property>
               </SSIS:Properties>
               <SSIS:Parameters />
+            </SSIS:PackageMetaData>
+            <SSIS:PackageMetaData SSIS:Name="Package SSAS Tabular TheVoice.dtsx">
+              <SSIS:Properties>
+                <SSIS:Property SSIS:Name="ID">{D8678B26-19B8-433D-AD26-86FEF1797E3D}</SSIS:Property>
+                <SSIS:Property SSIS:Name="Name">Package SSAS Tabular TheVoice</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">4</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionComments">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{737FF2B2-73B4-461B-A07F-431B2E5244DC}</SSIS:Property>
+                <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
+                <SSIS:Property SSIS:Name="Description">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="ProtectionLevel">1</SSIS:Property>
+              </SSIS:Properties>
+              <SSIS:Parameters>
+                <SSIS:Parameter SSIS:Name="CM.LENOVO-FLEX2-15\SQLDEV.TheVoice.ConnectionString">
+                  <SSIS:Properties>
+                    <SSIS:Property SSIS:Name="ID">
+                    </SSIS:Property>
+                    <SSIS:Property SSIS:Name="CreationName">
+                    </SSIS:Property>
+                    <SSIS:Property SSIS:Name="Description">
+                    </SSIS:Property>
+                    <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Value">Data Source=LENOVO-FLEX2-15\SQLDEV;Initial Catalog=TheVoice;Provider=MSOLAP.8;Integrated Security=SSPI;Impersonation Level=Impersonate;</SSIS:Property>
+                    <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
+                  </SSIS:Properties>
+                </SSIS:Parameter>
+                <SSIS:Parameter SSIS:Name="CM.LENOVO-FLEX2-15\SQLDEV.TheVoice.InitialCatalog">
+                  <SSIS:Properties>
+                    <SSIS:Property SSIS:Name="ID">
+                    </SSIS:Property>
+                    <SSIS:Property SSIS:Name="CreationName">
+                    </SSIS:Property>
+                    <SSIS:Property SSIS:Name="Description">
+                    </SSIS:Property>
+                    <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Value">TheVoice</SSIS:Property>
+                    <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
+                  </SSIS:Properties>
+                </SSIS:Parameter>
+                <SSIS:Parameter SSIS:Name="CM.LENOVO-FLEX2-15\SQLDEV.TheVoice.Password">
+                  <SSIS:Properties>
+                    <SSIS:Property SSIS:Name="ID">
+                    </SSIS:Property>
+                    <SSIS:Property SSIS:Name="CreationName">
+                    </SSIS:Property>
+                    <SSIS:Property SSIS:Name="Description">
+                    </SSIS:Property>
+                    <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Sensitive">1</SSIS:Property>
+                    <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
+                  </SSIS:Properties>
+                </SSIS:Parameter>
+                <SSIS:Parameter SSIS:Name="CM.LENOVO-FLEX2-15\SQLDEV.TheVoice.RetainSameConnection">
+                  <SSIS:Properties>
+                    <SSIS:Property SSIS:Name="ID">
+                    </SSIS:Property>
+                    <SSIS:Property SSIS:Name="CreationName">
+                    </SSIS:Property>
+                    <SSIS:Property SSIS:Name="Description">
+                    </SSIS:Property>
+                    <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Value">false</SSIS:Property>
+                    <SSIS:Property SSIS:Name="DataType">3</SSIS:Property>
+                  </SSIS:Properties>
+                </SSIS:Parameter>
+                <SSIS:Parameter SSIS:Name="CM.LENOVO-FLEX2-15\SQLDEV.TheVoice.ServerName">
+                  <SSIS:Properties>
+                    <SSIS:Property SSIS:Name="ID">
+                    </SSIS:Property>
+                    <SSIS:Property SSIS:Name="CreationName">
+                    </SSIS:Property>
+                    <SSIS:Property SSIS:Name="Description">
+                    </SSIS:Property>
+                    <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Value">LENOVO-FLEX2-15\SQLDEV</SSIS:Property>
+                    <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
+                  </SSIS:Properties>
+                </SSIS:Parameter>
+                <SSIS:Parameter SSIS:Name="CM.LENOVO-FLEX2-15\SQLDEV.TheVoice.UserName">
+                  <SSIS:Properties>
+                    <SSIS:Property SSIS:Name="ID">
+                    </SSIS:Property>
+                    <SSIS:Property SSIS:Name="CreationName">
+                    </SSIS:Property>
+                    <SSIS:Property SSIS:Name="Description">
+                    </SSIS:Property>
+                    <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+                    <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
+                  </SSIS:Properties>
+                </SSIS:Parameter>
+              </SSIS:Parameters>
             </SSIS:PackageMetaData>
           </SSIS:PackageInfo>
         </SSIS:DeploymentInfo>

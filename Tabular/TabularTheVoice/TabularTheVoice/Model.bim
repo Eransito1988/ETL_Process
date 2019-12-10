@@ -1,0 +1,3281 @@
+{
+  "name": "SemanticModel",
+  "compatibilityLevel": 1200,
+  "model": {
+    "culture": "he-IL",
+    "dataSources": [
+      {
+        "name": "TheVoice",
+        "connectionString": "Provider=SQLNCLI11.1;Data Source=LENOVO-FLEX2-15\\SQLDEV;Persist Security Info=False;Integrated Security=SSPI;Initial Catalog=DW_TheVoice",
+        "impersonationMode": "impersonateAccount",
+        "account": "ReportPBI",
+        "annotations": [
+          {
+            "name": "ConnectionEditUISource",
+            "value": "SqlServer"
+          }
+        ]
+      }
+    ],
+    "tables": [
+      {
+        "name": "Call Origin Type",
+        "columns": [
+          {
+            "name": "Key Source Cell",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "Key Source Cell",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "Call Origin Type",
+            "dataType": "string",
+            "sourceColumn": "Call Origin Type",
+            "sourceProviderType": "WChar"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Call Origin Type",
+            "dataView": "full",
+            "source": {
+              "type": "query",
+              "query": " SELECT [dbo].[Dim_Call_Origin_Type].* FROM [dbo].[Dim_Call_Origin_Type] ",
+              "dataSource": "TheVoice"
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "_TM_ExtProp_QueryDefinition",
+            "value": " SELECT [dbo].[Dim_Call_Origin_Type].* FROM [dbo].[Dim_Call_Origin_Type] "
+          },
+          {
+            "name": "_TM_ExtProp_DbTableName",
+            "value": "Dim_Call_Origin_Type"
+          },
+          {
+            "name": "_TM_ExtProp_DbSchemaName",
+            "value": "dbo"
+          }
+        ]
+      },
+      {
+        "name": "Call Types",
+        "columns": [
+          {
+            "name": "Key Call Type",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "Key Call Type",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "Price Per Minuter",
+            "dataType": "decimal",
+            "sourceColumn": "Price Per Minuter",
+            "formatString": "\"₪\" #,0.00;\"₪\"-#,0.00;\"₪\" #,0.00",
+            "sourceProviderType": "Currency",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\" ThousandSeparator=\"True\"><Currency LCID=\"1037\" DisplayName=\"₪ Hebrew (Israel)\" Symbol=\"₪\" PositivePattern=\"2\" NegativePattern=\"2\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "Call Type",
+            "dataType": "string",
+            "sourceColumn": "Call Type",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "Call Type Descripion",
+            "dataType": "string",
+            "sourceColumn": "Call Type Descripion",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "Category Of Call",
+            "dataType": "string",
+            "sourceColumn": "Category Of Call",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "Call Type Code",
+            "dataType": "string",
+            "sourceColumn": "Call Type Code",
+            "sourceProviderType": "WChar"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Call Types",
+            "dataView": "full",
+            "source": {
+              "type": "query",
+              "query": " SELECT [dbo].[Dim_Call_Types].* FROM [dbo].[Dim_Call_Types] ",
+              "dataSource": "TheVoice"
+            }
+          }
+        ],
+        "hierarchies": [
+          {
+            "name": "CallTypeHierarchy",
+            "levels": [
+              {
+                "name": "Call Type",
+                "ordinal": 0,
+                "column": "Call Type"
+              },
+              {
+                "name": "Call Type Descripion",
+                "ordinal": 1,
+                "column": "Call Type Descripion"
+              }
+            ]
+          }
+        ],
+        "annotations": [
+          {
+            "name": "_TM_ExtProp_QueryDefinition",
+            "value": " SELECT [dbo].[Dim_Call_Types].* FROM [dbo].[Dim_Call_Types] "
+          },
+          {
+            "name": "_TM_ExtProp_DbTableName",
+            "value": "Dim_Call_Types"
+          },
+          {
+            "name": "_TM_ExtProp_DbSchemaName",
+            "value": "dbo"
+          }
+        ]
+      },
+      {
+        "name": "CountriesOrigin",
+        "columns": [
+          {
+            "name": "Key Country",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "Key Country",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "Country",
+            "dataType": "string",
+            "isHidden": true,
+            "sourceColumn": "Country",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "Region",
+            "dataType": "string",
+            "isHidden": true,
+            "sourceColumn": "Region",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "Area",
+            "dataType": "string",
+            "isHidden": true,
+            "sourceColumn": "Area",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "Country Prefix",
+            "dataType": "int64",
+            "sourceColumn": "Country Prefix",
+            "sourceProviderType": "WChar"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Countries",
+            "dataView": "full",
+            "source": {
+              "type": "query",
+              "query": " SELECT [dbo].[Dim_Countries].* FROM [dbo].[Dim_Countries] ",
+              "dataSource": "TheVoice"
+            }
+          }
+        ],
+        "hierarchies": [
+          {
+            "name": "TerritoryHierarchy",
+            "levels": [
+              {
+                "name": "Region",
+                "ordinal": 0,
+                "column": "Region"
+              },
+              {
+                "name": "Country",
+                "ordinal": 2,
+                "column": "Country"
+              },
+              {
+                "name": "Area",
+                "ordinal": 1,
+                "column": "Area"
+              }
+            ]
+          }
+        ],
+        "annotations": [
+          {
+            "name": "_TM_ExtProp_QueryDefinition",
+            "value": " SELECT [dbo].[Dim_Countries].* FROM [dbo].[Dim_Countries] "
+          },
+          {
+            "name": "_TM_ExtProp_DbTableName",
+            "value": "Dim_Countries"
+          },
+          {
+            "name": "_TM_ExtProp_DbSchemaName",
+            "value": "dbo"
+          }
+        ]
+      },
+      {
+        "name": "Customers",
+        "columns": [
+          {
+            "name": "Customer ID",
+            "dataType": "int64",
+            "sourceColumn": "Customer ID",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "Customer Number",
+            "dataType": "string",
+            "sourceColumn": "Customer Number",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "Customer Full Name",
+            "dataType": "string",
+            "sourceColumn": "Customer Full Name",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "Address",
+            "dataType": "string",
+            "sourceColumn": "Address",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "Country",
+            "dataType": "string",
+            "sourceColumn": "Country",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "Mobile Operator",
+            "dataType": "string",
+            "sourceColumn": "Mobile Operator",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "Package Descripion",
+            "dataType": "string",
+            "sourceColumn": "Package Descripion",
+            "sourceProviderType": "WChar"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Customers",
+            "dataView": "full",
+            "source": {
+              "type": "query",
+              "query": " SELECT [dbo].[Dim_Customers].* FROM [dbo].[Dim_Customers] ",
+              "dataSource": "TheVoice"
+            }
+          }
+        ],
+        "hierarchies": [
+          {
+            "name": "TerritoryHierarchy",
+            "levels": [
+              {
+                "name": "Country",
+                "ordinal": 0,
+                "column": "Country"
+              },
+              {
+                "name": "Address",
+                "ordinal": 1,
+                "column": "Address"
+              }
+            ]
+          }
+        ],
+        "annotations": [
+          {
+            "name": "_TM_ExtProp_QueryDefinition",
+            "value": " SELECT [dbo].[Dim_Customers].* FROM [dbo].[Dim_Customers] "
+          },
+          {
+            "name": "_TM_ExtProp_DbTableName",
+            "value": "Dim_Customers"
+          },
+          {
+            "name": "_TM_ExtProp_DbSchemaName",
+            "value": "dbo"
+          }
+        ]
+      },
+      {
+        "name": "OperatorsOrigin",
+        "columns": [
+          {
+            "name": "Key Mobile Prefix",
+            "dataType": "int64",
+            "sourceColumn": "Key Mobile Prefix",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "Descripion Operator",
+            "dataType": "string",
+            "sourceColumn": "Descripion Operator",
+            "sourceProviderType": "WChar"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Operators",
+            "dataView": "full",
+            "source": {
+              "type": "query",
+              "query": " SELECT [dbo].[Dim_Operators].* FROM [dbo].[Dim_Operators] ",
+              "dataSource": "TheVoice"
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "_TM_ExtProp_QueryDefinition",
+            "value": " SELECT [dbo].[Dim_Operators].* FROM [dbo].[Dim_Operators] "
+          },
+          {
+            "name": "_TM_ExtProp_DbTableName",
+            "value": "Dim_Operators"
+          },
+          {
+            "name": "_TM_ExtProp_DbSchemaName",
+            "value": "dbo"
+          }
+        ]
+      },
+      {
+        "name": "Package Catalog",
+        "columns": [
+          {
+            "name": "Package Number",
+            "dataType": "int64",
+            "sourceColumn": "Package Number",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "Create Date",
+            "dataType": "dateTime",
+            "sourceColumn": "Create Date",
+            "formatString": "General Date",
+            "sourceProviderType": "DBDate"
+          },
+          {
+            "name": "End Date",
+            "dataType": "dateTime",
+            "sourceColumn": "End Date",
+            "formatString": "General Date",
+            "sourceProviderType": "DBDate"
+          },
+          {
+            "name": "Code Package Activities Days",
+            "dataType": "int64",
+            "sourceColumn": "Code Package Activities Days",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "Status",
+            "dataType": "string",
+            "sourceColumn": "Status",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "Package Type",
+            "dataType": "string",
+            "sourceColumn": "Package Type",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "Package Descripion",
+            "dataType": "string",
+            "sourceColumn": "Package Descripion",
+            "sourceProviderType": "WChar"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Package Catalog",
+            "dataView": "full",
+            "source": {
+              "type": "query",
+              "query": " SELECT [dbo].[Dim_Package_Catalog].* FROM [dbo].[Dim_Package_Catalog] ",
+              "dataSource": "TheVoice"
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "_TM_ExtProp_QueryDefinition",
+            "value": " SELECT [dbo].[Dim_Package_Catalog].* FROM [dbo].[Dim_Package_Catalog] "
+          },
+          {
+            "name": "_TM_ExtProp_DbTableName",
+            "value": "Dim_Package_Catalog"
+          },
+          {
+            "name": "_TM_ExtProp_DbSchemaName",
+            "value": "dbo"
+          }
+        ]
+      },
+      {
+        "name": "Usage Main",
+        "columns": [
+          {
+            "name": "Call ID",
+            "dataType": "int64",
+            "sourceColumn": "Call ID",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "Key Customer",
+            "dataType": "int64",
+            "sourceColumn": "Key Customer",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "Key Call Type",
+            "dataType": "int64",
+            "sourceColumn": "Key Call Type",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "Key Origin Country",
+            "dataType": "int64",
+            "sourceColumn": "Key Origin Country",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "Key Origin Operator",
+            "dataType": "int64",
+            "sourceColumn": "Key Origin Operator",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "Key Destination Country",
+            "dataType": "int64",
+            "sourceColumn": "Key Destination Country",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "Key Destination Operator",
+            "dataType": "int64",
+            "sourceColumn": "Key Destination Operator",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "Key Package",
+            "dataType": "int64",
+            "sourceColumn": "Key Package",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "Key Call Origin Type",
+            "dataType": "int64",
+            "sourceColumn": "Key Call Origin Type",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "Key Call Date",
+            "dataType": "int64",
+            "sourceColumn": "Key Call Date",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "Key Call Time",
+            "dataType": "int64",
+            "sourceColumn": "Key Call Time",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "Duration",
+            "dataType": "int64",
+            "sourceColumn": "Duration",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "Billable Duration",
+            "dataType": "int64",
+            "sourceColumn": "Billable Duration",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "Amount",
+            "dataType": "decimal",
+            "sourceColumn": "Amount",
+            "formatString": "\"₪\" #,0.00;\"₪\"-#,0.00;\"₪\" #,0.00",
+            "sourceProviderType": "Double",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\" ThousandSeparator=\"True\"><Currency LCID=\"1037\" DisplayName=\"₪ Hebrew (Israel)\" Symbol=\"₪\" PositivePattern=\"2\" NegativePattern=\"2\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "Billable Amount",
+            "dataType": "decimal",
+            "sourceColumn": "Billable Amount",
+            "formatString": "\"₪\" #,0.00;\"₪\"-#,0.00;\"₪\" #,0.00",
+            "sourceProviderType": "Double",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\" ThousandSeparator=\"True\"><Currency LCID=\"1037\" DisplayName=\"₪ Hebrew (Israel)\" Symbol=\"₪\" PositivePattern=\"2\" NegativePattern=\"2\" /></Format>"
+              }
+            ]
+          },
+          {
+            "type": "calculated",
+            "name": "Discount",
+            "dataType": "decimal",
+            "isDataTypeInferred": true,
+            "expression": "'Usage Main'[Amount]-'Usage Main'[Billable Amount]",
+            "formatString": "\"₪\" #,0.00;\"₪\"-#,0.00;\"₪\" #,0.00",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\" ThousandSeparator=\"True\"><Currency LCID=\"1037\" DisplayName=\"₪ Hebrew (Israel)\" Symbol=\"₪\" PositivePattern=\"2\" NegativePattern=\"2\" /></Format>"
+              }
+            ]
+          },
+          {
+            "type": "calculated",
+            "name": "Discount Percentage",
+            "dataType": "double",
+            "isDataTypeInferred": true,
+            "expression": "'Usage Main'[Discount] / 'Usage Main'[Amount]",
+            "formatString": "0%;-0%;0%"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Usage Main",
+            "dataView": "full",
+            "source": {
+              "type": "query",
+              "query": " SELECT [dbo].[Fact_Usage_Main].* FROM [dbo].[Fact_Usage_Main] ",
+              "dataSource": "TheVoice"
+            }
+          },
+          {
+            "name": "Usage Main 2013 - Fourth Quarter",
+            "mode": "import",
+            "source": {
+              "type": "query",
+              "query": [
+                "select *",
+                "from Fact_Usage_Main",
+                "where [Key Call Date]/100 < 201401",
+                "order by [Key Call Date]"
+              ],
+              "dataSource": "TheVoice"
+            },
+            "annotations": [
+              {
+                "name": "QueryEditorSerialization",
+                "value": [
+                  "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>select *",
+                  "from Fact_Usage_Main",
+                  "where [Key Call Date]/100 < 201401",
+                  "order by [Key Call Date]</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
+                ]
+              }
+            ]
+          },
+          {
+            "name": "Usage Main 2014 - First Quarter",
+            "mode": "import",
+            "source": {
+              "type": "query",
+              "query": [
+                "select *",
+                "from Fact_Usage_Main",
+                "where [Key Call Date]/100 >= 201401 and [Key Call Date]/100 <201404",
+                "order by [Key Call Date]"
+              ],
+              "dataSource": "TheVoice"
+            },
+            "annotations": [
+              {
+                "name": "QueryEditorSerialization",
+                "value": [
+                  "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>select *",
+                  "from Fact_Usage_Main",
+                  "where [Key Call Date]/100 >= 201401 and [Key Call Date]/100 <201404",
+                  "order by [Key Call Date]</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
+                ]
+              }
+            ]
+          },
+          {
+            "name": "Usage Main 2014 - Second Quarter",
+            "mode": "import",
+            "source": {
+              "type": "query",
+              "query": [
+                "select *",
+                "from Fact_Usage_Main",
+                "where [Key Call Date]/100 >= 201404 and [Key Call Date]/100 < 201407",
+                "order by [Key Call Date]"
+              ],
+              "dataSource": "TheVoice"
+            },
+            "annotations": [
+              {
+                "name": "QueryEditorSerialization",
+                "value": [
+                  "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>select *",
+                  "from Fact_Usage_Main",
+                  "where [Key Call Date]/100 >= 201404 and [Key Call Date]/100 < 201407",
+                  "order by [Key Call Date]</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
+                ]
+              }
+            ]
+          },
+          {
+            "name": "Usage Main 2014 - Third Quarter",
+            "mode": "import",
+            "source": {
+              "type": "query",
+              "query": [
+                "select *",
+                "from Fact_Usage_Main",
+                "where [Key Call Date]/100 >= 201407 and [Key Call Date]/100 < 201410",
+                "order by [Key Call Date]"
+              ],
+              "dataSource": "TheVoice"
+            },
+            "annotations": [
+              {
+                "name": "QueryEditorSerialization",
+                "value": [
+                  "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>select *",
+                  "from Fact_Usage_Main",
+                  "where [Key Call Date]/100 >= 201407 and [Key Call Date]/100 < 201410",
+                  "order by [Key Call Date]</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
+                ]
+              }
+            ]
+          },
+          {
+            "name": "Usage Main 2014 - Fourth Quarter",
+            "mode": "import",
+            "source": {
+              "type": "query",
+              "query": [
+                "select *",
+                "from Fact_Usage_Main",
+                "where [Key Call Date]/100 >= 201410 and [Key Call Date]/100 < 201501",
+                "order by [Key Call Date]"
+              ],
+              "dataSource": "TheVoice"
+            },
+            "annotations": [
+              {
+                "name": "QueryEditorSerialization",
+                "value": [
+                  "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"QueryEditorSerialization\"><AnnotationContent><![CDATA[<RSQueryCommandText>select *",
+                  "from Fact_Usage_Main",
+                  "where [Key Call Date]/100 >= 201410 and [Key Call Date]/100 < 201501",
+                  "order by [Key Call Date]</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>"
+                ]
+              }
+            ]
+          }
+        ],
+        "measures": [
+          {
+            "name": "Sum Billable Amount",
+            "expression": "SUM('Usage Main'[Billable Amount])",
+            "formatString": "\"₪\" #,0.00;\"₪\"-#,0.00;\"₪\" #,0.00",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\"><Currency LCID=\"1037\" DisplayName=\"₪ Hebrew (Israel)\" Symbol=\"₪\" PositivePattern=\"2\" NegativePattern=\"2\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "Sum Amount",
+            "expression": "sum('Usage Main'[Amount])",
+            "formatString": "\"₪\" #,0.00;\"₪\"-#,0.00;\"₪\" #,0.00",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\"><Currency LCID=\"1037\" DisplayName=\"₪ Hebrew (Israel)\" Symbol=\"₪\" PositivePattern=\"2\" NegativePattern=\"2\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "Sum Discount",
+            "expression": "[Sum Amount]-[Sum Billable Amount]",
+            "formatString": "\"₪\" #,0.00;\"₪\"-#,0.00;\"₪\" #,0.00",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\"><Currency LCID=\"1037\" DisplayName=\"₪ Hebrew (Israel)\" Symbol=\"₪\" PositivePattern=\"2\" NegativePattern=\"2\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "Avarege Of Discount",
+            "expression": "[Sum Discount]/[Sum Amount]",
+            "formatString": "0.00%;-0.00%;0.00%"
+          },
+          {
+            "name": "Max Amount",
+            "expression": "MAX([Amount])",
+            "formatString": "\"₪\" #,0.00;\"₪\"-#,0.00;\"₪\" #,0.00",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\"><Currency LCID=\"1037\" DisplayName=\"₪ Hebrew (Israel)\" Symbol=\"₪\" PositivePattern=\"2\" NegativePattern=\"2\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "Avarege Amount",
+            "expression": "AVERAGE([Amount])",
+            "formatString": "\"₪\" #,0.00;\"₪\"-#,0.00;\"₪\" #,0.00",
+            "kpi": {
+              "targetExpression": "'Usage Main'[KPI Target Of Amount]",
+              "targetFormatString": "\"₪\" #,0.00;\"₪\"-#,0.00;\"₪\" #,0.00",
+              "statusGraphic": "Traffic Light - Single",
+              "statusExpression": [
+                "var x='Usage Main'[Avarege Amount]/'Usage Main'[_Avarege Amount Goal] return",
+                "            if(ISBLANK(x),BLANK(),",
+                "                    If(x<0.4,-1,",
+                "\t                If(x<0.8,0,1)",
+                "                )",
+                "            )",
+                "            "
+              ],
+              "annotations": [
+                {
+                  "name": "GoalType",
+                  "value": "Measure"
+                },
+                {
+                  "name": "KpiStatusType",
+                  "value": "Linear"
+                },
+                {
+                  "name": "KpiThresholdType",
+                  "value": "Percentage"
+                },
+                {
+                  "name": "KpiThresholdOrdering",
+                  "value": "Ascending"
+                },
+                {
+                  "name": "KpiThresholdCount",
+                  "value": "2"
+                },
+                {
+                  "name": "KpiThreshold_0",
+                  "value": "40"
+                },
+                {
+                  "name": "KpiThreshold_1",
+                  "value": "80"
+                }
+              ]
+            },
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\"><Currency LCID=\"1037\" DisplayName=\"₪ Hebrew (Israel)\" Symbol=\"₪\" PositivePattern=\"2\" NegativePattern=\"2\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "Count Of Calls",
+            "expression": "COUNT('Usage Main'[Call ID])",
+            "formatString": "#,0"
+          },
+          {
+            "name": "Count Distinct On Customer",
+            "expression": "DISTINCTCOUNT('Usage Main'[Key Customer])",
+            "formatString": "#,0"
+          },
+          {
+            "name": "Sum Call Duration",
+            "expression": "SUM('Usage Main'[Duration])",
+            "formatString": "#,0"
+          },
+          {
+            "name": "Sum Billable Call Duration",
+            "expression": "SUM('Usage Main'[Billable Duration])",
+            "formatString": "#,0"
+          },
+          {
+            "name": "Call Duration Average",
+            "expression": " AVERAGE('Usage Main'[Duration])",
+            "formatString": "0"
+          },
+          {
+            "name": "All Customer",
+            "expression": "COUNT(Customers[Customer ID])",
+            "formatString": "#,0"
+          },
+          {
+            "name": "Active Customers Of Precentage",
+            "expression": "[Count Distinct On Customer]/[All Customer]",
+            "formatString": "0.00%;-0.00%;0.00%"
+          },
+          {
+            "name": "KPI Target Of Amount",
+            "expression": "[Avarege Amount]*1.05",
+            "formatString": "\"₪\" #,0.00;\"₪\"-#,0.00;\"₪\" #,0.00",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\"><Currency LCID=\"1037\" DisplayName=\"₪ Hebrew (Israel)\" Symbol=\"₪\" PositivePattern=\"2\" NegativePattern=\"2\" /></Format>"
+              }
+            ]
+          }
+        ],
+        "annotations": [
+          {
+            "name": "_TM_ExtProp_QueryDefinition",
+            "value": " SELECT [dbo].[Fact_Usage_Main].* FROM [dbo].[Fact_Usage_Main] "
+          },
+          {
+            "name": "_TM_ExtProp_DbTableName",
+            "value": "Fact_Usage_Main"
+          },
+          {
+            "name": "_TM_ExtProp_DbSchemaName",
+            "value": "dbo"
+          }
+        ]
+      },
+      {
+        "name": "Date",
+        "dataCategory": "Time",
+        "columns": [
+          {
+            "name": "Date Key",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "DateKey",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "Full Date ",
+            "dataType": "dateTime",
+            "isKey": true,
+            "sourceColumn": "FullDateUK",
+            "formatString": "General Date",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "Day Of Month",
+            "dataType": "int64",
+            "sourceColumn": "DayOfMonth",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "Day Name",
+            "dataType": "string",
+            "sourceColumn": "DayName",
+            "sortByColumn": "Day Of Week",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "Day Of Year",
+            "dataType": "int64",
+            "sourceColumn": "DayOfYear",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "Month",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "Month",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "Month Name",
+            "dataType": "string",
+            "sourceColumn": "MonthName",
+            "sortByColumn": "Month",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "Quarter Name",
+            "dataType": "string",
+            "sourceColumn": "QuarterName",
+            "sortByColumn": "Quarter",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "Year",
+            "dataType": "int64",
+            "sourceColumn": "Year",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "Is Weekday",
+            "dataType": "boolean",
+            "sourceColumn": "IsWeekday",
+            "formatString": "\"TRUE\";\"TRUE\";\"FALSE\"",
+            "sourceProviderType": "Boolean"
+          },
+          {
+            "name": "Day Of Week",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "DayOfWeekUK"
+          },
+          {
+            "name": "Quarter",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "Quarter"
+          },
+          {
+            "type": "calculated",
+            "name": "Month Of Year",
+            "dataType": "int64",
+            "isDataTypeInferred": false,
+            "isHidden": true,
+            "expression": "Format('Date'[Full Date ],\"YYYYMM\")"
+          },
+          {
+            "type": "calculated",
+            "name": "Quarter Of Year",
+            "dataType": "int64",
+            "isDataTypeInferred": false,
+            "isHidden": true,
+            "expression": "FORMAT('Date'[Full Date ],\"yyyy\")  & 'Date'[Quarter]"
+          },
+          {
+            "type": "calculated",
+            "name": "Quarter Year",
+            "dataType": "string",
+            "isDataTypeInferred": true,
+            "expression": "'Date'[Quarter Name] & \" \" & 'Date'[Year]",
+            "sortByColumn": "Quarter Of Year"
+          },
+          {
+            "type": "calculated",
+            "name": "Month Year",
+            "dataType": "string",
+            "isDataTypeInferred": true,
+            "expression": "[Month Name] & \" \" & [Year]",
+            "sortByColumn": "Month Of Year"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Date",
+            "source": {
+              "type": "query",
+              "query": "SELECT [dbo].[Calander_Table].[DateKey],[dbo].[Calander_Table].[FullDateUK],[dbo].[Calander_Table].[DayOfMonth],[dbo].[Calander_Table].[DayName],[dbo].[Calander_Table].[DayOfWeekUK],[dbo].[Calander_Table].[DayOfYear],[dbo].[Calander_Table].[Month],[dbo].[Calander_Table].[MonthName],[dbo].[Calander_Table].[Quarter],[dbo].[Calander_Table].[QuarterName],[dbo].[Calander_Table].[Year],[dbo].[Calander_Table].[MonthYear],[dbo].[Calander_Table].[IsWeekday] FROM [dbo].[Calander_Table]",
+              "dataSource": "TheVoice"
+            },
+            "annotations": [
+              {
+                "name": "TableWidgetSerialization",
+                "value": [
+                  "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"TableWidgetSerialization\"><AnnotationContent><![CDATA[<?xml version=\"1.0\"?>",
+                  "<TableWidgetGridSerialization xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\">",
+                  "  <ColumnSuggestedType />",
+                  "  <ColumnFormat />",
+                  "  <ColumnAccuracy />",
+                  "  <ColumnCurrencySymbol />",
+                  "  <ColumnPositivePattern />",
+                  "  <ColumnNegativePattern />",
+                  "  <ColumnWidths>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>DateKey</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>87</int>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>Date</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>64</int>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>FullDateUK</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>100</int>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>FullDateUSA</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>108</int>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>DayOfMonth</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>113</int>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>DaySuffix</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>94</int>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>DayName</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>95</int>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>DayOfWeekUSA</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>134</int>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>DayOfWeekUK</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>126</int>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>DayOfWeekInMonth</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>160</int>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>DayOfWeekInYear</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>148</int>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>DayOfQuarter</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>121</int>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>DayOfYear</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>101</int>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>WeekOfMonth</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>123</int>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>WeekOfQuarter</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>131</int>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>WeekOfYear</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>111</int>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>Month</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>74</int>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>MonthName</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>109</int>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>MonthOfQuarter</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>135</int>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>Quarter</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>166</int>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>QuarterName</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>117</int>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>Year</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>62</int>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>YearName</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>97</int>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>MonthYear</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>101</int>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>MMYYYY</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>87</int>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>FirstDayOfMonth</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>138</int>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>LastDayOfMonth</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>138</int>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>FirstDayOfQuarter</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>146</int>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>LastDayOfQuarter</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>146</int>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>FirstDayOfYear</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>126</int>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>LastDayOfYear</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>126</int>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>IsHolidayUSA</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>114</int>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>IsWeekday</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>103</int>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>HolidayUSA</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>104</int>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>IsHolidayUK</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>106</int>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>HolidayUK</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>96</int>",
+                  "      </value>",
+                  "    </item>",
+                  "  </ColumnWidths>",
+                  "  <ColumnDisplayIndex>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>DateKey</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>0</int>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>Date</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>1</int>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>FullDateUK</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>2</int>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>FullDateUSA</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>3</int>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>DayOfMonth</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>4</int>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>DaySuffix</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>5</int>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>DayName</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>6</int>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>DayOfWeekUSA</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>7</int>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>DayOfWeekUK</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>8</int>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>DayOfWeekInMonth</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>9</int>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>DayOfWeekInYear</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>10</int>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>DayOfQuarter</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>11</int>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>DayOfYear</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>12</int>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>WeekOfMonth</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>13</int>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>WeekOfQuarter</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>14</int>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>WeekOfYear</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>15</int>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>Month</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>16</int>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>MonthName</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>17</int>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>MonthOfQuarter</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>18</int>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>Quarter</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>19</int>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>QuarterName</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>20</int>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>Year</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>21</int>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>YearName</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>22</int>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>MonthYear</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>23</int>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>MMYYYY</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>24</int>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>FirstDayOfMonth</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>25</int>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>LastDayOfMonth</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>26</int>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>FirstDayOfQuarter</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>27</int>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>LastDayOfQuarter</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>28</int>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>FirstDayOfYear</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>29</int>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>LastDayOfYear</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>30</int>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>IsHolidayUSA</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>31</int>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>IsWeekday</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>32</int>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>HolidayUSA</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>33</int>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>IsHolidayUK</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>34</int>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>HolidayUK</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <int>35</int>",
+                  "      </value>",
+                  "    </item>",
+                  "  </ColumnDisplayIndex>",
+                  "  <ColumnFrozen />",
+                  "  <ColumnChecked>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>FullDateUK</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <boolean>true</boolean>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>Date</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <boolean>false</boolean>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>FullDateUSA</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <boolean>false</boolean>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>DaySuffix</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <boolean>false</boolean>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>DayOfWeekUK</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <boolean>true</boolean>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>DayOfWeekInMonth</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <boolean>false</boolean>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>DayOfWeekInYear</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <boolean>false</boolean>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>DayOfQuarter</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <boolean>false</boolean>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>WeekOfQuarter</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <boolean>false</boolean>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>WeekOfMonth</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <boolean>false</boolean>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>WeekOfYear</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <boolean>false</boolean>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>MonthOfQuarter</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <boolean>false</boolean>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>Quarter</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <boolean>true</boolean>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>YearName</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <boolean>false</boolean>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>MMYYYY</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <boolean>false</boolean>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>FirstDayOfMonth</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <boolean>false</boolean>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>LastDayOfMonth</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <boolean>false</boolean>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>FirstDayOfQuarter</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <boolean>false</boolean>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>LastDayOfQuarter</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <boolean>false</boolean>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>FirstDayOfYear</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <boolean>false</boolean>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>LastDayOfYear</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <boolean>false</boolean>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>IsHolidayUSA</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <boolean>false</boolean>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>IsWeekday</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <boolean>true</boolean>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>HolidayUSA</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <boolean>false</boolean>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>HolidayUK</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <boolean>false</boolean>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>IsHolidayUK</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <boolean>false</boolean>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>DayOfWeekUSA</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <boolean>false</boolean>",
+                  "      </value>",
+                  "    </item>",
+                  "    <item>",
+                  "      <key>",
+                  "        <string>MonthYear</string>",
+                  "      </key>",
+                  "      <value>",
+                  "        <boolean>true</boolean>",
+                  "      </value>",
+                  "    </item>",
+                  "  </ColumnChecked>",
+                  "  <ColumnFilter />",
+                  "  <SelectionFilter />",
+                  "  <FilterParameters />",
+                  "  <IsSortDescending>false</IsSortDescending>",
+                  "</TableWidgetGridSerialization>]]></AnnotationContent></Gemini>"
+                ]
+              }
+            ]
+          }
+        ],
+        "hierarchies": [
+          {
+            "name": "DateHierarchy",
+            "levels": [
+              {
+                "name": "Year",
+                "ordinal": 0,
+                "column": "Year"
+              },
+              {
+                "name": "Quarter Year",
+                "ordinal": 1,
+                "column": "Quarter Year"
+              },
+              {
+                "name": "Day Of Month",
+                "ordinal": 4,
+                "column": "Day Of Month"
+              },
+              {
+                "name": "Day Name",
+                "ordinal": 5,
+                "column": "Day Name"
+              },
+              {
+                "name": "Day Of Year",
+                "ordinal": 3,
+                "column": "Day Of Year"
+              },
+              {
+                "name": "Month Year",
+                "ordinal": 2,
+                "column": "Month Year"
+              }
+            ]
+          }
+        ],
+        "annotations": [
+          {
+            "name": "_TM_ExtProp_QueryDefinition",
+            "value": " SELECT [dbo].[Calander_Table].[DateKey],[dbo].[Calander_Table].[FullDateUK],[dbo].[Calander_Table].[DayOfMonth],[dbo].[Calander_Table].[DayName],[dbo].[Calander_Table].[DayOfWeekUK],[dbo].[Calander_Table].[DayOfYear],[dbo].[Calander_Table].[Month],[dbo].[Calander_Table].[MonthName],[dbo].[Calander_Table].[Quarter],[dbo].[Calander_Table].[QuarterName],[dbo].[Calander_Table].[Year],[dbo].[Calander_Table].[MonthYear],[dbo].[Calander_Table].[IsWeekday] FROM [dbo].[Calander_Table] "
+          },
+          {
+            "name": "_TM_ExtProp_DbTableName",
+            "value": "Calander_Table"
+          },
+          {
+            "name": "_TM_ExtProp_DbSchemaName",
+            "value": "dbo"
+          },
+          {
+            "name": "TableWidgetSerialization",
+            "value": [
+              "<?xml version=\"1.0\" encoding=\"UTF-16\"?><Gemini xmlns=\"TableWidgetSerialization\"><AnnotationContent><![CDATA[<?xml version=\"1.0\"?>",
+              "<TableWidgetGridSerialization xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\">",
+              "  <ColumnSuggestedType />",
+              "  <ColumnFormat />",
+              "  <ColumnAccuracy />",
+              "  <ColumnCurrencySymbol />",
+              "  <ColumnPositivePattern />",
+              "  <ColumnNegativePattern />",
+              "  <ColumnWidths>",
+              "    <item>",
+              "      <key>",
+              "        <string>DateKey</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>87</int>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>Date</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>64</int>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>FullDateUK</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>100</int>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>FullDateUSA</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>108</int>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>DayOfMonth</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>113</int>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>DaySuffix</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>94</int>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>DayName</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>95</int>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>DayOfWeekUSA</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>134</int>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>DayOfWeekUK</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>126</int>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>DayOfWeekInMonth</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>160</int>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>DayOfWeekInYear</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>148</int>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>DayOfQuarter</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>121</int>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>DayOfYear</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>101</int>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>WeekOfMonth</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>123</int>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>WeekOfQuarter</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>131</int>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>WeekOfYear</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>111</int>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>Month</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>74</int>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>MonthName</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>109</int>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>MonthOfQuarter</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>135</int>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>Quarter</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>166</int>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>QuarterName</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>117</int>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>Year</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>62</int>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>YearName</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>97</int>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>MonthYear</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>101</int>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>MMYYYY</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>87</int>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>FirstDayOfMonth</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>138</int>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>LastDayOfMonth</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>138</int>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>FirstDayOfQuarter</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>146</int>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>LastDayOfQuarter</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>146</int>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>FirstDayOfYear</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>126</int>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>LastDayOfYear</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>126</int>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>IsHolidayUSA</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>114</int>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>IsWeekday</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>103</int>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>HolidayUSA</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>104</int>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>IsHolidayUK</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>106</int>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>HolidayUK</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>96</int>",
+              "      </value>",
+              "    </item>",
+              "  </ColumnWidths>",
+              "  <ColumnDisplayIndex>",
+              "    <item>",
+              "      <key>",
+              "        <string>DateKey</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>0</int>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>Date</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>1</int>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>FullDateUK</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>2</int>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>FullDateUSA</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>3</int>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>DayOfMonth</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>4</int>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>DaySuffix</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>5</int>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>DayName</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>6</int>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>DayOfWeekUSA</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>7</int>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>DayOfWeekUK</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>8</int>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>DayOfWeekInMonth</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>9</int>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>DayOfWeekInYear</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>10</int>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>DayOfQuarter</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>11</int>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>DayOfYear</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>12</int>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>WeekOfMonth</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>13</int>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>WeekOfQuarter</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>14</int>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>WeekOfYear</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>15</int>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>Month</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>16</int>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>MonthName</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>17</int>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>MonthOfQuarter</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>18</int>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>Quarter</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>19</int>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>QuarterName</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>20</int>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>Year</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>21</int>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>YearName</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>22</int>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>MonthYear</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>23</int>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>MMYYYY</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>24</int>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>FirstDayOfMonth</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>25</int>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>LastDayOfMonth</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>26</int>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>FirstDayOfQuarter</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>27</int>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>LastDayOfQuarter</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>28</int>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>FirstDayOfYear</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>29</int>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>LastDayOfYear</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>30</int>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>IsHolidayUSA</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>31</int>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>IsWeekday</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>32</int>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>HolidayUSA</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>33</int>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>IsHolidayUK</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>34</int>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>HolidayUK</string>",
+              "      </key>",
+              "      <value>",
+              "        <int>35</int>",
+              "      </value>",
+              "    </item>",
+              "  </ColumnDisplayIndex>",
+              "  <ColumnFrozen />",
+              "  <ColumnChecked>",
+              "    <item>",
+              "      <key>",
+              "        <string>FullDateUK</string>",
+              "      </key>",
+              "      <value>",
+              "        <boolean>true</boolean>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>Date</string>",
+              "      </key>",
+              "      <value>",
+              "        <boolean>false</boolean>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>FullDateUSA</string>",
+              "      </key>",
+              "      <value>",
+              "        <boolean>false</boolean>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>DaySuffix</string>",
+              "      </key>",
+              "      <value>",
+              "        <boolean>false</boolean>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>DayOfWeekUK</string>",
+              "      </key>",
+              "      <value>",
+              "        <boolean>true</boolean>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>DayOfWeekInMonth</string>",
+              "      </key>",
+              "      <value>",
+              "        <boolean>false</boolean>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>DayOfWeekInYear</string>",
+              "      </key>",
+              "      <value>",
+              "        <boolean>false</boolean>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>DayOfQuarter</string>",
+              "      </key>",
+              "      <value>",
+              "        <boolean>false</boolean>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>WeekOfQuarter</string>",
+              "      </key>",
+              "      <value>",
+              "        <boolean>false</boolean>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>WeekOfMonth</string>",
+              "      </key>",
+              "      <value>",
+              "        <boolean>false</boolean>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>WeekOfYear</string>",
+              "      </key>",
+              "      <value>",
+              "        <boolean>false</boolean>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>MonthOfQuarter</string>",
+              "      </key>",
+              "      <value>",
+              "        <boolean>false</boolean>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>Quarter</string>",
+              "      </key>",
+              "      <value>",
+              "        <boolean>true</boolean>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>YearName</string>",
+              "      </key>",
+              "      <value>",
+              "        <boolean>false</boolean>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>MMYYYY</string>",
+              "      </key>",
+              "      <value>",
+              "        <boolean>false</boolean>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>FirstDayOfMonth</string>",
+              "      </key>",
+              "      <value>",
+              "        <boolean>false</boolean>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>LastDayOfMonth</string>",
+              "      </key>",
+              "      <value>",
+              "        <boolean>false</boolean>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>FirstDayOfQuarter</string>",
+              "      </key>",
+              "      <value>",
+              "        <boolean>false</boolean>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>LastDayOfQuarter</string>",
+              "      </key>",
+              "      <value>",
+              "        <boolean>false</boolean>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>FirstDayOfYear</string>",
+              "      </key>",
+              "      <value>",
+              "        <boolean>false</boolean>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>LastDayOfYear</string>",
+              "      </key>",
+              "      <value>",
+              "        <boolean>false</boolean>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>IsHolidayUSA</string>",
+              "      </key>",
+              "      <value>",
+              "        <boolean>false</boolean>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>IsWeekday</string>",
+              "      </key>",
+              "      <value>",
+              "        <boolean>true</boolean>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>HolidayUSA</string>",
+              "      </key>",
+              "      <value>",
+              "        <boolean>false</boolean>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>HolidayUK</string>",
+              "      </key>",
+              "      <value>",
+              "        <boolean>false</boolean>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>IsHolidayUK</string>",
+              "      </key>",
+              "      <value>",
+              "        <boolean>false</boolean>",
+              "      </value>",
+              "    </item>",
+              "    <item>",
+              "      <key>",
+              "        <string>DayOfWeekUSA</string>",
+              "      </key>",
+              "      <value>",
+              "        <boolean>false</boolean>",
+              "      </value>",
+              "    </item>",
+              "  </ColumnChecked>",
+              "  <ColumnFilter />",
+              "  <SelectionFilter />",
+              "  <FilterParameters />",
+              "  <IsSortDescending>false</IsSortDescending>",
+              "</TableWidgetGridSerialization>]]></AnnotationContent></Gemini>"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Time",
+        "dataCategory": "Time",
+        "columns": [
+          {
+            "name": "Key Time",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "Key Time",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "Full Time",
+            "dataType": "dateTime",
+            "isHidden": true,
+            "isKey": true,
+            "sourceColumn": "Full Time",
+            "formatString": "General Date",
+            "sourceProviderType": "145"
+          },
+          {
+            "name": "Code Hour",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "Code Hour",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "Descripion Hour",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "Descripion Hour",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "Key Minute",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "Key Minute",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "Code Minute",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "Code Minute",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "Descripion Minute",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "Descripion Minute",
+            "sourceProviderType": "WChar"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Time",
+            "dataView": "full",
+            "source": {
+              "type": "query",
+              "query": " SELECT [dbo].[Dim_Time].* FROM [dbo].[Dim_Time] ",
+              "dataSource": "TheVoice"
+            }
+          }
+        ],
+        "hierarchies": [
+          {
+            "name": "TimeHierarchy",
+            "levels": [
+              {
+                "name": "Code Hour",
+                "ordinal": 0,
+                "column": "Code Hour"
+              },
+              {
+                "name": "Code Minute",
+                "ordinal": 1,
+                "column": "Code Minute"
+              },
+              {
+                "name": "Key Time",
+                "ordinal": 2,
+                "column": "Key Time"
+              }
+            ]
+          }
+        ],
+        "annotations": [
+          {
+            "name": "_TM_ExtProp_QueryDefinition",
+            "value": " SELECT [dbo].[Dim_Time].* FROM [dbo].[Dim_Time] "
+          },
+          {
+            "name": "_TM_ExtProp_DbTableName",
+            "value": "Dim_Time"
+          },
+          {
+            "name": "_TM_ExtProp_DbSchemaName",
+            "value": "dbo"
+          }
+        ]
+      },
+      {
+        "name": "CountriesDestination",
+        "columns": [
+          {
+            "name": "Key Country",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "Key Country",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "Country",
+            "dataType": "string",
+            "isHidden": true,
+            "sourceColumn": "Country",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "Region",
+            "dataType": "string",
+            "isHidden": true,
+            "sourceColumn": "Region",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "Area",
+            "dataType": "string",
+            "isHidden": true,
+            "sourceColumn": "Area",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "Country Prefix",
+            "dataType": "string",
+            "sourceColumn": "Country Prefix",
+            "sourceProviderType": "WChar"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "CountriesDestination",
+            "dataView": "full",
+            "source": {
+              "type": "query",
+              "query": " SELECT [dbo].[Dim_Countries].* FROM [dbo].[Dim_Countries] ",
+              "dataSource": "TheVoice"
+            }
+          }
+        ],
+        "hierarchies": [
+          {
+            "name": "TerritoryHierarchy",
+            "levels": [
+              {
+                "name": "Region",
+                "ordinal": 0,
+                "column": "Region"
+              },
+              {
+                "name": "Country",
+                "ordinal": 2,
+                "column": "Country"
+              },
+              {
+                "name": "Area",
+                "ordinal": 1,
+                "column": "Area"
+              }
+            ]
+          }
+        ],
+        "annotations": [
+          {
+            "name": "_TM_ExtProp_QueryDefinition",
+            "value": " SELECT [dbo].[Dim_Countries].* FROM [dbo].[Dim_Countries] "
+          },
+          {
+            "name": "_TM_ExtProp_DbTableName",
+            "value": "Dim_Countries"
+          },
+          {
+            "name": "_TM_ExtProp_DbSchemaName",
+            "value": "dbo"
+          }
+        ]
+      },
+      {
+        "name": "OperatorsDestination",
+        "columns": [
+          {
+            "name": "Key Mobile Prefix",
+            "dataType": "int64",
+            "sourceColumn": "Key Mobile Prefix",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "Descripion Operator",
+            "dataType": "string",
+            "sourceColumn": "Descripion Operator",
+            "sourceProviderType": "WChar"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "OperatorsTrue\t\tDim_Countries\tdbo\tCountriesDestination",
+            "dataView": "full",
+            "source": {
+              "type": "query",
+              "query": " SELECT [dbo].[Dim_Operators].* FROM [dbo].[Dim_Operators] ",
+              "dataSource": "TheVoice"
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "_TM_ExtProp_QueryDefinition",
+            "value": " SELECT [dbo].[Dim_Operators].* FROM [dbo].[Dim_Operators] "
+          },
+          {
+            "name": "_TM_ExtProp_DbTableName",
+            "value": "Dim_Operators"
+          },
+          {
+            "name": "_TM_ExtProp_DbSchemaName",
+            "value": "dbo"
+          }
+        ]
+      }
+    ],
+    "relationships": [
+      {
+        "name": "5c297bcc-c410-4a06-b000-9ea400f88b87",
+        "fromTable": "Usage Main",
+        "fromColumn": "Key Customer",
+        "toTable": "Customers",
+        "toColumn": "Customer ID"
+      },
+      {
+        "name": "78615cd0-b82b-4b68-bde5-9e3c8f666595",
+        "fromTable": "Usage Main",
+        "fromColumn": "Key Call Type",
+        "toTable": "Call Types",
+        "toColumn": "Key Call Type"
+      },
+      {
+        "name": "1d04fa42-f0db-446a-9d67-3725e8a68682",
+        "fromTable": "Usage Main",
+        "fromColumn": "Key Origin Country",
+        "toTable": "CountriesOrigin",
+        "toColumn": "Key Country"
+      },
+      {
+        "name": "8676cc73-459d-4698-b6af-ed144af714bd",
+        "fromTable": "Usage Main",
+        "fromColumn": "Key Package",
+        "toTable": "Package Catalog",
+        "toColumn": "Package Number"
+      },
+      {
+        "name": "99288e74-666e-457b-ac8c-c1e701beb7ef",
+        "fromTable": "Usage Main",
+        "fromColumn": "Key Origin Operator",
+        "toTable": "OperatorsOrigin",
+        "toColumn": "Key Mobile Prefix"
+      },
+      {
+        "name": "0ed23618-3de7-4b02-9dd4-7cf142581aa1",
+        "fromTable": "Usage Main",
+        "fromColumn": "Key Call Date",
+        "toTable": "Date",
+        "toColumn": "Date Key"
+      },
+      {
+        "name": "dfdd89a7-65b9-477c-8076-58762ced719c",
+        "fromTable": "Usage Main",
+        "fromColumn": "Key Call Time",
+        "toTable": "Time",
+        "toColumn": "Key Time"
+      },
+      {
+        "name": "17fed067-8f31-42d3-906f-0c50115865f9",
+        "fromTable": "Usage Main",
+        "fromColumn": "Key Call Origin Type",
+        "toTable": "Call Origin Type",
+        "toColumn": "Key Source Cell"
+      },
+      {
+        "name": "3aeca65f-ec15-433a-bf64-5100e5df85de",
+        "fromTable": "Usage Main",
+        "fromColumn": "Key Destination Operator",
+        "toTable": "OperatorsDestination",
+        "toColumn": "Key Mobile Prefix"
+      },
+      {
+        "name": "bccbaa6e-95af-45f1-aac2-8ec4539b133e",
+        "fromTable": "Usage Main",
+        "fromColumn": "Key Destination Country",
+        "toTable": "CountriesDestination",
+        "toColumn": "Key Country"
+      }
+    ],
+    "perspectives": [
+      {
+        "name": "Perspective To SalesMan",
+        "tables": [
+          {
+            "name": "Call Origin Type",
+            "columns": [
+              {
+                "name": "Call Origin Type"
+              },
+              {
+                "name": "Key Source Cell"
+              }
+            ]
+          },
+          {
+            "name": "Call Types",
+            "columns": [
+              {
+                "name": "Call Type"
+              },
+              {
+                "name": "Call Type Code"
+              },
+              {
+                "name": "Call Type Descripion"
+              },
+              {
+                "name": "Category Of Call"
+              },
+              {
+                "name": "Key Call Type"
+              },
+              {
+                "name": "Price Per Minuter"
+              }
+            ],
+            "hierarchies": [
+              {
+                "name": "CallTypeHierarchy"
+              }
+            ]
+          },
+          {
+            "name": "CountriesDestination",
+            "columns": [
+              {
+                "name": "Area"
+              },
+              {
+                "name": "Country"
+              },
+              {
+                "name": "Country Prefix"
+              },
+              {
+                "name": "Key Country"
+              },
+              {
+                "name": "Region"
+              }
+            ],
+            "hierarchies": [
+              {
+                "name": "TerritoryHierarchy"
+              }
+            ]
+          },
+          {
+            "name": "CountriesOrigin",
+            "columns": [
+              {
+                "name": "Area"
+              },
+              {
+                "name": "Country"
+              },
+              {
+                "name": "Country Prefix"
+              },
+              {
+                "name": "Key Country"
+              },
+              {
+                "name": "Region"
+              }
+            ],
+            "hierarchies": [
+              {
+                "name": "TerritoryHierarchy"
+              }
+            ]
+          },
+          {
+            "name": "OperatorsDestination",
+            "columns": [
+              {
+                "name": "Descripion Operator"
+              },
+              {
+                "name": "Key Mobile Prefix"
+              }
+            ]
+          },
+          {
+            "name": "OperatorsOrigin",
+            "columns": [
+              {
+                "name": "Descripion Operator"
+              },
+              {
+                "name": "Key Mobile Prefix"
+              }
+            ]
+          },
+          {
+            "name": "Package Catalog",
+            "columns": [
+              {
+                "name": "Code Package Activities Days"
+              },
+              {
+                "name": "Create Date"
+              },
+              {
+                "name": "End Date"
+              },
+              {
+                "name": "Package Descripion"
+              },
+              {
+                "name": "Package Number"
+              },
+              {
+                "name": "Package Type"
+              },
+              {
+                "name": "Status"
+              }
+            ]
+          },
+          {
+            "name": "Usage Main",
+            "columns": [
+              {
+                "name": "Amount"
+              },
+              {
+                "name": "Billable Amount"
+              },
+              {
+                "name": "Billable Duration"
+              },
+              {
+                "name": "Call ID"
+              },
+              {
+                "name": "Discount"
+              },
+              {
+                "name": "Discount Percentage"
+              },
+              {
+                "name": "Duration"
+              },
+              {
+                "name": "Key Call Date"
+              },
+              {
+                "name": "Key Call Origin Type"
+              },
+              {
+                "name": "Key Call Time"
+              },
+              {
+                "name": "Key Call Type"
+              },
+              {
+                "name": "Key Customer"
+              },
+              {
+                "name": "Key Destination Country"
+              },
+              {
+                "name": "Key Destination Operator"
+              },
+              {
+                "name": "Key Origin Country"
+              },
+              {
+                "name": "Key Origin Operator"
+              },
+              {
+                "name": "Key Package"
+              }
+            ],
+            "measures": [
+              {
+                "name": "Active Customers Of Precentage"
+              },
+              {
+                "name": "All Customer"
+              },
+              {
+                "name": "Avarege Of Discount"
+              },
+              {
+                "name": "Call Duration Average"
+              },
+              {
+                "name": "Count Distinct On Customer"
+              },
+              {
+                "name": "Count Of Calls"
+              },
+              {
+                "name": "KPI Target Of Amount"
+              },
+              {
+                "name": "Max Amount"
+              },
+              {
+                "name": "Sum Amount"
+              },
+              {
+                "name": "Sum Billable Amount"
+              },
+              {
+                "name": "Sum Billable Call Duration"
+              },
+              {
+                "name": "Sum Call Duration"
+              },
+              {
+                "name": "Sum Discount"
+              },
+              {
+                "name": "Avarege Amount"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "roles": [
+      {
+        "name": "Customer Service",
+        "modelPermission": "read",
+        "members": [
+          {
+            "memberName": "ReportPBI",
+            "memberId": "S-1-5-21-359358087-87391303-774810077-1051"
+          }
+        ],
+        "tablePermissions": [
+          {
+            "name": "Customers",
+            "filterExpression": [
+              "evaluate (",
+              "",
+              "\t\t\tSUMMARIZE(Customers,Customers[Customer ID],Customers[Customer Full Name], CuCustomers[Customer Number])"
+            ]
+          }
+        ]
+      }
+    ],
+    "annotations": [
+      {
+        "name": "ClientCompatibilityLevel",
+        "value": "400"
+      }
+    ]
+  },
+  "id": "SemanticModel"
+}

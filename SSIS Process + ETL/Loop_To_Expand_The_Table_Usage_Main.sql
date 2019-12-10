@@ -43,7 +43,7 @@ Select Max(CALL_NO) from USAGE_MAIN
 ---------------------------------------------
 Declare
 
-@NumberOfNewRows int = 19496,
+@NumberOfNewRows int = 10557,
 @I int = 1,
 @CallNumber int,
 @CallingNumber nvarchar(20),
@@ -82,7 +82,7 @@ While @NumberOfNewRows >= @I
 		END
 		BEGIN
 			set @Minutes = @Duration
-			set @AnswerTime = DATEADD(DAY, @Duration, @FromDate)
+			set @AnswerTime = DATEADD(DAY, dbo.fn_RandomNum(0,DATEDIFF(day,@FromDate,@ToDate)), @FromDate)
 			set @DisconectTime = DATEADD(MINUTE, @Duration, @AnswerTime)
 			set @CallDateTime = @AnswerTime
 		END
