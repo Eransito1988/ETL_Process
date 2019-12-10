@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.852
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{159641D6-6404-4A2A-AE62-294DE0FE8301}") = "Integration Services Project1", "Integration Services Project1\Integration Services Project1.dtproj", "{9E10A8B7-E87D-4B7D-BC8F-F0CE8D2758D3}"
+Project("{159641D6-6404-4A2A-AE62-294DE0FE8301}") = "SSIS Final Project TheVoice", "Integration Services Project1\SSIS Final Project TheVoice.dtproj", "{9E10A8B7-E87D-4B7D-BC8F-F0CE8D2758D3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

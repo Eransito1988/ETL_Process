@@ -51,7 +51,10 @@
   <ItemGroup>
     <DataSet Include="Active Customers.rsd" />
     <DataSet Include="Analysis By Call Type.rsd" />
-    <DataSet Include="Voice By Country.rsd" />
+    <DataSet Include="Distinct Country.rsd" />
+    <DataSet Include="Distinct [Call Type Descripion].rsd" />
+    <DataSet Include="Distinct [Call Type].rsd" />
+    <DataSet Include="Usage By Origin.rsd" />
   </ItemGroup>
   <ItemGroup>
     <DataSource Include="DW_TheVoice.rds" />

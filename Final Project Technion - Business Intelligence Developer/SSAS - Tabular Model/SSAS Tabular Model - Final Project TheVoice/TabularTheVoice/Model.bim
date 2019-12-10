@@ -568,9 +568,16 @@
             "type": "calculated",
             "name": "Discount Percentage",
             "dataType": "double",
+            "isDataTypeInferred": false,
+            "expression": "[Total Revenue]",
+            "formatString": "0.00%;-0.00%;0.00%"
+          },
+          {
+            "type": "calculated",
+            "name": "End Of Month",
+            "dataType": "dateTime",
             "isDataTypeInferred": true,
-            "expression": "'Usage Main'[Discount] / 'Usage Main'[Amount]",
-            "formatString": "0%;-0%;0%"
+            "expression": " ENDOFMONTH ('Date'[Full Date ])"
           }
         ],
         "partitions": [
@@ -711,7 +718,7 @@
         ],
         "measures": [
           {
-            "name": "Sum Billable Amount",
+            "name": "Total Billable Revenue",
             "expression": "SUM('Usage Main'[Billable Amount])",
             "formatString": "\"₪\" #,0.00;\"₪\"-#,0.00;\"₪\" #,0.00",
             "annotations": [
@@ -722,7 +729,7 @@
             ]
           },
           {
-            "name": "Sum Amount",
+            "name": "Total Revenue",
             "expression": "sum('Usage Main'[Amount])",
             "formatString": "\"₪\" #,0.00;\"₪\"-#,0.00;\"₪\" #,0.00",
             "annotations": [
@@ -733,8 +740,8 @@
             ]
           },
           {
-            "name": "Sum Discount",
-            "expression": "[Sum Amount]-[Sum Billable Amount]",
+            "name": "Total Discount",
+            "expression": "[Total Revenue]-[Total Billable Revenue]",
             "formatString": "\"₪\" #,0.00;\"₪\"-#,0.00;\"₪\" #,0.00",
             "annotations": [
               {
@@ -745,7 +752,7 @@
           },
           {
             "name": "Avarege Of Discount",
-            "expression": "[Sum Discount]/[Sum Amount]",
+            "expression": "[Total Discount]/[Total Revenue]",
             "formatString": "0.00%;-0.00%;0.00%"
           },
           {
@@ -825,12 +832,12 @@
             "formatString": "#,0"
           },
           {
-            "name": "Sum Call Duration",
+            "name": "Total Call Duration",
             "expression": "SUM('Usage Main'[Duration])",
             "formatString": "#,0"
           },
           {
-            "name": "Sum Billable Call Duration",
+            "name": "Total Billable Call Duration",
             "expression": "SUM('Usage Main'[Billable Duration])",
             "formatString": "#,0"
           },
@@ -859,6 +866,27 @@
                 "value": "<Format Format=\"Currency\" Accuracy=\"2\"><Currency LCID=\"1037\" DisplayName=\"₪ Hebrew (Israel)\" Symbol=\"₪\" PositivePattern=\"2\" NegativePattern=\"2\" /></Format>"
               }
             ]
+          },
+          {
+            "name": "Avarege Of Discount Real",
+            "expression": " AVERAGE('Usage Main'[Discount Percentage])",
+            "formatString": "0.00%;-0.00%;0.00%"
+          },
+          {
+            "name": "Avarege Revenue Per Day",
+            "expression": "[Total Revenue]/DISTINCTCOUNT('Usage Main'[Key Call Date])",
+            "formatString": "\"₪\" #,0.00;\"₪\"-#,0.00;\"₪\" #,0.00",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Currency\" Accuracy=\"2\"><Currency LCID=\"1037\" DisplayName=\"₪ Hebrew (Israel)\" Symbol=\"₪\" PositivePattern=\"2\" NegativePattern=\"2\" /></Format>"
+              }
+            ]
+          },
+          {
+            "name": "InActiveCostumers",
+            "expression": "[All Customer]-[Count Distinct On Customer]",
+            "formatString": "#,0"
           }
         ],
         "annotations": [
@@ -3226,19 +3254,19 @@
                 "name": "Max Amount"
               },
               {
-                "name": "Sum Amount"
+                "name": "Total Revenue"
               },
               {
-                "name": "Sum Billable Amount"
+                "name": "Total Billable Revenue"
               },
               {
-                "name": "Sum Billable Call Duration"
+                "name": "Total Billable Call Duration"
               },
               {
-                "name": "Sum Call Duration"
+                "name": "Total Call Duration"
               },
               {
-                "name": "Sum Discount"
+                "name": "Total Discount"
               },
               {
                 "name": "Avarege Amount"

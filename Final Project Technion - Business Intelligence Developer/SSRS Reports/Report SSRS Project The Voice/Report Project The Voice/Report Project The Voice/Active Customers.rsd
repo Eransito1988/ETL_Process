@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SharedDataSet xmlns="http://schemas.microsoft.com/sqlserver/reporting/2010/01/shareddatasetdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
+  <DataSet Name="DataSet1">
+    <Query>
+      <DataSourceReference>DW_TheVoice</DataSourceReference>
+      <DataSetParameters>
+        <DataSetParameter Name="@StartDate">
+          <ReadOnly>false</ReadOnly>
+          <Nullable>false</Nullable>
+          <OmitFromQuery>false</OmitFromQuery>
+          <rd:DbType>Object</rd:DbType>
+        </DataSetParameter>
+        <DataSetParameter Name="@EndDate">
+          <ReadOnly>false</ReadOnly>
+          <Nullable>false</Nullable>
+          <OmitFromQuery>false</OmitFromQuery>
+          <rd:DbType>Object</rd:DbType>
+        </DataSetParameter>
+      </DataSetParameters>
+      <CommandText>with cte as
+(
+Select distinct [Customer ID]
+from Dim_Customers
+EXCEPT
+select distinct UM.[Key Customer]
+from Fact_Usage_Main UM join Dim_Customers C
+on UM.[Key Customer] = C.[Customer ID]
+join [dbo].[Calander_Table] as CT
+on CT.DateKey = UM.[Key Call Date]
+Where
+	([Date] &gt;= @StartDate and [Date] &lt;= @EndDate)
+), cte2 as 
+(
+select 'InActive Customers' as 'Customers Status' ,count([Customer ID]) as 'Number Of Customers' from cte
+union all
+(select 'Active Customers' ,count(*) from(select distinct [Key Customer] from Fact_Usage_Main UM join [dbo].[Calander_Table] as CT
+on CT.DateKey = UM.[Key Call Date] Where
+	([Date] &gt;= @StartDate and [Date] &lt;= @EndDate))T))
+select *
+from cte2
+</CommandText>
+    </Query>
+    <Fields>
+      <Field Name="Customers_Status">
+        <DataField>Customers Status</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="Number_Of_Customers">
+        <DataField>Number Of Customers</DataField>
+        <rd:TypeName>System.Int32</rd:TypeName>
+      </Field>
+    </Fields>
+  </DataSet>
+</SharedDataSet>
