@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SharedDataSet xmlns="http://schemas.microsoft.com/sqlserver/reporting/2010/01/shareddatasetdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
+  <DataSet Name="DataSet1">
+    <Query>
+      <DataSourceReference>DW_TheVoice</DataSourceReference>
+      <DataSetParameters>
+        <DataSetParameter Name="@StartDate">
+          <ReadOnly>false</ReadOnly>
+          <Nullable>false</Nullable>
+          <OmitFromQuery>false</OmitFromQuery>
+          <rd:DbType>Object</rd:DbType>
+        </DataSetParameter>
+        <DataSetParameter Name="@Country">
+          <ReadOnly>false</ReadOnly>
+          <Nullable>false</Nullable>
+          <OmitFromQuery>false</OmitFromQuery>
+          <rd:DbType>Object</rd:DbType>
+        </DataSetParameter>
+        <DataSetParameter Name="@EndDate">
+          <ReadOnly>false</ReadOnly>
+          <Nullable>false</Nullable>
+          <OmitFromQuery>false</OmitFromQuery>
+          <rd:DbType>Object</rd:DbType>
+        </DataSetParameter>
+      </DataSetParameters>
+      <CommandText>select Country, [Origin Operator], [Customer Full Name], Max([Total Usage]) 'Total Usage'
+from
+(select Country, [Origin Operator], [Customer Full Name], ROW_NUMBER() over (partition by [Customer Full Name],[Origin Operator], Country order by [Customer Full Name]) 'Total Usage'
+from
+(select C.Country, isnull(O.[Descripion Operator] ,'Else Operator') as 'Origin Operator', CU.[Customer Full Name]
+from Fact_Usage_Main UM join Dim_Countries C
+on UM.[Key Origin Country] = C.[Key Country]
+full join Dim_Operators O
+on UM.[Key Origin Operator] = O.[Key Mobile Prefix]
+join Dim_Customers CU
+on CU.[Customer ID] = UM.[Key Customer]
+join Calander_Table D
+on UM.[Key Call Date] = D.DateKey
+Where
+	([Date] &gt;= @StartDate and [Date] &lt;= @EndDate) and
+	 C.Country in(@Country)
+)T) TT
+group by Country, [Origin Operator], [Customer Full Name]</CommandText>
+    </Query>
+    <Fields>
+      <Field Name="Customer_Full_Name">
+        <DataField>Customer Full Name</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="Origin_Operator">
+        <DataField>Origin Operator</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="Country">
+        <DataField>Country</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="Total_Usage">
+        <DataField>Total Usage</DataField>
+        <rd:TypeName>System.Int64</rd:TypeName>
+      </Field>
+    </Fields>
+  </DataSet>
+</SharedDataSet>

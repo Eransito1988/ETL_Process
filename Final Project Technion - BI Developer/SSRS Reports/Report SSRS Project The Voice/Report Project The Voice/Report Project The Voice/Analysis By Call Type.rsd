@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SharedDataSet xmlns="http://schemas.microsoft.com/sqlserver/reporting/2010/01/shareddatasetdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
+  <DataSet Name="DataSet1">
+    <Query>
+      <DataSourceReference>DW_TheVoice</DataSourceReference>
+      <DataSetParameters>
+        <DataSetParameter Name="@CallType">
+          <ReadOnly>false</ReadOnly>
+          <Nullable>false</Nullable>
+          <OmitFromQuery>false</OmitFromQuery>
+          <rd:DbType>Object</rd:DbType>
+        </DataSetParameter>
+      </DataSetParameters>
+      <CommandText>with cte as
+(
+select [Call Type Descripion], [Call ID], [Key Customer], Duration, Amount, ct.[Call Type], ct.[Category Of Call] ,Row_Number () over (partition by CT.[Call Type] order by CT.[Call Type] asc) 'Row Of Calls Per Types'
+from Fact_Usage_Main UM join Dim_Call_Types CT
+on UM.[Key Call Type] = CT.[Key Call Type]
+join Calander_Table Cc
+on um.[Key Call Date] = cc.DateKey
+Where
+	[Call Type] in(@CallType)
+),
+cte2 as
+(
+select [Call Type Descripion], [Call ID], [Key Customer], [Call Type], Duration, Amount, max([Row Of Calls Per Types]) over (partition by [Call Type]) 'Sum Of Calls'
+from cte
+)
+select [Call Type],[Call Type Descripion], sum(Duration) 'Duration Per Type', sum(Amount)[Amount Per Type], count([Key Customer]) 'Customer Of Use'
+from cte2
+group by [Call Type], [Call Type Descripion]
+order by [Call Type]</CommandText>
+    </Query>
+    <Fields>
+      <Field Name="Call_Type">
+        <DataField>Call Type</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="Call_Type_Descripion">
+        <DataField>Call Type Descripion</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="Duration_Per_Type">
+        <DataField>Duration Per Type</DataField>
+        <rd:TypeName>System.Int32</rd:TypeName>
+      </Field>
+      <Field Name="Amount_Per_Type">
+        <DataField>Amount Per Type</DataField>
+        <rd:TypeName>System.Double</rd:TypeName>
+      </Field>
+      <Field Name="Customer_Of_Use">
+        <DataField>Customer Of Use</DataField>
+        <rd:TypeName>System.Int32</rd:TypeName>
+      </Field>
+    </Fields>
+  </DataSet>
+</SharedDataSet>
